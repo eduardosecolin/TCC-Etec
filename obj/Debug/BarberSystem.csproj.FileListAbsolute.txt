@@ -1,0 +1,17 @@
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csprojResolveAssemblyReference.cache
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\MainWindow.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\App.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem_MarkupCompile.cache
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem_MarkupCompile.lref
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\BarberSystem.exe.config
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\BarberSystem.exe
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\BarberSystem.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\MainWindow.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.g.resources
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.Properties.Resources.resources
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csproj.GenerateResource.cache
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csproj.CoreCompileInputs.cache
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.exe
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Login.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Login.baml

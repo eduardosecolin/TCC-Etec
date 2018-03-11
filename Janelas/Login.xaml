@@ -1,0 +1,22 @@
+﻿<Window x:Class="BarberSystem.Janelas.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarberSystem.Janelas"
+        mc:Ignorable="d"
+        Title="Login" Height="720" Width="1080" WindowState="Maximized" ResizeMode="NoResize">
+	<Window.Background>
+		<ImageBrush ImageSource="/BarberSystem;component/imagens/imgLogin.jpg" Stretch="UniformToFill"/>
+	</Window.Background>
+	<Grid x:Name="gridPrincipal">
+		<Label x:Name="label" Content="Login" HorizontalAlignment="Left" Margin="634,152,0,0" VerticalAlignment="Top" Height="93" Width="185" FontSize="60" FontWeight="Bold" Foreground="#FFFBFBFB"/>
+		<Label x:Name="label1" Content="Usuário" HorizontalAlignment="Left" Margin="585,239,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
+		<Label x:Name="label1_Copy" Content="Senha" HorizontalAlignment="Left" Margin="585,327,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
+		<TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="40" Margin="589,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="294" FontSize="25"/>
+		<PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="589,363,0,0" VerticalAlignment="Top" Height="40" Width="294" FontSize="25"/>
+		<Button x:Name="button" Content="Entrar" HorizontalAlignment="Left" Margin="589,431,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+		<Button x:Name="button_Copy" Content="Limpar" HorizontalAlignment="Left" Margin="687,431,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+		<Button x:Name="button_Copy1" Content="Sair" HorizontalAlignment="Left" Margin="784,431,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+	</Grid>
+</Window>
