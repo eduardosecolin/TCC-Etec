@@ -17,10 +17,10 @@ namespace BarberSystem {
 
         private void criarConstrucao() {
             PB.IsIndeterminate = false;
-            PB.Maximum = 2500;
+            PB.Maximum = 1000;
             PB.Value = 0;
 
-            for (int i = 0; i < 2500; i++) {
+            for (int i = 0; i < 1000; i++) {
                 PB.Dispatcher.Invoke(new ProgressBarDelegate(UpdateProgress), DispatcherPriority.Background);
             }
         }
@@ -38,7 +38,7 @@ namespace BarberSystem {
                 Login janela = new Login();
                 janela.Show();
                 this.Hide();
-                this.Visibility = Visibility.Hidden;
+                Close();
             }
             catch (Exception a) {
                 MessageBox.Show(a.Message);

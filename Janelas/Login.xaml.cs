@@ -21,5 +21,9 @@ namespace BarberSystem.Janelas {
         public Login() {
             InitializeComponent();
         }
+
+        private void lblCadastro_MouseMove(object sender, MouseEventArgs e) => lblCadastro.Foreground = Brushes.LightSeaGreen;
+
+        private void lblCadastro_MouseLeave(object sender, MouseEventArgs e) => lblCadastro.Foreground = Brushes.White;
     }
 }

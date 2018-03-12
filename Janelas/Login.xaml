@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         mc:Ignorable="d"
-        Title="Login" Height="720" Width="1080" WindowState="Maximized" ResizeMode="NoResize">
+        Title="Login" Height="766.5" Width="1362" WindowState="Maximized" ResizeMode="NoResize">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/imgLogin.jpg" Stretch="UniformToFill"/>
 	</Window.Background>
 	<Grid x:Name="gridPrincipal">
-		<Label x:Name="label" Content="Login" HorizontalAlignment="Left" Margin="634,152,0,0" VerticalAlignment="Top" Height="93" Width="185" FontSize="60" FontWeight="Bold" Foreground="#FFFBFBFB"/>
-		<Label x:Name="label1" Content="Usuário" HorizontalAlignment="Left" Margin="585,239,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
-		<Label x:Name="label1_Copy" Content="Senha" HorizontalAlignment="Left" Margin="585,327,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
-		<TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="40" Margin="589,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="294" FontSize="25"/>
-		<PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="589,363,0,0" VerticalAlignment="Top" Height="40" Width="294" FontSize="25"/>
-		<Button x:Name="button" Content="Entrar" HorizontalAlignment="Left" Margin="589,431,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
-		<Button x:Name="button_Copy" Content="Limpar" HorizontalAlignment="Left" Margin="687,431,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
-		<Button x:Name="button_Copy1" Content="Sair" HorizontalAlignment="Left" Margin="784,431,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label" Content="Login" HorizontalAlignment="Left" Margin="606,160,0,0" VerticalAlignment="Top" Height="93" Width="185" FontSize="60" FontWeight="Bold" Foreground="#FFFBFBFB"/>
+		<Label x:Name="label1" Content="Usuário" HorizontalAlignment="Left" Margin="557,247,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
+		<Label x:Name="label1_Copy" Content="Senha" HorizontalAlignment="Left" Margin="557,335,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
+		<TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="40" Margin="561,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="294" FontSize="25"/>
+		<PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="561,371,0,0" VerticalAlignment="Top" Height="40" Width="294" FontSize="25"/>
+		<Button x:Name="button" Content="Entrar" HorizontalAlignment="Left" Margin="561,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+		<Button x:Name="button_Copy" Content="Limpar" HorizontalAlignment="Left" Margin="659,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+		<Button x:Name="button_Copy1" Content="Sair" HorizontalAlignment="Left" Margin="756,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+		<Label x:Name="lblCadastro" Content="Cadastrar novo usuário" HorizontalAlignment="Left" Margin="1214,713,0,-2" VerticalAlignment="Top" Foreground="#FFFDFDFD" MouseMove="lblCadastro_MouseMove" MouseLeave="lblCadastro_MouseLeave" Cursor="Hand"/>
+		<Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Height="100" Margin="776,772,0,-135" VerticalAlignment="Top"/>
 	</Grid>
 </Window>
