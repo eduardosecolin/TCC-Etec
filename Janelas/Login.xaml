@@ -14,10 +14,10 @@
 		<Label x:Name="label1" Content="Usuário" HorizontalAlignment="Left" Margin="557,247,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
 		<Label x:Name="label1_Copy" Content="Senha" HorizontalAlignment="Left" Margin="557,335,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FFFFFBFB"/>
 		<TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="40" Margin="561,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="294" FontSize="25"/>
-		<PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="561,371,0,0" VerticalAlignment="Top" Height="40" Width="294" FontSize="25"/>
-		<Button x:Name="button" Content="Entrar" HorizontalAlignment="Left" Margin="561,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
-		<Button x:Name="button_Copy" Content="Limpar" HorizontalAlignment="Left" Margin="659,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
-		<Button x:Name="button_Copy1" Content="Sair" HorizontalAlignment="Left" Margin="756,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFDFBFB"/>
+		<PasswordBox x:Name="txtSenha" HorizontalAlignment="Left" Margin="561,371,0,0" VerticalAlignment="Top" Height="40" Width="294" FontSize="25"/>
+		<Button x:Name="btnEntrar" Content="Entrar" HorizontalAlignment="Left" Margin="561,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" Click="button_Click" BorderBrush="{x:Null}" Cursor="Hand"/>
+		<Button x:Name="button_Copy" Content="Limpar" HorizontalAlignment="Left" Margin="659,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" BorderBrush="{x:Null}" Cursor="Hand"/>
+		<Button x:Name="button_Copy1" Content="Sair" HorizontalAlignment="Left" Margin="756,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" BorderBrush="{x:Null}" Cursor="Hand"/>
 		<Label x:Name="lblCadastro" Content="Cadastrar novo usuário" HorizontalAlignment="Left" Margin="1214,713,0,-2" VerticalAlignment="Top" Foreground="#FFFDFDFD" MouseMove="lblCadastro_MouseMove" MouseLeave="lblCadastro_MouseLeave" Cursor="Hand"/>
 		<Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Height="100" Margin="776,772,0,-135" VerticalAlignment="Top"/>
 	</Grid>

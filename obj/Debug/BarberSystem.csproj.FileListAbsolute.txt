@@ -15,3 +15,10 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.ex
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.pdb
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Login.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Login.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Menu.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Menu.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\EntityFramework.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\EntityFramework.xml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csproj.CopyComplete
