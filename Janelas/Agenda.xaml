@@ -1,0 +1,63 @@
+﻿<Window x:Class="BarberSystem.Janelas.Agenda"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarberSystem.Janelas"
+        mc:Ignorable="d"
+        Title="Agenda" Height="625" Width="1125" WindowStartupLocation="CenterScreen">
+	<Window.Background>
+		<ImageBrush ImageSource="/BarberSystem;component/imagens/JanelaAgenda/Agenda1.jpg" Stretch="UniformToFill"/>
+	</Window.Background>
+	<Grid>
+		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0"/>
+		<Label x:Name="label_Copy" Content="Cliente:" HorizontalAlignment="Left" Margin="357,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCliente" HorizontalAlignment="Left" Height="23" Margin="414,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
+		<Label x:Name="label_Copy1" Content="Código do cliente:" HorizontalAlignment="Left" Margin="193,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCodCliente" HorizontalAlignment="Left" Height="23" Margin="317,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="1"/>
+		<Label x:Name="label_Copy2" Content="Descrição:" HorizontalAlignment="Left" Margin="91,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="164,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="569" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
+		<Label x:Name="label_Copy3" Content="Horário de Inicio:" HorizontalAlignment="Left" Margin="91,169,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtHinicio" HorizontalAlignment="Left" Height="23" Margin="209,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
+		<Label x:Name="label_Copy4" Content="Horário Final:" HorizontalAlignment="Left" Margin="325,169,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtHfim" HorizontalAlignment="Left" Height="23" Margin="418,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
+		<Label x:Name="label_Copy5" Content="Data:" HorizontalAlignment="Left" Margin="535,172,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="575,171,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="6">
+		</DatePicker>
+		<ComboBox x:Name="cbBarbeiro" HorizontalAlignment="Left" Margin="345,209,0,0" VerticalAlignment="Top" Width="173" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
+			<ComboBox.Background>
+				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+					<GradientStop Color="#FFF0F0F0" Offset="0"/>
+					<GradientStop Color="#FFFBFBFB" Offset="1"/>
+				</LinearGradientBrush>
+			</ComboBox.Background>
+			<ComboBoxItem Content="Nando"/>
+		</ComboBox>
+		<Label x:Name="label_Copy6" Content="Barbeiro:" HorizontalAlignment="Left" Margin="280,205,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="833,92,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnCadastrar_Click"/>
+		<Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="833,144,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
+		<Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="833,196,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
+		<Button x:Name="btnGravar" Content="Gravar" HorizontalAlignment="Left" Margin="833,248,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
+		<Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="833,300,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
+		<Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="833,352,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnLimpar_Click"/>
+		<Button x:Name="btnExportar" Content="Exportar para Excel" HorizontalAlignment="Left" Margin="833,404,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
+		<Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="833,456,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnVoltar_Click"/>
+		<DataGrid x:Name="dgAgendamento" HorizontalAlignment="Left" Height="256" Margin="91,252,0,0" VerticalAlignment="Top" Width="694" Background="{x:Null}" BorderBrush="#FF0E0D0D" IsReadOnly="True" FontWeight="SemiBold" Foreground="#FF080808" AutoGenerateColumns="False">
+			<DataGrid.Columns>
+				<DataGridTextColumn  Header="Código" Binding="{Binding Path=codigo}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
+				<DataGridTextColumn  Header="Código Cliente" Binding="{Binding Path=codcliente}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
+				<DataGridTextColumn  Header="Cliente" Binding="{Binding Path=cliente}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
+				<DataGridTextColumn  Header="Descrição" Binding="{Binding Path=descricao}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
+				<DataGridTextColumn  Header="Hora de Inicio" Binding="{Binding Path=hora_inicio, StringFormat='HH:mm'}" Foreground="#FFFBF9F9"/>
+				<DataGridTextColumn  Header="Hora Final" Binding="{Binding Path=hora_fim, StringFormat='HH:mm'}" Foreground="#FFF9F4F4"/>
+				<DataGridTextColumn  Header="Data" Binding="{Binding Path=data, StringFormat=\{0:d\},ConverterCulture='pt-BR'}" Foreground="#FFF7F5F5"/>
+				<DataGridTextColumn  Header="Código Barbeiro" Binding="{Binding Path=codbarbeiro}" Foreground="#FFFDFBFB"/>
+				<DataGridTextColumn  Header="Barbeiro" Binding="{Binding Path=nome_barbeiro}" Foreground="#FFF9F9F9"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Label x:Name="label_Copy7" Content="Código do Barbeiro:" HorizontalAlignment="Left" Margin="91,205,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCodBarbeiro" HorizontalAlignment="Left" Height="23" Margin="227,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
+
+	</Grid>
+</Window>

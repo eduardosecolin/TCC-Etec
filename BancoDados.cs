@@ -20,11 +20,11 @@ namespace BarberSystem {
                 .IsUnicode(false);
 
             modelBuilder.Entity<AGENDA>()
-                .Property(e => e.descicao)
+                .Property(e => e.nome_barbeiro)
                 .IsUnicode(false);
 
             modelBuilder.Entity<AGENDA>()
-                .Property(e => e.nome_barbeiro)
+                .Property(e => e.descricao)
                 .IsUnicode(false);
 
             modelBuilder.Entity<AGENDA>()

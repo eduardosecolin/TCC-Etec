@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         mc:Ignorable="d"
-        Title="Login" Height="766.5" Width="1362" WindowState="Maximized" ResizeMode="NoResize">
+        Title="Login" Height="766.5" Width="1362" WindowState="Maximized" ResizeMode="NoResize" Loaded="Window_Loaded">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/imgLogin.jpg" Stretch="UniformToFill"/>
 	</Window.Background>
@@ -16,8 +16,8 @@
 		<TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="40" Margin="561,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="294" FontSize="25"/>
 		<PasswordBox x:Name="txtSenha" HorizontalAlignment="Left" Margin="561,371,0,0" VerticalAlignment="Top" Height="40" Width="294" FontSize="25"/>
 		<Button x:Name="btnEntrar" Content="Entrar" HorizontalAlignment="Left" Margin="561,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" Click="button_Click" BorderBrush="{x:Null}" Cursor="Hand"/>
-		<Button x:Name="button_Copy" Content="Limpar" HorizontalAlignment="Left" Margin="659,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" BorderBrush="{x:Null}" Cursor="Hand"/>
-		<Button x:Name="button_Copy1" Content="Sair" HorizontalAlignment="Left" Margin="756,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" BorderBrush="{x:Null}" Cursor="Hand"/>
+		<Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="659,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" BorderBrush="{x:Null}" Cursor="Hand" Click="button_Copy_Click"/>
+		<Button x:Name="btnSair" Content="Sair" HorizontalAlignment="Left" Margin="756,439,0,0" VerticalAlignment="Top" Width="99" Height="40" FontSize="14" Background="{x:Null}" Foreground="#FFFDFBFB" BorderBrush="{x:Null}" Cursor="Hand" Click="button_Copy1_Click"/>
 		<Label x:Name="lblCadastro" Content="Cadastrar novo usuário" HorizontalAlignment="Left" Margin="1214,713,0,-2" VerticalAlignment="Top" Foreground="#FFFDFDFD" MouseMove="lblCadastro_MouseMove" MouseLeave="lblCadastro_MouseLeave" Cursor="Hand"/>
 		<Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Height="100" Margin="776,772,0,-135" VerticalAlignment="Top"/>
 	</Grid>

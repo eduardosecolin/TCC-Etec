@@ -68,7 +68,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Janelas\Agenda.xaml.cs">
+      <DependentUpon>Agenda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="USUARIOS.cs" />
+    <Page Include="Janelas\Agenda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Janelas\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +143,44 @@
   <ItemGroup>
     <Resource Include="imagens\imgMenu.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="imagens\JanelaAgenda\Agenda1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconAgenda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconBarbeiros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconCaixa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconClientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconConfig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconPagar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconReceber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconEstoque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconFornecedores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconFuncionarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconProdutos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\JanelaAgenda\Agenda2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

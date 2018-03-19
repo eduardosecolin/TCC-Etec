@@ -22,3 +22,5 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\EntityFramework
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\EntityFramework.xml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csproj.CopyComplete
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Agenda.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Agenda.baml

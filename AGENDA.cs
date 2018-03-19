@@ -9,13 +9,10 @@ namespace BarberSystem
     public partial class AGENDA
     {
         [Key]
-        public int codigo { get; set; }
+        internal int codigo { get; set; }
 
         [StringLength(50)]
         public string cliente { get; set; }
-
-        [StringLength(50)]
-        public string descicao { get; set; }
 
         public DateTime? hora_inicio { get; set; }
 
@@ -24,12 +21,16 @@ namespace BarberSystem
         [Column(TypeName = "date")]
         public DateTime? data { get; set; }
 
-        public int? codcliente { get; set; }
+        internal int? codcliente { get; set; }
 
-        public int? codbarbeiro { get; set; }
+        internal int? codbarbeiro { get; set; }
 
         [StringLength(50)]
         public string nome_barbeiro { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string descricao { get; set; }
 
         public virtual AGENDA AGENDA1 { get; set; }
 
@@ -38,5 +39,17 @@ namespace BarberSystem
         public virtual CLIENTES CLIENTES { get; set; }
 
         public virtual BARBEIROS BARBEIROS { get; set; }
+
+        public AGENDA(int? codcliente, string cliente, string descricao,DateTime? hora_inicio, DateTime hora_fim, DateTime? data, 
+                      int? codbarbeiro, string nome_barbeiro) {
+            this.cliente = cliente;
+            this.hora_inicio = hora_inicio;
+            this.hora_fim = hora_fim;
+            this.data = data;
+            this.codcliente = codcliente;
+            this.codbarbeiro = codbarbeiro;
+            this.nome_barbeiro = nome_barbeiro;
+            this.descricao = descricao;
+        }
     }
 }
