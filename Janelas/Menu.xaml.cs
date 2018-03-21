@@ -18,13 +18,14 @@ namespace BarberSystem.Janelas
     /// <summary>
     /// Lógica interna para Menu.xaml
     /// </summary>
-    public partial class Menu : Window
+    public  partial class Menu : Window
     {
 
         public Menu(List<AGENDA> listaAgenda)
         {
             InitializeComponent();
             //mostraAgenda();
+            dgAgenda.RowBackground = null;
             dgAgenda.ItemsSource = listaAgenda;
         }
 
@@ -59,25 +60,15 @@ namespace BarberSystem.Janelas
             btnConfig.IsEnabled = false;
         }
 
-        //Metodo para mostrar os agendamentos
-        public void mostraAgenda(){
-           /* try {
-                BancoDados bd = new BancoDados();
-                var sql = from a in bd.AGENDA
-                          where a.codigo != 0
-                          select a.cliente +" "+ a.descricao +" "+ a.hora_inicio +" "+ a.hora_fim +" "+ a.data +" "+ a.nome_barbeiro;
-
-                dgAgenda.ItemsSource = sql.AsParallel();
-               
-            }catch(Exception e){
-                MessageBox.Show(e.Message);
-            }*/
-        }
-
         //Botao agenda
         private void btnAgenda_Click(object sender, RoutedEventArgs e) {
-            Agenda janela = new Agenda();
-            janela.Show();         
+            Agenda janela = new Agenda(this);
+            janela.Show(); 
+        }
+
+        public void atualizaForm(List<AGENDA> listaAgenda) {
+            dgAgenda.ItemsSource = null;
+            dgAgenda.ItemsSource = listaAgenda;
         }
     }
 }

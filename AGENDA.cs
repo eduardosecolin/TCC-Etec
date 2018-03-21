@@ -9,7 +9,7 @@ namespace BarberSystem
     public partial class AGENDA
     {
         [Key]
-        internal int codigo { get; set; }
+        public int codigo { get; set; }
 
         [StringLength(50)]
         public string cliente { get; set; }
@@ -21,9 +21,9 @@ namespace BarberSystem
         [Column(TypeName = "date")]
         public DateTime? data { get; set; }
 
-        internal int? codcliente { get; set; }
+        public int? codcliente { get; set; }
 
-        internal int? codbarbeiro { get; set; }
+        public int? codbarbeiro { get; set; }
 
         [StringLength(50)]
         public string nome_barbeiro { get; set; }

@@ -11,7 +11,7 @@
 	</Window.Background>
 	<Grid>
 		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0"/>
+		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
 		<Label x:Name="label_Copy" Content="Cliente:" HorizontalAlignment="Left" Margin="357,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCliente" HorizontalAlignment="Left" Height="23" Margin="414,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
 		<Label x:Name="label_Copy1" Content="Código do cliente:" HorizontalAlignment="Left" Margin="193,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>

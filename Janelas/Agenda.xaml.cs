@@ -21,14 +21,18 @@ namespace BarberSystem.Janelas {
 
         AGENDA agendamento;
         public List<AGENDA> listaAgenda = new List<AGENDA>();
+        private Menu janela;
 
         //Construtor
-        public Agenda() {
+        public Agenda(Menu window) {
             InitializeComponent();
+            dgAgendamento.RowBackground = null;
+            janela = window;
         }
 
         //Botao de voltar
         private void btnVoltar_Click(object sender, RoutedEventArgs e) {
+            janela.atualizaForm(listaAgenda);
             this.Close();
         }
 
@@ -48,7 +52,6 @@ namespace BarberSystem.Janelas {
             txtCodigo.Text = agendamento.codigo.ToString();
             listaAgenda.Add(agendamento);
             dgAgendamento.ItemsSource = listaAgenda.OrderBy(user => user.codigo);
-            dgAgendamento.RowBackground = null;
         }
 
         //Metodo para limpar os campos(textBox)
