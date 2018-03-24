@@ -10,7 +10,9 @@
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/JanelaAgenda/Agenda1.jpg" Stretch="UniformToFill"/>
 	</Window.Background>
 	<Grid>
-		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Rectangle Fill="#FFF10404" HorizontalAlignment="Left" Height="30" Margin="0,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="1117" Opacity="0.3"/>
+
+		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
 		<Label x:Name="label_Copy" Content="Cliente:" HorizontalAlignment="Left" Margin="357,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCliente" HorizontalAlignment="Left" Height="23" Margin="414,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
@@ -23,8 +25,7 @@
 		<Label x:Name="label_Copy4" Content="Horário Final:" HorizontalAlignment="Left" Margin="325,169,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtHfim" HorizontalAlignment="Left" Height="23" Margin="418,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
 		<Label x:Name="label_Copy5" Content="Data:" HorizontalAlignment="Left" Margin="535,172,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="575,171,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="6">
-		</DatePicker>
+		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="575,171,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="6"/>
 		<ComboBox x:Name="cbBarbeiro" HorizontalAlignment="Left" Margin="345,209,0,0" VerticalAlignment="Top" Width="173" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -35,29 +36,32 @@
 			<ComboBoxItem Content="Nando"/>
 		</ComboBox>
 		<Label x:Name="label_Copy6" Content="Barbeiro:" HorizontalAlignment="Left" Margin="280,205,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="833,92,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnCadastrar_Click"/>
-		<Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="833,144,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
-		<Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="833,196,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
-		<Button x:Name="btnGravar" Content="Gravar" HorizontalAlignment="Left" Margin="833,248,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
-		<Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="833,300,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
-		<Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="833,352,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnLimpar_Click"/>
-		<Button x:Name="btnExportar" Content="Exportar para Excel" HorizontalAlignment="Left" Margin="833,404,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D"/>
-		<Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="833,456,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnVoltar_Click"/>
+		<Button x:Name="btnNovo" Content="Novo" HorizontalAlignment="Left" Margin="842,96,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnCadastrar_Click" Cursor="Hand"/>
+		<Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="842,148,0,0" VerticalAlignment="Top" Width="228" Height="51" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand"/>
+		<Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="842,199,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnExcluir_Click" Cursor="Hand"/>
+		<Button x:Name="btnGravar" Content="Gravar" HorizontalAlignment="Left" Margin="842,251,0,0" VerticalAlignment="Top" Width="228" Height="51" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnGravar_Click" Cursor="Hand"/>
+		<Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="842,302,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand"/>
+		<Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="842,354,0,0" VerticalAlignment="Top" Width="228" Height="51" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnLimpar_Click" Cursor="Hand"/>
+		<Button x:Name="btnExportar" Content="Exportar para Excel" HorizontalAlignment="Left" Margin="842,405,0,0" VerticalAlignment="Top" Width="228" Height="52" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand"/>
+		<Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="842,457,0,0" VerticalAlignment="Top" Width="228" Height="51" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnVoltar_Click" Cursor="Hand"/>
 		<DataGrid x:Name="dgAgendamento" HorizontalAlignment="Left" Height="256" Margin="91,252,0,0" VerticalAlignment="Top" Width="694" Background="{x:Null}" BorderBrush="#FF0E0D0D" IsReadOnly="True" FontWeight="SemiBold" Foreground="#FF080808" AutoGenerateColumns="False">
 			<DataGrid.Columns>
-				<DataGridTextColumn  Header="Código" Binding="{Binding Path=codigo}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
-				<DataGridTextColumn  Header="Código Cliente" Binding="{Binding Path=codcliente}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
-				<DataGridTextColumn  Header="Cliente" Binding="{Binding Path=cliente}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
-				<DataGridTextColumn  Header="Descrição" Binding="{Binding Path=descricao}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
-				<DataGridTextColumn  Header="Hora de Inicio" Binding="{Binding Path=hora_inicio, StringFormat='HH:mm'}" Foreground="#FFFBF9F9"/>
-				<DataGridTextColumn  Header="Hora Final" Binding="{Binding Path=hora_fim, StringFormat='HH:mm'}" Foreground="#FFF9F4F4"/>
-				<DataGridTextColumn  Header="Data" Binding="{Binding Path=data, StringFormat=\{0:d\},ConverterCulture='pt-BR'}" Foreground="#FFF7F5F5"/>
-				<DataGridTextColumn  Header="Código Barbeiro" Binding="{Binding Path=codbarbeiro}" Foreground="#FFFDFBFB"/>
-				<DataGridTextColumn  Header="Barbeiro" Binding="{Binding Path=nome_barbeiro}" Foreground="#FFF9F9F9"/>
+				<DataGridTextColumn  Header="Código" Binding="{Binding codigo}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
+				<DataGridTextColumn  Header="Código Cliente" Binding="{Binding codcliente}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
+				<DataGridTextColumn  Header="Cliente" Binding="{Binding cliente}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
+				<DataGridTextColumn  Header="Descrição" Binding="{Binding descricao}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
+				<DataGridTextColumn  Header="Hora de Inicio" Binding="{Binding hora_inicio, StringFormat=HH:mm}" Foreground="#FFFBF9F9"/>
+				<DataGridTextColumn  Header="Hora Final" Binding="{Binding hora_fim, StringFormat=HH:mm}" Foreground="#FFF9F4F4"/>
+				<DataGridTextColumn  Header="Data" Binding="{Binding data, ConverterCulture=pt-BR, StringFormat=\{0:d\}}" Foreground="#FFF7F5F5"/>
+				<DataGridTextColumn  Header="Código Barbeiro" Binding="{Binding codbarbeiro}" Foreground="#FFFDFBFB"/>
+				<DataGridTextColumn  Header="Barbeiro" Binding="{Binding nome_barbeiro}" Foreground="#FFF9F9F9"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Label x:Name="label_Copy7" Content="Código do Barbeiro:" HorizontalAlignment="Left" Margin="91,205,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCodBarbeiro" HorizontalAlignment="Left" Height="23" Margin="227,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
+		<Button x:Name="btnPesquisar" Content="Pesquisar" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="BtnPesquisar_Click" Cursor="Hand"/>
+		<Label x:Name="label_Copy8" Content="Pesquisar agendamento pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
+		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="291,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="0"/>
 
 	</Grid>
 </Window>

@@ -24,6 +24,7 @@
 			<Rectangle Fill="#FF9B0101" HorizontalAlignment="Left" Height="5" Margin="0,494,0,0" Stroke="Black" VerticalAlignment="Top" Width="553" Opacity="0.5"/>
 			<Rectangle Fill="#FF9B0101" HorizontalAlignment="Left" Height="5" Margin="0,486,0,0" Stroke="Black" VerticalAlignment="Top" Width="553" Opacity="0.75"/>
 			<Label x:Name="label" Content="Versão 1.0.0.0" HorizontalAlignment="Left" Margin="228,321,0,0" VerticalAlignment="Top" Foreground="#FF727272" FontWeight="Bold" FontSize="9"/>
+			<Label x:Name="lblCarregar" Content="Carregando." HorizontalAlignment="Left" Margin="235,527,0,0" VerticalAlignment="Top" Foreground="#FF727272" FontSize="10" FontWeight="Bold"/>
 
 		</Grid>
 

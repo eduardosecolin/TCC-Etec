@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Data.SqlClient;
+using BarberSystem.Dados;
 
 namespace BarberSystem.Janelas {
     /// <summary>
@@ -21,15 +22,10 @@ namespace BarberSystem.Janelas {
     public partial class Login : Window {
 
         public static string usuarioLogado;
-        public static List<AGENDA> listaAgenda = new List<AGENDA>();
 
         public Login() {
             InitializeComponent();
         }
-
-        private void lblCadastro_MouseMove(object sender, MouseEventArgs e) => lblCadastro.Foreground = Brushes.LightSeaGreen;
-
-        private void lblCadastro_MouseLeave(object sender, MouseEventArgs e) => lblCadastro.Foreground = Brushes.White;
 
         //Botao de entrar
         private void button_Click(object sender, RoutedEventArgs e) {
@@ -50,17 +46,16 @@ namespace BarberSystem.Janelas {
                     txtUsuario.Focus();
                 }
                 else {
-                    MessageBox.Show("Login realizado com sucesso!!!");
                     usuarioLogado = txtUsuario.Text;
-                    Menu janela = new Menu(listaAgenda);
+                    Menu janela = new Menu();
                     janela.Show();
                     this.Hide();
                     Close();
                 }
-            }catch(Exception a){
+            }
+            catch(Exception a){
                 MessageBox.Show(a.Message);
             }
-                    
         }
 
         //Setar foco no usuarios quando o form for carregado
@@ -83,6 +78,13 @@ namespace BarberSystem.Janelas {
         //Botao sair
         private void button_Copy1_Click(object sender, RoutedEventArgs e) {
             Close();
+        }
+
+        // entrar com a tecla enter
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                button_Click(sender, e);
+            }
         }
     }
 }

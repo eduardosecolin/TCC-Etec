@@ -1,4 +1,4 @@
-namespace BarberSystem
+namespace BarberSystem.Dados
 {
     using System;
     using System.Collections.Generic;

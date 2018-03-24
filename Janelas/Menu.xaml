@@ -32,57 +32,57 @@
 			<MenuItem Header="Sair" Click="MenuItem_Click"/>
 		</Menu>
 		<ToolBar x:Name="toolBar" HorizontalAlignment="Left" Height="97" Margin="-2,20,0,0" VerticalAlignment="Top" Width="1364" Background="#FF191919">
-			<Button x:Name="btnAgenda" Content="Agenda" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBFBFB" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Click="btnAgenda_Click">
+			<Button x:Name="btnAgenda" Content="Agenda" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBFBFB" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Click="btnAgenda_Click" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconAgenda.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnClientes" Content="Clientes" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnClientes" Content="Clientes" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconClientes.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnFornecedores" Content="Fornecedores" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFF9F7F7" VerticalAlignment="Center" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnFornecedores" Content="Fornecedores" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFF9F7F7" VerticalAlignment="Center" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconFornecedores.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnProdutos" Content="Produtos" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnProdutos" Content="Produtos" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconProdutos.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnEstoque" Content="Estoque" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnEstoque" Content="Estoque" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconEstoque.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnPagar" Content="Contas a Pagar" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnPagar" Content="Contas a Pagar" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconPagar.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnReceber" Content="Contas a Receber" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnReceber" Content="Contas a Receber" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconReceber.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnCaixa" Content="Caixa" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnCaixa" Content="Caixa" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconCaixa.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnFuncionarios" Content="Funcionários" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnFuncionarios" Content="Funcionários" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconFuncionarios.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnBarbeiros" Content="Barbeiros" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnBarbeiros" Content="Barbeiros" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconBarbeiros.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnConfig" Content="Config. Usuários" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom">
+			<Button x:Name="btnConfig" Content="Config. Usuários" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconConfig.png" Stretch="Uniform"/>
 				</Button.Background>
@@ -98,7 +98,16 @@
 			<Separator/>
 			<Label Content="Bem vindo ao sistema!" FontSize="9" FontWeight="SemiBold" Foreground="#FFF9F9F9"/>
 		</StatusBar>
-		<DataGrid x:Name="dgAgenda" HorizontalAlignment="Left" Height="535" Margin="262,135,0,0" VerticalAlignment="Top" Width="1063" Background="{x:Null}" BorderBrush="{x:Null}"/>
+		<DataGrid x:Name="dgAgenda" HorizontalAlignment="Left" Height="535" Margin="262,135,0,0" VerticalAlignment="Top" Width="1063" Background="{x:Null}" BorderBrush="{x:Null}" AutoGenerateColumns="False" FontWeight="SemiBold" Focusable="False">
+			<DataGrid.Columns>
+				<DataGridTextColumn Binding="{Binding Path=cliente}"  Foreground="#FFFDF8F8" Header="Cliente" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="200"/>
+				<DataGridTextColumn Binding="{Binding Path=descricao}"  Foreground="#FFFDF8F8" Header="Descrição" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="400"/>
+				<DataGridTextColumn Binding="{Binding Path=hora_inicio, StringFormat='HH:mm'}"  Foreground="#FFF9F9F9" Header="Hora de inicio" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="100"/>
+				<DataGridTextColumn Binding="{Binding Path=hora_fim, StringFormat='HH:mm'}"  Foreground="#FFF9F7F7" Header="Hora final" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="100"/>
+				<DataGridTextColumn Binding="{Binding Path=data, StringFormat=\{0:d\},ConverterCulture='pt-BR'}"  Foreground="#FFFDFBFB" Header="Data" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="100"/>
+				<DataGridTextColumn Binding="{Binding Path=nome_barbeiro}"  Foreground="#FFFBF9F9" Header="Barbeiro" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" CanUserResize="False" Width="160"/>
+			</DataGrid.Columns>
+		</DataGrid>
 
 	</Grid>
 </Window>

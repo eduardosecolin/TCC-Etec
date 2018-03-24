@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BarberSystem.Dados;
 
 namespace BarberSystem.Janelas
 {
@@ -20,13 +21,12 @@ namespace BarberSystem.Janelas
     /// </summary>
     public  partial class Menu : Window
     {
-
-        public Menu(List<AGENDA> listaAgenda)
+        BancoDados conexao = new BancoDados();
+        public Menu()
         {
             InitializeComponent();
-            //mostraAgenda();
             dgAgenda.RowBackground = null;
-            dgAgenda.ItemsSource = listaAgenda;
+            carregaGrig();
         }
 
         //Botao de sair menuitem
@@ -66,9 +66,12 @@ namespace BarberSystem.Janelas
             janela.Show(); 
         }
 
-        public void atualizaForm(List<AGENDA> listaAgenda) {
+
+        //Popular o dataGrid
+        public void carregaGrig() {
+            List<AGENDA> listaAgenda = conexao.AGENDA.ToList();
             dgAgenda.ItemsSource = null;
-            dgAgenda.ItemsSource = listaAgenda;
+            dgAgenda.ItemsSource = listaAgenda.OrderBy(user => user.hora_inicio);
         }
     }
 }

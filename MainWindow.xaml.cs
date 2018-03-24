@@ -17,10 +17,10 @@ namespace BarberSystem {
 
         private void criarConstrucao() {
             PB.IsIndeterminate = false;
-            PB.Maximum = 1000;
+            PB.Maximum = 500;
             PB.Value = 0;
 
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 500; i++) {
                 PB.Dispatcher.Invoke(new ProgressBarDelegate(UpdateProgress), DispatcherPriority.Background);
             }
         }
@@ -31,6 +31,9 @@ namespace BarberSystem {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             int cont = 0;
             while (cont < 5) {
+                if (cont >= 1) {
+                    lblCarregar.Content = lblCarregar.Content + ".";
+                }
                 criarConstrucao();
                 cont++;
             }

@@ -1,4 +1,4 @@
-namespace BarberSystem {
+namespace BarberSystem.Dados {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -26,10 +26,6 @@ namespace BarberSystem {
             modelBuilder.Entity<AGENDA>()
                 .Property(e => e.descricao)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<AGENDA>()
-                .HasOptional(e => e.AGENDA1)
-                .WithRequired(e => e.AGENDA2);
 
             modelBuilder.Entity<BARBEIROS>()
                 .Property(e => e.nome)

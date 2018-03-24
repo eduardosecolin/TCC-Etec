@@ -68,10 +68,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dados\AGENDA.cs" />
+    <Compile Include="Dados\BancoDados.cs" />
+    <Compile Include="Dados\BARBEIROS.cs" />
+    <Compile Include="Dados\CLIENTES.cs" />
+    <Compile Include="Dados\USUARIOS.cs" />
     <Compile Include="Janelas\Agenda.xaml.cs">
       <DependentUpon>Agenda.xaml</DependentUpon>
     </Compile>
-    <Compile Include="USUARIOS.cs" />
     <Page Include="Janelas\Agenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,14 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AGENDA.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BancoDados.cs" />
-    <Compile Include="BARBEIROS.cs" />
-    <Compile Include="CLIENTES.cs" />
     <Compile Include="Janelas\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
