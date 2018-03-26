@@ -17,10 +17,10 @@ namespace BarberSystem {
 
         private void criarConstrucao() {
             PB.IsIndeterminate = false;
-            PB.Maximum = 500;
+            PB.Maximum = 700;
             PB.Value = 0;
 
-            for (int i = 0; i < 500; i++) {
+            for (int i = 0; i < 700; i++) {
                 PB.Dispatcher.Invoke(new ProgressBarDelegate(UpdateProgress), DispatcherPriority.Background);
             }
         }

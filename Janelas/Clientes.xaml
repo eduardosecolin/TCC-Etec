@@ -1,0 +1,198 @@
+﻿<Window x:Class="BarberSystem.Janelas.Clientes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarberSystem.Janelas"
+        mc:Ignorable="d"
+        Title="Clientes" Height="625" Width="1125" WindowStartupLocation="CenterScreen">
+	<Window.Background>
+		<ImageBrush ImageSource="/BarberSystem;component/imagens/JanelaAgenda/Agenda1.jpg"/>
+	</Window.Background>
+	<Grid>
+		<Rectangle Fill="#FFF10404" HorizontalAlignment="Left" Height="30" Margin="0,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="1117" Opacity="0.3"/>
+
+		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
+		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
+		<Label x:Name="label_Copy" Content="Nome:" HorizontalAlignment="Left" Margin="189,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="23" Margin="240,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" FontSize="14" FontWeight="SemiBold" TabIndex="1"/>
+		<Label x:Name="label_Copy2" Content="Endereço:" HorizontalAlignment="Left" Margin="91,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtEndereco" HorizontalAlignment="Left" Height="23" Margin="163,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="501" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
+		<Label x:Name="label_Copy3" Content="Numero:" HorizontalAlignment="Left" Margin="664,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtNumero" HorizontalAlignment="Left" Height="23" Margin="728,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
+		<ComboBox x:Name="cbEstado" HorizontalAlignment="Left" Margin="724,177,0,0" VerticalAlignment="Top" Width="59" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="7">
+			<ComboBox.Background>
+				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+					<GradientStop Color="#FFF0F0F0" Offset="0"/>
+					<GradientStop Color="#FFFBFBFB" Offset="1"/>
+				</LinearGradientBrush>
+			</ComboBox.Background>
+			<ComboBoxItem Content="AC"/>
+			<ComboBoxItem Content="AL"/>
+			<ComboBoxItem Content="AP"/>
+			<ComboBoxItem Content="AM"/>
+			<ComboBoxItem Content="BA"/>
+			<ComboBoxItem Content="CE"/>
+			<ComboBoxItem Content="DF"/>
+			<ComboBoxItem Content="ES"/>
+			<ComboBoxItem Content="GO"/>
+			<ComboBoxItem Content="MA"/>
+			<ComboBoxItem Content="MT"/>
+			<ComboBoxItem Content="MS"/>
+			<ComboBoxItem Content="MG"/>
+			<ComboBoxItem Content="PA"/>
+			<ComboBoxItem Content="PB"/>
+			<ComboBoxItem Content="PR"/>
+			<ComboBoxItem Content="PE"/>
+			<ComboBoxItem Content="PI"/>
+			<ComboBoxItem Content="RJ"/>
+			<ComboBoxItem Content="RN"/>
+			<ComboBoxItem Content="RS"/>
+			<ComboBoxItem Content="RO"/>
+			<ComboBoxItem Content="RR"/>
+			<ComboBoxItem Content="SC"/>
+			<ComboBoxItem Content="SP"/>
+			<ComboBoxItem Content="SE"/>
+			<ComboBoxItem Content="TO"/>
+		</ComboBox>
+		<Label x:Name="label_Copy6" Content="Estado:" HorizontalAlignment="Left" Margin="669,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Button x:Name="btnNovo" Content="Novo" HorizontalAlignment="Left" Margin="842,96,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnNovo_Click" Padding="75,1,1,1">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconNovo.png" Stretch="None">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.05"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="842,156,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconAlterar.png" Stretch="None">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.05"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="842,214,0,0" VerticalAlignment="Top" Width="228" Height="59" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnExcluir_Click">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconExcluir.png" Stretch="None">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.05"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnGravar" Content="Gravar" HorizontalAlignment="Left" Margin="842,273,0,0" VerticalAlignment="Top" Width="228" Height="59" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnGravar_Click" Padding="75,1,1,1">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconGravar.png" Stretch="None">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.05"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="842,332,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnLimpar_Click">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconLimpar.png" Stretch="None">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.05"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnExportar" Content="Excel" HorizontalAlignment="Left" Margin="842,390,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnExportar_Click">
+			<Button.Background>
+				<ImageBrush Stretch="None" ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/32.png">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.05"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="842,450,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnVoltar_Click">
+			<Button.Background>
+				<ImageBrush Stretch="None" ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconVoltar.png">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.05"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
+		<DataGrid x:Name="dgCliente" HorizontalAlignment="Left" Height="256" Margin="91,264,0,0" VerticalAlignment="Top" Width="694" Background="{x:Null}" BorderBrush="#FF0E0D0D" IsReadOnly="True" FontWeight="SemiBold" Foreground="#FF080808" AutoGenerateColumns="False">
+			<DataGrid.Columns>
+				<DataGridTextColumn  Header="Código" Binding="{Binding Path=codigo}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
+				<DataGridTextColumn  Header="Nome" Binding="{Binding Path=nome}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
+				<DataGridTextColumn  Header="Sexo" Binding="{Binding Path=sexo}" Foreground="#FFFDFBFB"/>
+				<DataGridTextColumn  Header="Endereço" Binding="{Binding Path=endereco}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
+				<DataGridTextColumn  Header="Numero" Binding="{Binding Path=numero}" IsReadOnly="True" Foreground="#FFFBF6F6"/>
+				<DataGridTextColumn  Header="Bairro" Binding="{Binding Path=bairro}"  Foreground="#FFFDFBFB"/>
+				<DataGridTextColumn  Header="Cidade" Binding="{Binding Path=cidade}" Foreground="#FFFBF9F9"/>
+				<DataGridTextColumn  Header="Estado" Binding="{Binding Path=estado}" Foreground="#FFF9F4F4"/>
+				<DataGridTextColumn  Header="Cep" Binding="{Binding Path=cep}" Foreground="#FFF7F5F5"/>
+				<DataGridTextColumn Binding="{Binding Path=telefone}" Foreground="#FFFBF6F6" Header="Telefone"/>
+				<DataGridTextColumn  Header="Celular" Binding="{Binding Path=celular}" Foreground="#FFF9F9F9"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Button x:Name="btnPesquisar" Content="Pesquisar" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click"/>
+		<Label x:Name="label_Copy8" Content="Pesquisar agendamento pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
+		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="291,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="11"/>
+		<Label x:Name="label_Copy1" Content="Cidade:" HorizontalAlignment="Left" Margin="383,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="6"/>
+		<Label x:Name="label_Copy4" Content="Cep:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCep" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157" FontSize="14" FontWeight="SemiBold" TabIndex="8"/>
+		<ComboBox x:Name="cbSexo" HorizontalAlignment="Left" Margin="605,91,0,0" VerticalAlignment="Top" Width="178" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="2">
+			<ComboBox.Background>
+				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+					<GradientStop Color="#FFF0F0F0" Offset="0"/>
+					<GradientStop Color="#FFFBFBFB" Offset="1"/>
+				</LinearGradientBrush>
+			</ComboBox.Background>
+			<ComboBoxItem Content="Masculino"/>
+			<ComboBoxItem Content="Feminino"/>
+			<ComboBoxItem Content="Sem Gênero"/>
+		</ComboBox>
+		<Label x:Name="label_Copy5" Content="Sexo:" HorizontalAlignment="Left" Margin="561,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy7" Content="Celular:" HorizontalAlignment="Left" Margin="544,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCelular" HorizontalAlignment="Left" Height="23" Margin="602,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="14" FontWeight="SemiBold" TabIndex="10"/>
+		<Label x:Name="label_Copy9" Content="Bairro:" HorizontalAlignment="Left" Margin="91,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="144,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
+		<Label x:Name="label_Copy10" Content="Telefone:" HorizontalAlignment="Left" Margin="293,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtTelefone" HorizontalAlignment="Left" Height="23" Margin="358,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="14" FontWeight="SemiBold" TabIndex="9"/>
+	</Grid>
+</Window>

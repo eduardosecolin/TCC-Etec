@@ -12,13 +12,13 @@
 	<Grid>
 		<Menu x:Name="menu" Height="20" Width="1366" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center">
 			<MenuItem Header="Arquivo">
-				<MenuItem Header="Agenda"/>
+				<MenuItem Header="Agenda" Click="MenuItem_Click_1"/>
 				<Separator/>
-				<MenuItem Header="Usuários"/>
-				<MenuItem Header="Clientes"/>
+				<MenuItem Header="Usuários" Click="MenuItem_Click_2"/>
+				<MenuItem Header="Clientes" Click="MenuItem_Click_3"/>
 				<MenuItem Header="Fornecedores"/>
 				<MenuItem Header="Funcionários"/>
-				<MenuItem Header="Barbeiros"/>
+				<MenuItem Header="Barbeiros" Click="MenuItem_Click_4"/>
 				<Separator/>
 				<MenuItem Header="Produtos"/>
 				<MenuItem Header="Estoque"/>
@@ -37,7 +37,7 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconAgenda.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnClientes" Content="Clientes" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
+			<Button x:Name="btnClientes" Content="Clientes" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnClientes_Click">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconClientes.png" Stretch="Uniform"/>
 				</Button.Background>
@@ -77,12 +77,12 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconFuncionarios.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnBarbeiros" Content="Barbeiros" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
+			<Button x:Name="btnBarbeiros" Content="Barbeiros" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnBarbeiros_Click">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconBarbeiros.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnConfig" Content="Config. Usuários" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
+			<Button x:Name="btnConfig" Content="Config. Usuários" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnConfig_Click">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconConfig.png" Stretch="Uniform"/>
 				</Button.Background>
@@ -100,12 +100,12 @@
 		</StatusBar>
 		<DataGrid x:Name="dgAgenda" HorizontalAlignment="Left" Height="535" Margin="262,135,0,0" VerticalAlignment="Top" Width="1063" Background="{x:Null}" BorderBrush="{x:Null}" AutoGenerateColumns="False" FontWeight="SemiBold" Focusable="False">
 			<DataGrid.Columns>
-				<DataGridTextColumn Binding="{Binding Path=cliente}"  Foreground="#FFFDF8F8" Header="Cliente" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="200"/>
-				<DataGridTextColumn Binding="{Binding Path=descricao}"  Foreground="#FFFDF8F8" Header="Descrição" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="400"/>
-				<DataGridTextColumn Binding="{Binding Path=hora_inicio, StringFormat='HH:mm'}"  Foreground="#FFF9F9F9" Header="Hora de inicio" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="100"/>
-				<DataGridTextColumn Binding="{Binding Path=hora_fim, StringFormat='HH:mm'}"  Foreground="#FFF9F7F7" Header="Hora final" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="100"/>
-				<DataGridTextColumn Binding="{Binding Path=data, StringFormat=\{0:d\},ConverterCulture='pt-BR'}"  Foreground="#FFFDFBFB" Header="Data" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" Width="100"/>
-				<DataGridTextColumn Binding="{Binding Path=nome_barbeiro}"  Foreground="#FFFBF9F9" Header="Barbeiro" IsReadOnly="True" FontWeight="SemiBold" FontSize="10" CanUserResize="False" Width="160"/>
+				<DataGridTextColumn Binding="{Binding Path=cliente}"  Foreground="#FFFDF8F8" Header="Cliente" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" Width="200"/>
+				<DataGridTextColumn Binding="{Binding Path=descricao}"  Foreground="#FFFDF8F8" Header="Descrição" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" Width="400"/>
+				<DataGridTextColumn Binding="{Binding Path=hora_inicio, StringFormat='HH:mm'}"  Foreground="#FFF9F9F9" Header="Hora de inicio" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" Width="100"/>
+				<DataGridTextColumn Binding="{Binding Path=hora_fim, StringFormat='HH:mm'}"  Foreground="#FFF9F7F7" Header="Hora final" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" Width="100"/>
+				<DataGridTextColumn Binding="{Binding Path=data, StringFormat=\{0:d\},ConverterCulture='pt-BR'}"  Foreground="#FFFDFBFB" Header="Data" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" Width="100"/>
+				<DataGridTextColumn Binding="{Binding Path=nome_barbeiro}"  Foreground="#FFFBF9F9" Header="Barbeiro" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" CanUserResize="False" Width="160"/>
 			</DataGrid.Columns>
 		</DataGrid>
 

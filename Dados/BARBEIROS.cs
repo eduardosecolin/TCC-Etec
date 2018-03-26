@@ -9,13 +9,12 @@ namespace BarberSystem.Dados
     public partial class BARBEIROS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BARBEIROS()
-        {
+        public BARBEIROS(){
             AGENDA = new HashSet<AGENDA>();
         }
 
         [Key]
-        public int codigo { get; set; }
+        public int? codigo { get; set; }
 
         [Required]
         [StringLength(50)]

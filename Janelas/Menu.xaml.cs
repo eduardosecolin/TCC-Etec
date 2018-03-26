@@ -73,6 +73,45 @@ namespace BarberSystem.Janelas
             dgAgenda.ItemsSource = null;
             dgAgenda.ItemsSource = listaAgenda.OrderBy(user => user.hora_inicio);
         }
+
+
+        // botao Barbeiros
+        private void btnBarbeiros_Click(object sender, RoutedEventArgs e) {
+            Barbeiros janela = new Barbeiros();
+            janela.Show();
+        }
+
+        // botao Clientes
+        private void btnClientes_Click(object sender, RoutedEventArgs e) {
+            Clientes janela = new Clientes();
+            janela.Show();
+        }
+
+        // botao config. usuarios
+        private void btnConfig_Click(object sender, RoutedEventArgs e) {
+            Configurações_de_Usuários janela = new Configurações_de_Usuários();
+            janela.Show();           
+        }
+
+        // botao menuitem agenda
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e) {
+            btnAgenda_Click(sender, e);
+        }
+
+        // botao menuitem usuarios
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e) {
+            btnConfig_Click(sender, e);
+        }
+
+        // botao menuitem clientes
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e) {
+            btnClientes_Click(sender, e);
+        }
+
+        // botao menuitem barbeiros
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e) {
+            btnBarbeiros_Click(sender, e);
+        }
     }
 }
 

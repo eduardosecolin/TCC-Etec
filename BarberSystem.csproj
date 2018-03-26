@@ -80,6 +80,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Janelas\Barbeiros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Configurações de Usuários.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Janelas\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +107,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Janelas\Barbeiros.xaml.cs">
+      <DependentUpon>Barbeiros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Clientes.xaml.cs">
+      <DependentUpon>Clientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Configurações de Usuários.xaml.cs">
+      <DependentUpon>Configurações de Usuários.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -181,6 +202,56 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imagens\JanelaAgenda\Agenda2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconNovo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconAlterar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconExcluir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconGravar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconLimpar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconVoltar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

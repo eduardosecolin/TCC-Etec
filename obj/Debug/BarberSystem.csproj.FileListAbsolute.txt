@@ -24,3 +24,10 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Menu.g.
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Agenda.baml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Login.baml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Menu.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Barbeiros.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Barbeiros.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csproj.ResolveComReference.cache
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Clientes.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Clientes.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Configurações de Usuários.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Configurações de Usuários.baml
