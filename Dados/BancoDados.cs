@@ -13,6 +13,7 @@ namespace BarberSystem.Dados {
         public virtual DbSet<BARBEIROS> BARBEIROS { get; set; }
         public virtual DbSet<CLIENTES> CLIENTES { get; set; }
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual DbSet<CONTAS_PAGAR> CONTAS_PAGAR { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<AGENDA>()
@@ -139,6 +140,10 @@ namespace BarberSystem.Dados {
 
             modelBuilder.Entity<USUARIOS>()
                 .Property(e => e.tipo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CONTAS_PAGAR>()
+                .Property(e => e.descricao)
                 .IsUnicode(false);
         }
     }

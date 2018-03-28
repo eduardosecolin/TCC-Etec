@@ -31,3 +31,5 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Cliente
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Clientes.baml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Configurações de Usuários.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Configurações de Usuários.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\ContasPagar.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\ContasPagar.baml

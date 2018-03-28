@@ -45,6 +45,7 @@ namespace BarberSystem.Janelas {
             txtEmail.Clear();
             cbTipo.Text = "";
             txtPesquisar.Clear();
+            txtSenhaOculta.Clear();
         }
 
         // metodo para carregar o datagrid
@@ -71,6 +72,17 @@ namespace BarberSystem.Janelas {
             usuario.cpf = txtCpf.Text;
             usuario.email = txtEmail.Text;
             usuario.tipo = cbTipo.Text;
+
+                if (txtUsuario.Text != "") {
+                var query = from u in conexao.USUARIOS where u.nome_usuario == txtUsuario.Text select u.nome_usuario;
+                    if (query.FirstOrDefault() == txtUsuario.Text) {
+                        MessageBox.Show("Usuário já existe!", "BarberSystem Information", MessageBoxButton.OK, MessageBoxImage.Stop);
+                        limpaCampos();
+                        return;
+                    }
+                }
+
+            txtSenhaOculta.Password = usuario.senha;
 
             conexao.USUARIOS.Add(usuario);
             conexao.SaveChanges();
@@ -101,6 +113,7 @@ namespace BarberSystem.Janelas {
                     txtCodigo.Text = usuario.codigo.ToString();
                     txtUsuario.Text = usuario.nome_usuario;
                     txtSenha.Text = usuario.senha;
+                    txtSenhaOculta.Password = usuario.senha;
                     txtEndereco.Text = usuario.endereco;
                     txtBairro.Text = usuario.bairro;
                     cbEstado.Text = usuario.estado;
@@ -166,7 +179,15 @@ namespace BarberSystem.Janelas {
             }
         }
 
-
+        // mostrar senha
+        private void checkBox_Checked(object sender, RoutedEventArgs e) {
+            txtSenha.Visibility = Visibility.Visible;
+            txtSenhaOculta.Visibility = Visibility.Hidden;
+        }
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e) {
+            txtSenhaOculta.Visibility = Visibility.Visible;
+            txtSenha.Visibility = Visibility.Hidden;
+        }
 
 
 

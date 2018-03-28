@@ -24,7 +24,7 @@
 				<MenuItem Header="Estoque"/>
 			</MenuItem>
 			<MenuItem Header="Financeiro">
-				<MenuItem Header="Contas a Pagar"/>
+				<MenuItem Header="Contas a Pagar" Click="MenuItem_Click_5"/>
 				<MenuItem Header="Contas a Receber"/>
 				<MenuItem Header="Caixa"/>
 			</MenuItem>
@@ -57,7 +57,7 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconEstoque.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnPagar" Content="Contas a Pagar" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
+			<Button x:Name="btnPagar" Content="Contas a Pagar" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnPagar_Click">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconPagar.png" Stretch="Uniform"/>
 				</Button.Background>

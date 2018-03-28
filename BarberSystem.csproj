@@ -72,6 +72,7 @@
     <Compile Include="Dados\BancoDados.cs" />
     <Compile Include="Dados\BARBEIROS.cs" />
     <Compile Include="Dados\CLIENTES.cs" />
+    <Compile Include="Dados\CONTAS_PAGAR.cs" />
     <Compile Include="Dados\USUARIOS.cs" />
     <Compile Include="Janelas\Agenda.xaml.cs">
       <DependentUpon>Agenda.xaml</DependentUpon>
@@ -89,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Janelas\Configurações de Usuários.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\ContasPagar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +121,9 @@
     </Compile>
     <Compile Include="Janelas\Configurações de Usuários.xaml.cs">
       <DependentUpon>Configurações de Usuários.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\ContasPagar.xaml.cs">
+      <DependentUpon>ContasPagar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -252,6 +260,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imagens\imgBotoesJanelas\32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\logoBranco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\logoCinza.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -112,6 +112,17 @@ namespace BarberSystem.Janelas
         private void MenuItem_Click_4(object sender, RoutedEventArgs e) {
             btnBarbeiros_Click(sender, e);
         }
+
+        // botao contas pagar
+        private void btnPagar_Click(object sender, RoutedEventArgs e) {
+            ContasPagar janela = new ContasPagar();
+            janela.Show();
+        }
+
+        // botao menuitem contas pagar
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e) {
+            btnPagar_Click(sender, e);
+        }
     }
 }
 
