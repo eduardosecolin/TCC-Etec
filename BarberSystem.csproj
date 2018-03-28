@@ -267,5 +267,8 @@
   <ItemGroup>
     <Resource Include="imagens\logoCinza.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconCalculadora1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
