@@ -168,7 +168,10 @@ namespace BarberSystem.Janelas {
                 }
         }
 
-
+        // mostrar a calculadora do windows
+        private void btnCalcWindows_Click(object sender, RoutedEventArgs e) {
+            System.Diagnostics.Process.Start("calc.exe");
+        }
 
 
 

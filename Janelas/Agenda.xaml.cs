@@ -15,6 +15,7 @@ using System.Globalization;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.Data.Entity.Migrations;
 
 namespace BarberSystem.Janelas {
     /// <summary>
@@ -98,12 +99,14 @@ namespace BarberSystem.Janelas {
             try {
                 if (txtPesquisar.Text != "") {
                     agendamento = conexao.AGENDA.Find(int.Parse(txtPesquisar.Text));
+                    txtCodCliente.Text = agendamento.codcliente.ToString();
                     txtCodigo.Text = agendamento.codigo.ToString();
                     txtCliente.Text = agendamento.cliente;
                     txtDescricao.Text = agendamento.descricao;
                     txtHinicio.Text = agendamento.hora_inicio.ToString();
                     txtHfim.Text = agendamento.hora_fim.ToString();
                     dpData.Text = agendamento.data.ToString();
+                    txtCodBarbeiro.Text = agendamento.codbarbeiro.ToString();
                     cbBarbeiro.Text = agendamento.nome_barbeiro;
                 }
                 else {
@@ -202,6 +205,37 @@ namespace BarberSystem.Janelas {
                 txtCodCliente.Focus();
             }
         }
+
+        //botao alterar
+        private void btnAlterar_Click(object sender, RoutedEventArgs e) {
+          if(txtCodigo.Text != ""){
+                agendamento.codcliente = int.Parse(txtCodCliente.Text);
+                agendamento.cliente = txtCliente.Text;
+                agendamento.descricao = txtDescricao.Text;
+                agendamento.hora_inicio = DateTime.Parse(txtHinicio.Text);
+                agendamento.hora_fim = DateTime.Parse(txtHfim.Text);
+                agendamento.data = DateTime.Parse(dpData.SelectedDate.ToString());
+                agendamento.codbarbeiro = int.Parse(txtCodBarbeiro.Text);
+                agendamento.nome_barbeiro = cbBarbeiro.Text;
+                conexao.AGENDA.AddOrUpdate(agendamento);
+                conexao.SaveChanges();
+                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                carrgearGrid();
+            }else{
+                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                return;
+            }
+        }
+
+
+
+
+
+
+
+
 
 
 
@@ -343,6 +377,5 @@ namespace BarberSystem.Janelas {
         public bool DisplayRuler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool AutoFilterDateGrouping { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
     }
 }

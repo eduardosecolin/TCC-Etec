@@ -19,7 +19,7 @@
 		<Label x:Name="label_Copy3" Content="Data de Pagamento:" HorizontalAlignment="Left" Margin="397,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy4" Content="Valor Unitário:" HorizontalAlignment="Left" Margin="91,175,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtUnitario" HorizontalAlignment="Left" Height="23" Margin="191,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
-		<Button x:Name="btnNovo" Content="Novo" Margin="842,96,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" Padding="75,1,1,1" Click="btnNovo_Click">
+		<Button x:Name="btnNovo" Content="Novo" Style="{StaticResource MyButton}" Margin="842,96,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" Padding="75,1,1,1" Click="btnNovo_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconNovo.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -33,7 +33,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="842,156,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1">
+		<Button x:Name="btnAlterar" Content="Alterar" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,156,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconAlterar.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -47,7 +47,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="842,214,0,0" VerticalAlignment="Top" Width="228" Height="59" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnExcluir_Click">
+		<Button x:Name="btnExcluir" Content="Excluir" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,214,0,0" VerticalAlignment="Top" Width="228" Height="59" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnExcluir_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconExcluir.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -61,7 +61,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnGravar" Content="Gravar" HorizontalAlignment="Left" Margin="842,273,0,0" VerticalAlignment="Top" Width="228" Height="59" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnGravar_Click">
+		<Button x:Name="btnGravar" Content="Gravar" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,273,0,0" VerticalAlignment="Top" Width="228" Height="59" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnGravar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconGravar.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -75,7 +75,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="842,332,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,0,1,1" Click="btnLimpar_Click">
+		<Button x:Name="btnLimpar" Content="Limpar" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,332,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,0,1,1" Click="btnLimpar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconLimpar.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -89,7 +89,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnExportar" Content=" Excel" HorizontalAlignment="Left" Margin="842,390,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnExportar_Click">
+		<Button x:Name="btnExportar" Content=" Excel" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,390,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnExportar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/32.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -103,7 +103,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="842,450,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnVoltar_Click">
+		<Button x:Name="btnVoltar" Content="Voltar" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,450,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnVoltar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconVoltar.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -127,7 +127,20 @@
 				<DataGridTextColumn  Header="Valor Total" Binding="{Binding Path=vl_total,ConverterCulture=pt-BR}" Foreground="#FF767676"/>
 			</DataGrid.Columns>
 		</DataGrid>
-		<Button x:Name="btnPesquisar" Content="Pesquisar" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" Background="{x:Null}" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click"/>
+		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconPesquisar.png" Stretch="Uniform">
+					<ImageBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform X="-0.25"/>
+						</TransformGroup>
+					</ImageBrush.RelativeTransform>
+				</ImageBrush>
+			</Button.Background>
+		</Button>
 		<Label x:Name="label_Copy8" Content="Pesquisar agendamento pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="291,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
 		<DatePicker x:Name="dpPagto" HorizontalAlignment="Left" Margin="536,137,0,0" VerticalAlignment="Top" Height="23" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
@@ -139,6 +152,11 @@
 		<Button x:Name="btnCalcularValorTotal" Content="" HorizontalAlignment="Left" Margin="625,182,0,0" VerticalAlignment="Top" Width="65" Height="61" BorderBrush="#FFFBF9F9" Click="btnCalcularValorTotal_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconCalculadora1.png" Stretch="Uniform"/>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnCalcWindows" Content="" HorizontalAlignment="Left" Margin="720,181,0,0" VerticalAlignment="Top" Width="77" Height="65" BorderBrush="{x:Null}" Cursor="Hand" Click="btnCalcWindows_Click">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/calculator_256.png" Stretch="Uniform"/>
 			</Button.Background>
 		</Button>
 
