@@ -73,6 +73,7 @@
     <Compile Include="Dados\BARBEIROS.cs" />
     <Compile Include="Dados\CLIENTES.cs" />
     <Compile Include="Dados\CONTAS_PAGAR.cs" />
+    <Compile Include="Dados\CONTAS_RECEBER.cs" />
     <Compile Include="Dados\USUARIOS.cs" />
     <Compile Include="Janelas\Agenda.xaml.cs">
       <DependentUpon>Agenda.xaml</DependentUpon>
@@ -94,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Janelas\ContasPagar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\ContasReceber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +129,9 @@
     </Compile>
     <Compile Include="Janelas\ContasPagar.xaml.cs">
       <DependentUpon>ContasPagar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\ContasReceber.xaml.cs">
+      <DependentUpon>ContasReceber.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

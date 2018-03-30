@@ -15,6 +15,7 @@ using BarberSystem.Janelas;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.Data.Entity.Migrations;
 
 namespace BarberSystem.Janelas {
     /// <summary>
@@ -167,6 +168,36 @@ namespace BarberSystem.Janelas {
         }
 
 
+        // botao alterar
+        private void btnAlterar_Click(object sender, RoutedEventArgs e) {
+            if (txtCodigo.Text != "") {
+                barbeiro.nome = txtNome.Text;
+                barbeiro.endereco = txtEndereco.Text;
+                barbeiro.numero = int.Parse(txtNumero.Text);
+                barbeiro.bairro = txtBairro.Text;
+                barbeiro.cidade = txtCidade.Text;
+                barbeiro.estado = cbEstado.Text;
+                barbeiro.cep = txtCep.Text;
+                barbeiro.sexo = cbSexo.Text;
+                barbeiro.celular = txtCelular.Text;
+                conexao.BARBEIROS.AddOrUpdate(barbeiro);
+                conexao.SaveChanges();
+                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                carregaGrid();
+            }
+            else {
+                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                return;
+            }
+        }
+
+
+
+
+
+
 
 
 
@@ -309,6 +340,7 @@ namespace BarberSystem.Janelas {
 
         public bool DisplayRuler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool AutoFilterDateGrouping { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); 
+       }
     }
 }

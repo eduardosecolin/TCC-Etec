@@ -11,44 +11,37 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BarberSystem.Janelas;
 using BarberSystem.Dados;
+using System.Data.Entity.Migrations;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
-using System.Data.Entity.Migrations;
+
 
 namespace BarberSystem.Janelas {
     /// <summary>
-    /// Lógica interna para ContasPagar.xaml
+    /// Lógica interna para ContasReceber.xaml
     /// </summary>
-    public partial class ContasPagar : Excel.Window {
+    public partial class ContasReceber : Excel.Window {
 
-        CONTAS_PAGAR cp = new CONTAS_PAGAR();
         BancoDados conexao = new BancoDados();
-        private List<CONTAS_PAGAR> listaPagar = new List<CONTAS_PAGAR>();
-
-        public ContasPagar() {
+        CONTAS_RECEBER cr = new CONTAS_RECEBER();
+        private List<CONTAS_RECEBER> listaReceber = new List<CONTAS_RECEBER>();
+      
+        public ContasReceber() {
             InitializeComponent();
-            dgPagar.RowBackground = null;
+            dgReceber.RowBackground = null;
             carregaGrid();
         }
 
-        // limpar os campos(textBox)
+        // metodo para limpar os campos
         public void limpaCampos(){
             txtCodigo.Clear();
             txtDescricao.Clear();
-            txtPesquisar.Clear();
             txtUnitario.Clear();
-            lblTotal.Content = "0";
+            txtPesquisar.Clear();
             dpPagto.Text = "";
             dpVencto.Text = "";
-        }
-
-        //carregar o dataGrid
-        public void carregaGrid(){
-            listaPagar = conexao.CONTAS_PAGAR.ToList();
-            dgPagar.ItemsSource = null;
-            dgPagar.ItemsSource = listaPagar.OrderBy(user => user.codigo);
+            lblTotal.Content = "0";
         }
 
         // verificar campos vazios
@@ -59,23 +52,38 @@ namespace BarberSystem.Janelas {
                 return;
             }
             else {
-                cp.descricao = txtDescricao.Text;
+                cr.descricao = txtDescricao.Text;
             }
             if (dpPagto.SelectedDate.ToString() == "") {
-                cp.data_pagto = null;
+                cr.data_pagto = null;
             }
             else {
-                cp.data_pagto = DateTime.Parse(dpPagto.SelectedDate.ToString());
+                cr.data_pagto = DateTime.Parse(dpPagto.SelectedDate.ToString());
             }
             if (dpVencto.SelectedDate.ToString() == "") {
-                cp.data_vencto = null;
+                cr.data_vencto = null;
             }
             else {
-                cp.data_vencto = DateTime.Parse(dpVencto.SelectedDate.ToString());
+                cr.data_vencto = DateTime.Parse(dpVencto.SelectedDate.ToString());
             }
-            cp.vl_unitario = (txtUnitario.Text == "") ? 0 : double.Parse(txtUnitario.Text);
+            cr.vl_unitario = (txtUnitario.Text == "") ? 0 : double.Parse(txtUnitario.Text);
         }
 
+        // metodo para carregar o dataGrid
+        public void carregaGrid(){
+            listaReceber = conexao.CONTAS_RECEBER.ToList();
+            dgReceber.ItemsSource = null;
+            dgReceber.ItemsSource = listaReceber.OrderBy(user => user.codigo);
+        }
+
+        // calcular valor total e mostrar na Label
+        public void calculaValorTotal() {
+            cr.vl_total = 0.0;
+            foreach (CONTAS_RECEBER item in listaReceber) {
+                cr.vl_total += item.vl_unitario;
+            }
+            lblTotal.Content = cr.vl_total.ToString();
+        }
 
         // botao novo
         private void btnNovo_Click(object sender, RoutedEventArgs e) {
@@ -83,57 +91,44 @@ namespace BarberSystem.Janelas {
             limpaCampos();
         }
 
-        // calcular valor total e mostrar na Label
-        public void calculaValorTotal(){
-            cp.vl_total = 0.0;
-            foreach (CONTAS_PAGAR item in listaPagar) {
-                cp.vl_total += item.vl_unitario;
+        // botao alterar
+        private void btnAlterar_Click(object sender, RoutedEventArgs e) {
+            if (txtCodigo.Text != "") {
+                verificaVazios();
+                if(txtDescricao.Text == ""){
+                    return;
+                }
+                cr.vl_total = cr.vl_unitario;
+                double temp = 0.0;
+                foreach (CONTAS_RECEBER item in listaReceber) {
+                    item.vl_total = temp;
+                    item.vl_total += item.vl_unitario;
+                    temp = item.vl_total;
+                }
+                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                carregaGrid();
             }
-            lblTotal.Content = cp.vl_total.ToString();
-        }
-
-        // botao gravar
-        private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            calculaValorTotal();
-            verificaVazios();
-            if (txtDescricao.Text == "") {
+            else {
+                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
                 return;
             }
-            cp.vl_total += cp.vl_unitario;
-
-            conexao.CONTAS_PAGAR.Add(cp);
-            conexao.SaveChanges();
-
-
-            txtCodigo.Text = cp.codigo.ToString();
-            carregaGrid();
-
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
-        }
-
-        // botao limpar
-        private void btnLimpar_Click(object sender, RoutedEventArgs e) {
-            limpaCampos();
-        }
-
-        // botao voltar
-        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
-            this.Close();
         }
 
         // botao pesquisar
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
             try {
-             if(txtPesquisar.Text != ""){
-                    cp = conexao.CONTAS_PAGAR.Find(int.Parse(txtPesquisar.Text));
-                    txtCodigo.Text = cp.codigo.ToString();
-                    txtDescricao.Text = cp.descricao;
-                    dpPagto.Text = cp.data_pagto.ToString();
-                    dpVencto.Text = cp.data_vencto.ToString();
-                    txtUnitario.Text = cp.vl_unitario.ToString();
-                    lblTotal.Content = cp.vl_total.ToString();
-             }else {
+                if (txtPesquisar.Text != "") {
+                    cr = conexao.CONTAS_RECEBER.Find(int.Parse(txtPesquisar.Text));
+                    txtCodigo.Text = cr.codigo.ToString();
+                    txtDescricao.Text = cr.descricao;
+                    dpPagto.Text = cr.data_pagto.ToString();
+                    dpVencto.Text = cr.data_vencto.ToString();
+                    txtUnitario.Text = cr.vl_unitario.ToString();
+                    lblTotal.Content = cr.vl_total.ToString();
+                }
+                else {
                     MessageBox.Show("Registro não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                 }
@@ -148,16 +143,15 @@ namespace BarberSystem.Janelas {
 
         // botao excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir",
+         MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro ? ", "Excluir",
                                                          MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(resultado == MessageBoxResult.Yes){
-                cp = conexao.CONTAS_PAGAR.Remove(cp);
-                cp.descricao = null;
-                cp.data_pagto = null;
-                cp.data_vencto = null;
-                cp.vl_unitario = 0;
-                cp.vl_total = 0;
-                limpaCampos();
+            if (resultado == MessageBoxResult.Yes) {
+                cr = conexao.CONTAS_RECEBER.Remove(cr);
+                cr.descricao = null;
+                cr.data_pagto = null;
+                cr.data_vencto = null;
+                cr.vl_unitario = 0;
+                cr.vl_total = 0;
                 conexao.SaveChanges();
                 MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 carregaGrid();
@@ -168,31 +162,38 @@ namespace BarberSystem.Janelas {
             }
         }
 
+        // botao gravar
+        private void btnGravar_Click(object sender, RoutedEventArgs e) {
+            calculaValorTotal();
+            verificaVazios();
+            if (txtDescricao.Text == "") {
+                return;
+            }
+            cr.vl_total += cr.vl_unitario;
+
+            conexao.CONTAS_RECEBER.Add(cr);
+            conexao.SaveChanges();
+
+            txtCodigo.Text = cr.codigo.ToString();
+
+            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+            carregaGrid();
+            limpaCampos();
+        }
+
+        // botao limpar
+        private void btnLimpar_Click(object sender, RoutedEventArgs e) {
+            limpaCampos();
+        }
+
+        // botao voltar
+        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
         // botao calcular valor total
         private void btnCalcularValorTotal_Click(object sender, RoutedEventArgs e) {
             calculaValorTotal();
-        }
-
-        // exportar para o excel
-        private void btnExportar_Click(object sender, RoutedEventArgs e) {
-                Excel.Application excel = new Excel.Application();
-                excel.Visible = true;
-                Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-                Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-
-                for (int j = 0; j < dgPagar.Columns.Count; j++) {
-                    Range myRange = (Range)sheet1.Cells[1, j + 1];
-                    sheet1.Cells[1, j + 1].Font.Bold = true;
-                    sheet1.Columns[j + 1].ColumnWidth = 15;
-                    myRange.Value2 = dgPagar.Columns[j].Header;
-                }
-                for (int i = 0; i < dgPagar.Columns.Count; i++) {
-                    for (int j = 0; j < dgPagar.Items.Count; j++) {
-                        TextBlock b = dgPagar.Columns[i].GetCellContent(dgPagar.Items[j]) as TextBlock;
-                        Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                        myRange.Value2 = b.Text;
-                    }
-                }
         }
 
         // mostrar a calculadora do windows
@@ -200,30 +201,25 @@ namespace BarberSystem.Janelas {
             System.Diagnostics.Process.Start("calc.exe");
         }
 
-        // botao alterar
-        private void btnAlterar_Click(object sender, RoutedEventArgs e) {
-            if (txtCodigo.Text != "") {
-                verificaVazios();
-                if (txtDescricao.Text == "") {
-                    return;
-                }
-                cp.vl_total = cp.vl_unitario;
-                double temp = 0.0;
-                foreach (CONTAS_PAGAR item in listaPagar) {                    
-                    item.vl_total = temp;
-                    item.vl_total += item.vl_unitario;
-                    temp = item.vl_total;
-                }
-                conexao.CONTAS_PAGAR.AddOrUpdate(cp);
-                conexao.SaveChanges();
-                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                carregaGrid();
+        // botao excel
+        private void btnExportar_Click(object sender, RoutedEventArgs e) {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < dgReceber.Columns.Count; j++) {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = dgReceber.Columns[j].Header;
             }
-            else {
-                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                return;
+            for (int i = 0; i < dgReceber.Columns.Count; i++) {
+                for (int j = 0; j < dgReceber.Items.Count; j++) {
+                    TextBlock b = dgReceber.Columns[i].GetCellContent(dgReceber.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
             }
         }
 
@@ -237,13 +233,7 @@ namespace BarberSystem.Janelas {
 
 
 
-
-
-
-
-
-
-        //------------ REFERENCIAS PARA EXCEL -------------------------------------------------------------------
+        //----------------- REFERENCIAS PARA EXCEL ---------------------------------------------------------------------
         dynamic Excel.Window.Activate() {
             throw new NotImplementedException();
         }
@@ -379,6 +369,5 @@ namespace BarberSystem.Janelas {
         public bool DisplayRuler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool AutoFilterDateGrouping { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
     }
 }

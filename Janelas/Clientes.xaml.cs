@@ -15,6 +15,7 @@ using BarberSystem.Janelas;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.Data.Entity.Migrations;
 
 namespace BarberSystem.Janelas
 {
@@ -171,6 +172,37 @@ namespace BarberSystem.Janelas
             }
         }
 
+        // botao alterar
+        private void btnAlterar_Click(object sender, RoutedEventArgs e) {
+            if (txtCodigo.Text != "") {
+                cliente.nome = txtNome.Text;
+                cliente.sexo = cbSexo.Text;
+                cliente.endereco = txtEndereco.Text;
+                cliente.numero = int.Parse(txtNumero.Text);
+                cliente.bairro = txtBairro.Text;
+                cliente.cidade = txtCidade.Text;
+                cliente.estado = cbEstado.Text;
+                cliente.cep = txtCep.Text;
+                cliente.telefone = txtTelefone.Text;
+                cliente.celular = txtCelular.Text;
+                conexao.CLIENTES.AddOrUpdate(cliente);
+                conexao.SaveChanges();
+                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                carregarGrid();
+            }
+            else {
+                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                return;
+            }
+        }
+
+
+
+
+
+
 
 
 
@@ -317,6 +349,7 @@ namespace BarberSystem.Janelas
 
         public bool DisplayRuler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool AutoFilterDateGrouping { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); 
+       }
     }
 }

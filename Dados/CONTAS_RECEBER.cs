@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Spatial;
+﻿using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace BarberSystem.Dados {
-    public partial class CONTAS_PAGAR {
-   
+    public partial class CONTAS_RECEBER {
+
         [Key]
         public int? codigo { get; set; }
 
@@ -19,5 +16,4 @@ namespace BarberSystem.Dados {
         public double vl_total { get; set; }
 
     }
-
 }

@@ -15,6 +15,7 @@ using BarberSystem.Janelas;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.Data.Entity.Migrations;
 
 namespace BarberSystem.Janelas {
     /// <summary>
@@ -188,6 +189,40 @@ namespace BarberSystem.Janelas {
             txtSenhaOculta.Visibility = Visibility.Visible;
             txtSenha.Visibility = Visibility.Hidden;
         }
+
+        // botao alterar
+        private void btnAlterar_Click(object sender, RoutedEventArgs e) {
+            if (txtCodigo.Text != "") {
+                usuario.nome_usuario = txtUsuario.Text;
+                usuario.senha = txtSenha.Text;
+                usuario.endereco = txtEndereco.Text;
+                usuario.bairro = txtBairro.Text;
+                usuario.cidade = txtCidade.Text;
+                usuario.estado = cbEstado.Text;
+                usuario.cpf = txtCpf.Text;
+                usuario.email = txtEmail.Text;
+                usuario.tipo = cbTipo.Text;
+                conexao.USUARIOS.AddOrUpdate(usuario);
+                conexao.SaveChanges();
+                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                carregaGrid();
+            }
+            else {
+                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                return;
+            }
+        }
+
+
+
+
+
+
+
+
+
 
 
 

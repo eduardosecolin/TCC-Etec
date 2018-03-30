@@ -74,7 +74,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnAlterar" Content="Alterar" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,156,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1">
+		<Button x:Name="btnAlterar" Content="Alterar" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,156,0,0" VerticalAlignment="Top" Width="228" Height="58" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnAlterar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconAlterar.png" Stretch="None">
 					<ImageBrush.RelativeTransform>

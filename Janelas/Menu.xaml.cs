@@ -123,6 +123,17 @@ namespace BarberSystem.Janelas
         private void MenuItem_Click_5(object sender, RoutedEventArgs e) {
             btnPagar_Click(sender, e);
         }
+
+        // botao contas a receber
+        private void btnReceber_Click(object sender, RoutedEventArgs e) {
+            ContasReceber janela = new ContasReceber();
+            janela.Show();
+        }
+
+        // botao contas a receber menuItem
+        private void MenuItem_Click_6(object sender, RoutedEventArgs e) {
+            btnReceber_Click(sender, e);
+        }
     }
 }
 
