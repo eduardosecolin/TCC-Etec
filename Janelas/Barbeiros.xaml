@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         mc:Ignorable="d"
         Title="Barbeiros" Height="628" Width="1125" WindowStartupLocation="CenterScreen">
@@ -187,8 +188,8 @@
 		<Label x:Name="label_Copy1" Content="Cidade:" HorizontalAlignment="Left" Margin="383,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
 		<Label x:Name="label_Copy4" Content="Cep:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCep" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
-		<ComboBox x:Name="cbSexo" HorizontalAlignment="Left" Margin="348,224,0,0" VerticalAlignment="Top" Width="178" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
+		<wpfTool:MaskedTextBox x:Name="MtxtCep" Mask="99999-999" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
+		<ComboBox x:Name="cbSexo" HorizontalAlignment="Left" Margin="254,224,0,0" VerticalAlignment="Top" Width="247" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
 					<GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -199,9 +200,9 @@
 			<ComboBoxItem Content="Feminino"/>
 			<ComboBoxItem Content="Sem Gênero"/>
 		</ComboBox>
-		<Label x:Name="label_Copy5" Content="Sexo:" HorizontalAlignment="Left" Margin="304,225,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<Label x:Name="label_Copy7" Content="Celular:" HorizontalAlignment="Left" Margin="544,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCelular" HorizontalAlignment="Left" Height="23" Margin="602,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="14" FontWeight="SemiBold" TabIndex="9"/>
+		<Label x:Name="label_Copy5" Content="Sexo:" HorizontalAlignment="Left" Margin="210,225,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy7" Content="Celular:" HorizontalAlignment="Left" Margin="510,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<wpfTool:MaskedTextBox x:Name="MtxtCelular" Mask="(99)99999-9999" HorizontalAlignment="Left" Height="23" Margin="568,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" FontSize="14" FontWeight="SemiBold" TabIndex="9"/>
 		<Label x:Name="label_Copy9" Content="Bairro:" HorizontalAlignment="Left" Margin="91,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="144,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
 

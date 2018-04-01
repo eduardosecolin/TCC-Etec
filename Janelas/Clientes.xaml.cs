@@ -51,9 +51,9 @@ namespace BarberSystem.Janelas
             txtBairro.Clear();
             txtCidade.Clear();
             cbEstado.Text = "";
-            txtCep.Clear();
-            txtTelefone.Clear();
-            txtCelular.Clear();
+            MtxtCep.Clear();
+            MtxtTelefone.Clear();
+            MtxtCelular.Clear();
             txtPesquisar.Clear();
         }
 
@@ -72,9 +72,9 @@ namespace BarberSystem.Janelas
             cliente.bairro = txtBairro.Text;
             cliente.cidade = txtCidade.Text;
             cliente.estado = cbEstado.Text;
-            cliente.cep = txtCep.Text;
-            cliente.telefone = txtTelefone.Text;
-            cliente.celular = txtCelular.Text;
+            cliente.cep = MtxtCep.Text;
+            cliente.telefone = MtxtTelefone.Text;
+            cliente.celular = MtxtCelular.Text;
 
             conexao.CLIENTES.Add(cliente);
             conexao.SaveChanges();
@@ -135,9 +135,9 @@ namespace BarberSystem.Janelas
                     txtBairro.Text = cliente.bairro;
                     txtCidade.Text = cliente.cidade;
                     cbEstado.Text = cliente.estado;
-                    txtCep.Text = cliente.cep;
-                    txtTelefone.Text = cliente.telefone;
-                    txtCelular.Text = cliente.celular;
+                    MtxtCep.Text = cliente.cep;
+                    MtxtTelefone.Text = cliente.telefone;
+                    MtxtCelular.Text = cliente.celular;
            }else{
                     MessageBox.Show("Cliente não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
@@ -174,25 +174,32 @@ namespace BarberSystem.Janelas
 
         // botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
-            if (txtCodigo.Text != "") {
-                cliente.nome = txtNome.Text;
-                cliente.sexo = cbSexo.Text;
-                cliente.endereco = txtEndereco.Text;
-                cliente.numero = int.Parse(txtNumero.Text);
-                cliente.bairro = txtBairro.Text;
-                cliente.cidade = txtCidade.Text;
-                cliente.estado = cbEstado.Text;
-                cliente.cep = txtCep.Text;
-                cliente.telefone = txtTelefone.Text;
-                cliente.celular = txtCelular.Text;
-                conexao.CLIENTES.AddOrUpdate(cliente);
-                conexao.SaveChanges();
-                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                carregarGrid();
+            try {
+                if (txtCodigo.Text != "") {
+                    cliente.nome = txtNome.Text;
+                    cliente.sexo = cbSexo.Text;
+                    cliente.endereco = txtEndereco.Text;
+                    cliente.numero = int.Parse(txtNumero.Text);
+                    cliente.bairro = txtBairro.Text;
+                    cliente.cidade = txtCidade.Text;
+                    cliente.estado = cbEstado.Text;
+                    cliente.cep = MtxtCep.Text;
+                    cliente.telefone = MtxtTelefone.Text;
+                    cliente.celular = MtxtCelular.Text;
+                    conexao.CLIENTES.AddOrUpdate(cliente);
+                    conexao.SaveChanges();
+                    MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    carregarGrid();
+                }
+                else {
+                    MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    return;
+                }
             }
-            else {
-                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+            catch (Exception a) {
+                MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
                 return;
             }

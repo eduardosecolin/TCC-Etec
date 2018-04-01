@@ -42,7 +42,7 @@ namespace BarberSystem.Janelas {
             txtBairro.Clear();
             txtCidade.Clear();
             cbEstado.Text = "";
-            txtCpf.Clear();
+            MtxtCpf.Clear();
             txtEmail.Clear();
             cbTipo.Text = "";
             txtPesquisar.Clear();
@@ -70,7 +70,7 @@ namespace BarberSystem.Janelas {
             usuario.bairro = txtBairro.Text;
             usuario.cidade = txtCidade.Text;
             usuario.estado = cbEstado.Text;
-            usuario.cpf = txtCpf.Text;
+            usuario.cpf = MtxtCpf.Text;
             usuario.email = txtEmail.Text;
             usuario.tipo = cbTipo.Text;
 
@@ -118,7 +118,7 @@ namespace BarberSystem.Janelas {
                     txtEndereco.Text = usuario.endereco;
                     txtBairro.Text = usuario.bairro;
                     cbEstado.Text = usuario.estado;
-                    txtCpf.Text = usuario.cpf;
+                    MtxtCpf.Text = usuario.cpf;
                     txtEmail.Text = usuario.email;
                     cbTipo.Text = usuario.tipo;
                     txtCidade.Text = usuario.cidade;
@@ -192,24 +192,31 @@ namespace BarberSystem.Janelas {
 
         // botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
-            if (txtCodigo.Text != "") {
-                usuario.nome_usuario = txtUsuario.Text;
-                usuario.senha = txtSenha.Text;
-                usuario.endereco = txtEndereco.Text;
-                usuario.bairro = txtBairro.Text;
-                usuario.cidade = txtCidade.Text;
-                usuario.estado = cbEstado.Text;
-                usuario.cpf = txtCpf.Text;
-                usuario.email = txtEmail.Text;
-                usuario.tipo = cbTipo.Text;
-                conexao.USUARIOS.AddOrUpdate(usuario);
-                conexao.SaveChanges();
-                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                carregaGrid();
+            try {
+                if (txtCodigo.Text != "") {
+                    usuario.nome_usuario = txtUsuario.Text;
+                    usuario.senha = txtSenha.Text;
+                    usuario.endereco = txtEndereco.Text;
+                    usuario.bairro = txtBairro.Text;
+                    usuario.cidade = txtCidade.Text;
+                    usuario.estado = cbEstado.Text;
+                    usuario.cpf = MtxtCpf.Text;
+                    usuario.email = txtEmail.Text;
+                    usuario.tipo = cbTipo.Text;
+                    conexao.USUARIOS.AddOrUpdate(usuario);
+                    conexao.SaveChanges();
+                    MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    carregaGrid();
+                }
+                else {
+                    MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    return;
+                }
             }
-            else {
-                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+            catch (Exception a) {
+                MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
                 return;
             }

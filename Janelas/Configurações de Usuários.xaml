@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         mc:Ignorable="d"
         Title="Configurações de Usuários" Height="625" Width="1125" WindowStartupLocation="CenterScreen">
@@ -190,8 +191,8 @@
 		<Label x:Name="label_Copy1" Content="Cidade:" HorizontalAlignment="Left" Margin="383,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
 		<Label x:Name="label_Copy4" Content="Cpf:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCpf" HorizontalAlignment="Left" Height="23" Margin="128,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
-		<ComboBox x:Name="cbTipo" HorizontalAlignment="Left" Margin="669,222,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="9">
+		<wpfTool:MaskedTextBox x:Name="MtxtCpf" Mask="999.999.999-99" HorizontalAlignment="Left" Height="23" Margin="128,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
+		<ComboBox x:Name="cbTipo" HorizontalAlignment="Left" Margin="664,222,0,0" VerticalAlignment="Top" Width="119" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="9">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
 					<GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -201,12 +202,12 @@
 			<ComboBoxItem Content="admin"/>
 			<ComboBoxItem Content="user"/>
 		</ComboBox>
-		<Label x:Name="label_Copy5" Content="Tipo:" HorizontalAlignment="Left" Margin="626,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy5" Content="Tipo:" HorizontalAlignment="Left" Margin="621,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy7" Content="Senha:" HorizontalAlignment="Left" Margin="522,90,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy9" Content="Bairro:" HorizontalAlignment="Left" Margin="91,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="143,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
-		<Label x:Name="label_Copy10" Content="E-mail:" HorizontalAlignment="Left" Margin="289,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="342,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" FontSize="14" FontWeight="SemiBold" TabIndex="8"/>
+		<Label x:Name="label_Copy10" Content="E-mail:" HorizontalAlignment="Left" Margin="252,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="305,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" FontSize="14" FontWeight="SemiBold" TabIndex="8"/>
 		<CheckBox x:Name="checkBox" Content="" HorizontalAlignment="Left" Margin="763,97,0,0" VerticalAlignment="Top" Foreground="#FFFDF7F7" FontSize="15" Width="16" Cursor="Hand" Height="15" RenderTransformOrigin="0.5,0.5" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" BorderBrush="{x:Null}" BorderThickness="1">
 			<CheckBox.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconSenha.png" Stretch="UniformToFill" Opacity="0.5"/>

@@ -55,10 +55,11 @@ namespace BarberSystem.Janelas {
             txtCodCliente.Clear();
             txtCliente.Clear();
             txtDescricao.Clear();
-            txtHinicio.Clear();
-            txtHfim.Clear();
+            MtxtHinicio.Clear();
+            MtxtHfim.Clear();
             txtCodBarbeiro.Clear();
             txtPesquisar.Clear();
+            MtxtHinicio.Clear();
         }
 
         //Botao limpar
@@ -71,8 +72,8 @@ namespace BarberSystem.Janelas {
                 agendamento.codcliente = int.Parse(txtCodCliente.Text);
                 agendamento.cliente = txtCliente.Text;
                 agendamento.descricao = txtDescricao.Text;
-                agendamento.hora_inicio = DateTime.Parse(txtHinicio.Text);
-                agendamento.hora_fim = DateTime.Parse(txtHfim.Text);
+                agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);
+                agendamento.hora_fim = DateTime.Parse(MtxtHfim.Text);
                 agendamento.data = DateTime.Parse(dpData.SelectedDate.ToString());
                 agendamento.codbarbeiro = int.Parse(txtCodBarbeiro.Text);
                 agendamento.nome_barbeiro = cbBarbeiro.Text;
@@ -103,8 +104,8 @@ namespace BarberSystem.Janelas {
                     txtCodigo.Text = agendamento.codigo.ToString();
                     txtCliente.Text = agendamento.cliente;
                     txtDescricao.Text = agendamento.descricao;
-                    txtHinicio.Text = agendamento.hora_inicio.ToString();
-                    txtHfim.Text = agendamento.hora_fim.ToString();
+                    MtxtHinicio.Text = DateTime.Parse(agendamento.hora_inicio.ToString()).ToShortTimeString();
+                    MtxtHfim.Text = DateTime.Parse(agendamento.hora_fim.ToString()).ToShortTimeString();
                     dpData.Text = agendamento.data.ToString();
                     txtCodBarbeiro.Text = agendamento.codbarbeiro.ToString();
                     cbBarbeiro.Text = agendamento.nome_barbeiro;
@@ -208,22 +209,29 @@ namespace BarberSystem.Janelas {
 
         //botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
-          if(txtCodigo.Text != ""){
-                agendamento.codcliente = int.Parse(txtCodCliente.Text);
-                agendamento.cliente = txtCliente.Text;
-                agendamento.descricao = txtDescricao.Text;
-                agendamento.hora_inicio = DateTime.Parse(txtHinicio.Text);
-                agendamento.hora_fim = DateTime.Parse(txtHfim.Text);
-                agendamento.data = DateTime.Parse(dpData.SelectedDate.ToString());
-                agendamento.codbarbeiro = int.Parse(txtCodBarbeiro.Text);
-                agendamento.nome_barbeiro = cbBarbeiro.Text;
-                conexao.AGENDA.AddOrUpdate(agendamento);
-                conexao.SaveChanges();
-                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                carrgearGrid();
-            }else{
-                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+            try {
+                if (txtCodigo.Text != "") {
+                    agendamento.codcliente = int.Parse(txtCodCliente.Text);
+                    agendamento.cliente = txtCliente.Text;
+                    agendamento.descricao = txtDescricao.Text;
+                    agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);
+                    agendamento.hora_fim = DateTime.Parse(MtxtHfim.Text);
+                    agendamento.data = DateTime.Parse(dpData.SelectedDate.ToString());
+                    agendamento.codbarbeiro = int.Parse(txtCodBarbeiro.Text);
+                    agendamento.nome_barbeiro = cbBarbeiro.Text;
+                    conexao.AGENDA.AddOrUpdate(agendamento);
+                    conexao.SaveChanges();
+                    MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    carrgearGrid();
+                }
+                else {
+                    MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    return;
+                }
+            }catch(Exception a){
+                MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
                 return;
             }

@@ -40,9 +40,9 @@ namespace BarberSystem.Janelas {
             txtNumero.Clear();
             txtCidade.Clear();
             cbEstado.Text = "";
-            txtCep.Clear();
+            MtxtCep.Clear();
             cbSexo.Text = "";
-            txtCelular.Clear();
+            MtxtCelular.Clear();
             txtPesquisar.Clear();
             txtBairro.Clear();
         }
@@ -66,9 +66,9 @@ namespace BarberSystem.Janelas {
             barbeiro.bairro = txtBairro.Text;
             barbeiro.cidade = txtCidade.Text;
             barbeiro.estado = cbEstado.Text;
-            barbeiro.cep = txtCep.Text;
+            barbeiro.cep = MtxtCep.Text;
             barbeiro.sexo = cbSexo.Text;
-            barbeiro.celular = txtCelular.Text;
+            barbeiro.celular = MtxtCelular.Text;
 
             conexao.BARBEIROS.Add(barbeiro);
             conexao.SaveChanges();
@@ -129,9 +129,9 @@ namespace BarberSystem.Janelas {
                     txtBairro.Text = barbeiro.bairro;
                     txtCidade.Text = barbeiro.cidade;
                     cbEstado.Text = barbeiro.estado;
-                    txtCep.Text = barbeiro.cep;
+                    MtxtCep.Text = barbeiro.cep;
                     cbSexo.Text = barbeiro.sexo;
-                    txtCelular.Text = barbeiro.celular;
+                    MtxtCelular.Text = barbeiro.celular;
                 }
                 else {
                     MessageBox.Show("Barbeiro não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -170,24 +170,31 @@ namespace BarberSystem.Janelas {
 
         // botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
-            if (txtCodigo.Text != "") {
-                barbeiro.nome = txtNome.Text;
-                barbeiro.endereco = txtEndereco.Text;
-                barbeiro.numero = int.Parse(txtNumero.Text);
-                barbeiro.bairro = txtBairro.Text;
-                barbeiro.cidade = txtCidade.Text;
-                barbeiro.estado = cbEstado.Text;
-                barbeiro.cep = txtCep.Text;
-                barbeiro.sexo = cbSexo.Text;
-                barbeiro.celular = txtCelular.Text;
-                conexao.BARBEIROS.AddOrUpdate(barbeiro);
-                conexao.SaveChanges();
-                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                carregaGrid();
+            try {
+                if (txtCodigo.Text != "") {
+                    barbeiro.nome = txtNome.Text;
+                    barbeiro.endereco = txtEndereco.Text;
+                    barbeiro.numero = int.Parse(txtNumero.Text);
+                    barbeiro.bairro = txtBairro.Text;
+                    barbeiro.cidade = txtCidade.Text;
+                    barbeiro.estado = cbEstado.Text;
+                    barbeiro.cep = MtxtCep.Text;
+                    barbeiro.sexo = cbSexo.Text;
+                    barbeiro.celular = MtxtCelular.Text;
+                    conexao.BARBEIROS.AddOrUpdate(barbeiro);
+                    conexao.SaveChanges();
+                    MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    carregaGrid();
+                }
+                else {
+                    MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    return;
+                }
             }
-            else {
-                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+            catch (Exception a) {
+                MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
                 return;
             }
