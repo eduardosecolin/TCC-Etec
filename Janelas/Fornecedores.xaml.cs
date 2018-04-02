@@ -11,239 +11,190 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Globalization;
 using BarberSystem.Dados;
+using System.Data.Entity.Migrations;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
-using System.Data.Entity.Migrations;
 
 namespace BarberSystem.Janelas {
     /// <summary>
-    /// Lógica interna para Agenda.xaml
+    /// Lógica interna para Fornecedores.xaml
     /// </summary>
-    public partial class Agenda : Microsoft.Office.Interop.Excel.Window {
+    public partial class Fornecedores : Excel.Window {
 
-        AGENDA agendamento = new AGENDA();
-        BancoDados conexao = new BancoDados();
-        public List<AGENDA> listaAgenda = new List<AGENDA>();
-        private Menu janela;
-
-        //Construtor
-        public Agenda(Menu window) {
-            janela = window;
+        private FORNECEDORES fornecedores = new FORNECEDORES();
+        private List<FORNECEDORES> listaFornecedores;
+        private BancoDados conexao = new BancoDados();
+        public Fornecedores() {
             InitializeComponent();
-            dgAgendamento.RowBackground = null;
-            carrgearGrid();
-            carregarComboBox();
+            dgFornecedores.RowBackground = null;
+            carregaGrid();
         }
 
-        // metodo para campos vazios
-        public void verificaCampos(){
-          if(txtCodCliente.Text == ""){
-                agendamento.codcliente = null;
-          }else{
-                agendamento.codcliente = int.Parse(txtCodCliente.Text);
-          }
-        }
-
-        //Botao de voltar
-        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
-            janela.dgAgenda.ItemsSource = listaAgenda;
-            this.Close();
-        }
-
-        //Botao de Novo
-        private void btnCadastrar_Click(object sender, RoutedEventArgs e) {
-            txtCliente.Focus();
-            limpaCampos();
-        }
-
-        //Metodo para limpar os campos(textBox)
-        public void limpaCampos(){
+        // metodo para limpar campos
+        public void limpaCampos() {
             txtCodigo.Clear();
-            txtCodCliente.Clear();
-            txtCliente.Clear();
-            txtDescricao.Clear();
-            MtxtHinicio.Clear();
-            MtxtHfim.Clear();
-            txtCodBarbeiro.Clear();
+            txtNome.Clear();
+            txtEndereco.Clear();
+            txtNumero.Clear();
+            txtCidade.Clear();
+            cbEstado.Text = "";
+            MtxtCep.Clear();
+            cbTipo.Text = "";
+            MtxtTelefone.Clear();
             txtPesquisar.Clear();
-            MtxtHinicio.Clear();
-            dpData.Text = "";
-        }
-
-        //Botao limpar
-        private void btnLimpar_Click(object sender, RoutedEventArgs e) {
-            limpaCampos();
-        }
-
-        // botao gravar
-        private void btnGravar_Click(object sender, RoutedEventArgs e) {
-                verificaCampos();
-                agendamento.cliente = txtCliente.Text;
-                agendamento.descricao = txtDescricao.Text;
-                agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);
-                agendamento.hora_fim = DateTime.Parse(MtxtHfim.Text);
-                agendamento.data = DateTime.Parse(dpData.SelectedDate.ToString());
-                agendamento.codbarbeiro = int.Parse(txtCodBarbeiro.Text);
-                agendamento.nome_barbeiro = cbBarbeiro.Text;
-
-                conexao.AGENDA.Add(agendamento);
-                conexao.SaveChanges();
-
-                txtCodigo.Text = agendamento.codigo.ToString();
-                carrgearGrid();
-          
-                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
+            txtBairro.Clear();
         }
 
         // carregar a grid
-        public void carrgearGrid(){
-                listaAgenda = conexao.AGENDA.ToList();
-                dgAgendamento.ItemsSource = null;
-                dgAgendamento.ItemsSource = listaAgenda.OrderBy(user => user.hora_inicio);
+        public void carregaGrid() {
+            listaFornecedores = conexao.FORNECEDORES.ToList();
+            dgFornecedores.ItemsSource = null;
+            dgFornecedores.ItemsSource = listaFornecedores.OrderBy(user => user.nome);
         }
 
-        // pesquisar
-        private void BtnPesquisar_Click(object sender, RoutedEventArgs e) {
-            try {
-                if (txtPesquisar.Text != "") {
-                    agendamento = conexao.AGENDA.Find(int.Parse(txtPesquisar.Text));
-                    txtCodCliente.Text = agendamento.codcliente.ToString();
-                    txtCodigo.Text = agendamento.codigo.ToString();
-                    txtCliente.Text = agendamento.cliente;
-                    txtDescricao.Text = agendamento.descricao;
-                    MtxtHinicio.Text = DateTime.Parse(agendamento.hora_inicio.ToString()).ToShortTimeString();
-                    MtxtHfim.Text = DateTime.Parse(agendamento.hora_fim.ToString()).ToShortTimeString();
-                    dpData.Text = agendamento.data.ToString();
-                    txtCodBarbeiro.Text = agendamento.codbarbeiro.ToString();
-                    cbBarbeiro.Text = agendamento.nome_barbeiro;
-                }
-                else {
-                    MessageBox.Show("Agendamento não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                    limpaCampos();
-                }
-            }catch(Exception a){
-                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK, 
-                                 MessageBoxImage.Exclamation);
-                limpaCampos();
-                return;
-            }
+        // botao novo
+        private void btnNovo_Click(object sender, RoutedEventArgs e) {
+            txtNome.Focus();
+            limpaCampos();
         }
 
-        // excluir
-        private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (resultado == MessageBoxResult.Yes) {
-                agendamento = conexao.AGENDA.Remove(agendamento);
-                limpaCampos();
-                agendamento.cliente = null;
-                agendamento.descricao = null;
-                agendamento.hora_inicio = null;
-                agendamento.hora_fim = null;
-                agendamento.data = null;
-                agendamento.nome_barbeiro = null;
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carrgearGrid();
-                limpaCampos();
-            }else{
-                limpaCampos();
-                return;
-            }
-        }
-
-        // exportar para o excel
-        private void btnExportar_Click(object sender, RoutedEventArgs e) {
-            Excel.Application excel = new Excel.Application();
-            excel.Visible = true; 
-            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-
-            for (int j = 0; j < dgAgendamento.Columns.Count; j++) 
-            {
-                Range myRange = (Range)sheet1.Cells[1, j + 1];
-                sheet1.Cells[1, j + 1].Font.Bold = true; 
-                sheet1.Columns[j + 1].ColumnWidth = 15; 
-                myRange.Value2 = dgAgendamento.Columns[j].Header;
-            }
-            for (int i = 0; i < dgAgendamento.Columns.Count; i++) { 
-                for (int j = 0; j < dgAgendamento.Items.Count; j++) {
-                    TextBlock b = dgAgendamento.Columns[i].GetCellContent(dgAgendamento.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text;
-                }
-            }
-        }
-
-        public void carregarComboBox(){
-           List<BARBEIROS> listaBarbeiros = conexao.BARBEIROS.ToList();
-            cbBarbeiro.ItemsSource = null;
-            cbBarbeiro.ItemsSource = listaBarbeiros.OrderBy(user => user.nome);
-            cbBarbeiro.DisplayMemberPath = "nome";
-        }
-
-        //mostrar barbeiro automatico
-        private void txtCodBarbeiro_LostFocus(object sender, RoutedEventArgs e) {
-            BARBEIROS barber = new BARBEIROS();
-            try{
-              if(txtCodBarbeiro.Text != ""){
-                    barber = conexao.BARBEIROS.Find(int.Parse(txtCodBarbeiro.Text));
-                    cbBarbeiro.Text = barber.nome.ToString();
-              }
-            }catch(Exception){
-                MessageBox.Show("Código do barbeiro invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                txtCodBarbeiro.Clear();
-                cbBarbeiro.Text = "";
-                txtCodBarbeiro.Focus();
-            }
-
-        }
-
-        // mostrar cliente automatico
-        private void txtCodCliente_LostFocus(object sender, RoutedEventArgs e) {
-            CLIENTES cliente = new CLIENTES();
-            try{
-             if(txtCodCliente.Text != ""){
-                    cliente = conexao.CLIENTES.Find(int.Parse(txtCodCliente.Text));
-                    txtCliente.Text = cliente.nome;
-             }
-            }catch(Exception){
-                MessageBox.Show("Código do cliente invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                txtCodCliente.Clear();
-                txtCliente.Clear();
-                txtCodCliente.Focus();
-            }
-        }
-
-        //botao alterar
+        // botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
             try {
                 if (txtCodigo.Text != "") {
-                    agendamento.codcliente = int.Parse(txtCodCliente.Text);
-                    agendamento.cliente = txtCliente.Text;
-                    agendamento.descricao = txtDescricao.Text;
-                    agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);
-                    agendamento.hora_fim = DateTime.Parse(MtxtHfim.Text);
-                    agendamento.data = DateTime.Parse(dpData.SelectedDate.ToString());
-                    agendamento.codbarbeiro = int.Parse(txtCodBarbeiro.Text);
-                    agendamento.nome_barbeiro = cbBarbeiro.Text;
-                    conexao.AGENDA.AddOrUpdate(agendamento);
+                    fornecedores.nome = txtNome.Text;
+                    fornecedores.endereco = txtEndereco.Text;
+                    fornecedores.numero = int.Parse(txtNumero.Text);
+                    fornecedores.bairro = txtBairro.Text;
+                    fornecedores.cidade = txtCidade.Text;
+                    fornecedores.estado = cbEstado.Text;
+                    fornecedores.cep = MtxtCep.Text;
+                    fornecedores.tipo = cbTipo.Text;
+                    fornecedores.telefone = MtxtTelefone.Text;
+                    conexao.FORNECEDORES.AddOrUpdate(fornecedores);
                     conexao.SaveChanges();
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
-                    carrgearGrid();
+                    carregaGrid();
                 }
                 else {
                     MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     return;
                 }
-            }catch(Exception a){
+            }
+            catch (Exception a) {
                 MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
                 return;
+            }
+        }
+
+        // botao pesquisar
+        private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
+            try {
+                if (txtPesquisar.Text != "") {
+                    fornecedores = conexao.FORNECEDORES.Find(int.Parse(txtPesquisar.Text));
+                    txtCodigo.Text = fornecedores.codigo.ToString();
+                    txtNome.Text = fornecedores.nome;
+                    txtEndereco.Text = fornecedores.endereco;
+                    txtNumero.Text = fornecedores.numero.ToString();
+                    txtBairro.Text = fornecedores.bairro;
+                    txtCidade.Text = fornecedores.cidade;
+                    cbEstado.Text = fornecedores.estado;
+                    MtxtCep.Text = fornecedores.cep;
+                    cbTipo.Text = fornecedores.tipo;
+                    MtxtTelefone.Text = fornecedores.telefone;
+                }
+                else {
+                    MessageBox.Show("Fornecedor não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                }
+            }
+            catch (Exception a) {
+                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
+                                MessageBoxImage.Exclamation);
+                limpaCampos();
+                return;
+            }
+        }
+
+        // botao excluir
+        private void btnExcluir_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (resultado == MessageBoxResult.Yes) {
+                fornecedores = conexao.FORNECEDORES.Remove(fornecedores);
+                fornecedores.nome = null;
+                fornecedores.endereco = null;
+                fornecedores.numero = 0;
+                fornecedores.bairro = null;
+                fornecedores.cidade = null;
+                fornecedores.estado = null;
+                fornecedores.cep = null;
+                fornecedores.tipo = null;
+                fornecedores.telefone = null;
+                conexao.SaveChanges();
+                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                carregaGrid();
+                limpaCampos();
+            }
+            else {
+                limpaCampos();
+                return;
+            }
+        }
+
+        // botao gravar
+        private void btnGravar_Click(object sender, RoutedEventArgs e) {
+            fornecedores.nome = txtNome.Text;
+            fornecedores.endereco = txtEndereco.Text;
+            fornecedores.numero = int.Parse(txtNumero.Text);
+            fornecedores.bairro = txtBairro.Text;
+            fornecedores.cidade = txtCidade.Text;
+            fornecedores.estado = cbEstado.Text;
+            fornecedores.cep = MtxtCep.Text;
+            fornecedores.tipo = cbTipo.Text;
+            fornecedores.telefone = MtxtTelefone.Text;
+
+            conexao.FORNECEDORES.Add(fornecedores);
+            conexao.SaveChanges();
+
+            txtCodigo.Text = fornecedores.codigo.ToString();
+            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+            limpaCampos();
+            carregaGrid();
+        }
+
+        // botao limpar
+        private void btnLimpar_Click(object sender, RoutedEventArgs e) {
+            limpaCampos();
+        }
+
+        // botao voltar
+        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
+        // botao excel
+        private void btnExportar_Click(object sender, RoutedEventArgs e) {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < dgFornecedores.Columns.Count; j++) {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = dgFornecedores.Columns[j].Header;
+            }
+            for (int i = 0; i < dgFornecedores.Columns.Count; i++) {
+                for (int j = 0; j < dgFornecedores.Items.Count; j++) {
+                    TextBlock b = dgFornecedores.Columns[i].GetCellContent(dgFornecedores.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
             }
         }
 
@@ -259,7 +210,11 @@ namespace BarberSystem.Janelas {
 
 
 
-        //---------------- REFERENCIAS PARA EXCEL -------------------------------------------------------------------------------
+
+
+
+
+        //--------------------- REFERENCIAS PARA EXCEL --------------------------------------------------------
         dynamic Excel.Window.Activate() {
             throw new NotImplementedException();
         }

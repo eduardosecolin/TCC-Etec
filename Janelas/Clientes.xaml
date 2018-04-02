@@ -189,7 +189,7 @@
 		<Label x:Name="label_Copy1" Content="Cidade:" HorizontalAlignment="Left" Margin="383,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="6"/>
 		<Label x:Name="label_Copy4" Content="Cep:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<wpfTool:MaskedTextBox x:Name="MtxtCep" Mask="99999-999" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" FontSize="14" FontWeight="SemiBold" TabIndex="8"/>
+		<wpfTool:MaskedTextBox x:Name="MtxtCep" Mask="99999-999" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" FontSize="14" FontWeight="SemiBold" TabIndex="8"/>
 		<ComboBox x:Name="cbSexo" HorizontalAlignment="Left" Margin="605,91,0,0" VerticalAlignment="Top" Width="178" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="2">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -202,11 +202,11 @@
 			<ComboBoxItem Content="Sem Gênero"/>
 		</ComboBox>
 		<Label x:Name="label_Copy5" Content="Sexo:" HorizontalAlignment="Left" Margin="561,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<Label x:Name="label_Copy7" Content="Celular:" HorizontalAlignment="Left" Margin="364,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<wpfTool:MaskedTextBox x:Name="MtxtCelular" Mask="(99)99999-9999" HorizontalAlignment="Left" Height="23" Margin="422,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" FontSize="14" FontWeight="SemiBold" TabIndex="10"/>
+		<Label x:Name="label_Copy7" Content="Celular:" HorizontalAlignment="Left" Margin="395,224,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<wpfTool:MaskedTextBox x:Name="MtxtCelular" Mask="(99)99999-9999" HorizontalAlignment="Left" Height="23" Margin="453,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="SemiBold" TabIndex="10"/>
 		<Label x:Name="label_Copy9" Content="Bairro:" HorizontalAlignment="Left" Margin="91,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="144,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
-		<Label x:Name="label_Copy10" Content="Telefone:" HorizontalAlignment="Left" Margin="207,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<wpfTool:MaskedTextBox x:Name="MtxtTelefone" Mask="(99)9999-9999" HorizontalAlignment="Left" Height="23" Margin="272,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" FontSize="14" FontWeight="SemiBold" TabIndex="9"/>
+		<Label x:Name="label_Copy10" Content="Telefone:" HorizontalAlignment="Left" Margin="215,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<wpfTool:MaskedTextBox x:Name="MtxtTelefone" Mask="(99)9999-9999" HorizontalAlignment="Left" Height="23" Margin="280,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="SemiBold" TabIndex="9"/>
 	</Grid>
 </Window>

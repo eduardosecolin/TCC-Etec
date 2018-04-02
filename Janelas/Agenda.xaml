@@ -17,18 +17,18 @@
 		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
 		<Label x:Name="label_Copy" Content="Cliente:" HorizontalAlignment="Left" Margin="357,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCliente" HorizontalAlignment="Left" Height="23" Margin="414,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
+		<TextBox x:Name="txtCliente" HorizontalAlignment="Left" Height="23" Margin="414,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
 		<Label x:Name="label_Copy1" Content="Código do cliente:" HorizontalAlignment="Left" Margin="193,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCodCliente" HorizontalAlignment="Left" Height="23" Margin="317,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="1" LostFocus="txtCodCliente_LostFocus"/>
 		<Label x:Name="label_Copy2" Content="Descrição:" HorizontalAlignment="Left" Margin="91,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="164,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
-		<Label x:Name="label_Copy3" Content="Horário de Inicio:" HorizontalAlignment="Left" Margin="445,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<wpfTool:MaskedTextBox x:Name="MtxtHinicio" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="563,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
-		<wpfTool:MaskedTextBox  x:Name="MtxtHfim" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="696,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
-		<Label x:Name="label_Copy4" Content="Horário Final:" HorizontalAlignment="Left" Margin="603,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="164,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
+		<Label x:Name="label_Copy3" Content="Horário de Inicio:" HorizontalAlignment="Left" Margin="436,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<wpfTool:MaskedTextBox x:Name="MtxtHinicio" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="554,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
+		<wpfTool:MaskedTextBox  x:Name="MtxtHfim" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="700,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
+		<Label x:Name="label_Copy4" Content="Horário Final:" HorizontalAlignment="Left" Margin="607,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy5" Content="Data:" HorizontalAlignment="Left" Margin="92,173,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="132,174,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="6" Width="163"/>
-		<ComboBox x:Name="cbBarbeiro" HorizontalAlignment="Left" Margin="563,177,0,0" VerticalAlignment="Top" Width="173" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
+		<ComboBox x:Name="cbBarbeiro" HorizontalAlignment="Left" Margin="563,177,0,0" VerticalAlignment="Top" Width="185" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
 					<GradientStop Color="#FFF0F0F0" Offset="0"/>

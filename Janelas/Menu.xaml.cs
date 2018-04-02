@@ -31,7 +31,13 @@ namespace BarberSystem.Janelas
 
         //Botao de sair menuitem
         private void MenuItem_Click(object sender, RoutedEventArgs e) {
-            Close();
+            MessageBoxResult resultado = MessageBox.Show("Deseja realmente sair do sitema?", "Sair", 
+                                                          MessageBoxButton.YesNo, MessageBoxImage.Question);
+           if(resultado == MessageBoxResult.Yes){
+                Close();
+           }else{
+                return;
+           }          
         }
 
         //Quando form carregado validar usuario(admin ou user) e mostrar items do statusBar
@@ -69,9 +75,10 @@ namespace BarberSystem.Janelas
 
         //Popular o dataGrid
         public void carregaGrig() {
-            List<AGENDA> listaAgenda = conexao.AGENDA.ToList();
+            var sql = from a in conexao.AGENDA where a.data == DateTime.Today 
+            select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
             dgAgenda.ItemsSource = null;
-            dgAgenda.ItemsSource = listaAgenda.OrderBy(user => user.hora_inicio);
+            dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
         }
 
 
@@ -133,6 +140,25 @@ namespace BarberSystem.Janelas
         // botao contas a receber menuItem
         private void MenuItem_Click_6(object sender, RoutedEventArgs e) {
             btnReceber_Click(sender, e);
+        }
+
+        // botao fornecedores
+        private void btnFornecedores_Click(object sender, RoutedEventArgs e) {
+            Fornecedores janela = new Fornecedores();
+            janela.Show();
+        }
+
+        // botao fornecedores menuItem
+        private void MenuItem_Click_7(object sender, RoutedEventArgs e) {
+            btnFornecedores_Click(sender, e);
+        }
+
+        private void calendario_SelectedDatesChanged(object sender, SelectionChangedEventArgs e) {
+            var sql = from a in conexao.AGENDA
+                      where a.data == calendario.SelectedDate
+                      select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
+            dgAgenda.ItemsSource = null;
+            dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
         }
     }
 }

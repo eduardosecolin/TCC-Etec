@@ -15,6 +15,7 @@ namespace BarberSystem.Dados {
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
         public virtual DbSet<CONTAS_PAGAR> CONTAS_PAGAR { get; set; }
         public virtual DbSet<CONTAS_RECEBER> CONTAS_RECEBER { get; set; }
+        public virtual DbSet<FORNECEDORES> FORNECEDORES { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
@@ -151,6 +152,39 @@ namespace BarberSystem.Dados {
             modelBuilder.Entity<CONTAS_RECEBER>()
                 .Property(e => e.descricao)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+              .Property(e => e.nome)
+              .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+                .Property(e => e.endereco)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+                .Property(e => e.bairro)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+                .Property(e => e.cidade)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+                .Property(e => e.cep)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+                .Property(e => e.telefone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+                .Property(e => e.tipo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<FORNECEDORES>()
+                .Property(e => e.estado)
+                .IsUnicode(false);
+
         }
     }
 }
