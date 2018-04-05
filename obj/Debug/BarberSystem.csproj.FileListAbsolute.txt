@@ -54,3 +54,5 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\sv\Xceed.Wpf.Av
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Fornecedores.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Fornecedores.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Funcionarios.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Funcionarios.baml

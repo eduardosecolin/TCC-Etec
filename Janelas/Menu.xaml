@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         mc:Ignorable="d"
-        Title="Menu" Height="768" Width="1366" WindowState="Maximized" UseLayoutRounding="False" Loaded="Window_Loaded">
+        Title="Menu" Height="768" Width="1366" WindowState="Maximized" UseLayoutRounding="False" Loaded="Window_Loaded" Icon="/BarberSystem;component/imagens/icone.png">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/imgMenu.jpg"/>
 	</Window.Background>
@@ -17,7 +17,7 @@
 				<MenuItem Header="Usuários" Click="MenuItem_Click_2"/>
 				<MenuItem Header="Clientes" Click="MenuItem_Click_3"/>
 				<MenuItem Header="Fornecedores" Click="MenuItem_Click_7"/>
-				<MenuItem Header="Funcionários"/>
+				<MenuItem Header="Funcionários" Click="MenuItem_Click_8"/>
 				<MenuItem Header="Barbeiros" Click="MenuItem_Click_4"/>
 				<Separator/>
 				<MenuItem Header="Produtos"/>
@@ -72,7 +72,7 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconCaixa.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnFuncionarios" Content="Funcionários" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
+			<Button x:Name="btnFuncionarios" Content="Funcionários" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnFuncionarios_Click">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconFuncionarios.png" Stretch="Uniform"/>
 				</Button.Background>

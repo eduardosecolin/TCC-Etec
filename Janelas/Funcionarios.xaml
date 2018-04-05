@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="BarberSystem.Janelas.Fornecedores"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="BarberSystem.Janelas.Funcionarios"
         mc:Ignorable="d"
-        Title="Fornecedores" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png">
+        Title="Funcionarios" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/JanelaAgenda/Agenda1.jpg"/>
 	</Window.Background>
-	<Grid>
+	<Grid RenderTransformOrigin="0.377,0.905">
 
 		<Rectangle Fill="#FFF10404" HorizontalAlignment="Left" Height="30" Margin="0,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="1117" Opacity="0.3"/>
 
@@ -156,7 +156,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<DataGrid x:Name="dgFornecedores" HorizontalAlignment="Left" Height="256" Margin="91,264,0,0" VerticalAlignment="Top" Width="694" Background="{x:Null}" BorderBrush="#FF0E0D0D" IsReadOnly="True" FontWeight="SemiBold" Foreground="#FF080808" AutoGenerateColumns="False">
+		<DataGrid x:Name="dgFuncionarios" HorizontalAlignment="Left" Height="233" Margin="91,315,0,0" VerticalAlignment="Top" Width="694" Background="{x:Null}" BorderBrush="#FF0E0D0D" IsReadOnly="True" FontWeight="SemiBold" Foreground="#FF080808" AutoGenerateColumns="False">
 			<DataGrid.Columns>
 				<DataGridTextColumn  Header="Código" Binding="{Binding codigo}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
 				<DataGridTextColumn  Header="Nome" Binding="{Binding nome}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
@@ -166,8 +166,11 @@
 				<DataGridTextColumn  Header="Cidade" Binding="{Binding cidade}" Foreground="#FFFBF9F9"/>
 				<DataGridTextColumn  Header="Estado" Binding="{Binding estado}" Foreground="#FFF9F4F4"/>
 				<DataGridTextColumn  Header="Cep" Binding="{Binding cep}" Foreground="#FFF7F5F5"/>
-				<DataGridTextColumn  Header="Tipo" Binding="{Binding tipo}" Foreground="#FFFDFBFB"/>
-				<DataGridTextColumn  Header="Telefone" Binding="{Binding telefone}" Foreground="#FFF9F9F9"/>
+				<DataGridTextColumn  Header="Sexo" Binding="{Binding sexo}" Foreground="#FFFDFBFB"/>
+				<DataGridTextColumn  Header="Cargo" Binding="{Binding cargo}" Foreground="#FFF9F9F9"/>
+				<DataGridTextColumn  Binding="{Binding telefone}"  Header="Telefone" Foreground="#FFF9F9F9"/>
+				<DataGridTextColumn  Binding="{Binding celular}" Header="Celular" Foreground="#FFF9F9F9"/>
+				<DataGridTextColumn  Binding="{Binding salario, ConverterCulture=pt-BR}" Header="Salário" Foreground="#FFF9F9F9"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
@@ -190,19 +193,20 @@
 		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
 		<Label x:Name="label_Copy4" Content="Cep:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<xctk:MaskedTextBox x:Name="MtxtCep" Mask="99999-999" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
-		<ComboBox x:Name="cbTipo" HorizontalAlignment="Left" Margin="283,224,0,0" VerticalAlignment="Top" Width="247" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
+		<ComboBox x:Name="cbSexo" HorizontalAlignment="Left" Margin="277,224,0,0" VerticalAlignment="Top" Width="247" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
 					<GradientStop Color="#FFF0F0F0" Offset="0"/>
 					<GradientStop Color="#FFFBFBFB" Offset="1"/>
 				</LinearGradientBrush>
 			</ComboBox.Background>
-			<ComboBoxItem Content="Físico"/>
-			<ComboBoxItem Content="Jurídico"/>
+			<ComboBoxItem Content="Masculino"/>
+			<ComboBoxItem Content="Feminino"/>
+			<ComboBoxItem Content="Sem Gênero"/>
 		</ComboBox>
-		<Label x:Name="label_Copy5" Content="Tipo:" HorizontalAlignment="Left" Margin="240,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<Label x:Name="label_Copy7" Content="Telefone:" HorizontalAlignment="Left" Margin="548,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<xctk:MaskedTextBox x:Name="MtxtTelefone" Mask="(99)9999-9999" HorizontalAlignment="Left" Height="23" Margin="613,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="14" FontWeight="SemiBold" TabIndex="9" RenderTransformOrigin="0.5,0.5">
+		<Label x:Name="label_Copy5" Content="Sexo:" HorizontalAlignment="Left" Margin="234,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy7" Content="Telefone:" HorizontalAlignment="Left" Margin="92,268,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<xctk:MaskedTextBox x:Name="MtxtTelefone" Mask="(99)9999-9999" HorizontalAlignment="Left" Height="23" Margin="160,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="14" FontWeight="SemiBold" TabIndex="10" RenderTransformOrigin="0.5,0.5">
 			<xctk:MaskedTextBox.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
@@ -214,6 +218,21 @@
 		</xctk:MaskedTextBox>
 		<Label x:Name="label_Copy9" Content="Bairro:" HorizontalAlignment="Left" Margin="91,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="144,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
+		<Label x:Name="label_Copy10" Content="Celular:" HorizontalAlignment="Left" Margin="287,268,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<xctk:MaskedTextBox x:Name="MtxtCelular" Mask="(99)99999-9999" HorizontalAlignment="Left" Height="23" Margin="347,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="14" FontWeight="SemiBold" TabIndex="11" RenderTransformOrigin="0.5,0.5">
+			<xctk:MaskedTextBox.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="-0.068"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</xctk:MaskedTextBox.RenderTransform>
+		</xctk:MaskedTextBox>
+		<Label x:Name="label_Copy11" Content="Cargo:" HorizontalAlignment="Left" Margin="538,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCargo" HorizontalAlignment="Left" Height="23" Margin="591,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" FontSize="14" FontWeight="SemiBold" TabIndex="9"/>
+		<Label x:Name="label_Copy12" Content="Salário:" HorizontalAlignment="Left" Margin="480,267,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtSalario" HorizontalAlignment="Left" Height="23" Margin="536,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" FontSize="14" FontWeight="SemiBold" TabIndex="12"/>
 
 	</Grid>
 </Window>

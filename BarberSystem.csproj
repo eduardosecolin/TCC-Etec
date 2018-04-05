@@ -93,6 +93,7 @@
     <Compile Include="Dados\CONTAS_PAGAR.cs" />
     <Compile Include="Dados\CONTAS_RECEBER.cs" />
     <Compile Include="Dados\FORNECEDORES.cs" />
+    <Compile Include="Dados\FUNCIONARIOS.cs" />
     <Compile Include="Dados\USUARIOS.cs" />
     <Compile Include="Janelas\Agenda.xaml.cs">
       <DependentUpon>Agenda.xaml</DependentUpon>
@@ -122,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Janelas\Fornecedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Funcionarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,6 +163,9 @@
     </Compile>
     <Compile Include="Janelas\Fornecedores.xaml.cs">
       <DependentUpon>Fornecedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Funcionarios.xaml.cs">
+      <DependentUpon>Funcionarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -312,6 +320,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imagens\imgBotoesJanelas\iconPesquisar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\icone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

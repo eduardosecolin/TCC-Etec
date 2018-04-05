@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         mc:Ignorable="d"
-        Title="Login" Height="766.5" Width="1362" WindowState="Maximized" ResizeMode="NoResize" Loaded="Window_Loaded" IsHitTestVisible="True">
+        Title="Login" Height="766.5" Width="1362" WindowState="Maximized" ResizeMode="NoResize" Loaded="Window_Loaded" IsHitTestVisible="True" Icon="/BarberSystem;component/imagens/icone.png">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/imgLogin.jpg" Stretch="UniformToFill"/>
 	</Window.Background>

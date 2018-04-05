@@ -153,12 +153,24 @@ namespace BarberSystem.Janelas
             btnFornecedores_Click(sender, e);
         }
 
+        // selecionar a data e mostrar no datagrid
         private void calendario_SelectedDatesChanged(object sender, SelectionChangedEventArgs e) {
             var sql = from a in conexao.AGENDA
                       where a.data == calendario.SelectedDate
                       select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
             dgAgenda.ItemsSource = null;
             dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+        }
+
+        // botao funcionarios
+        private void btnFuncionarios_Click(object sender, RoutedEventArgs e) {
+            Funcionarios janela = new Funcionarios();
+            janela.Show();
+        }
+
+        // botao funcionarios menuItem
+        private void MenuItem_Click_8(object sender, RoutedEventArgs e) {
+            btnFuncionarios_Click(sender, e);
         }
     }
 }
