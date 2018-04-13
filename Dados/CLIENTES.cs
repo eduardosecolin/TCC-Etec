@@ -36,7 +36,7 @@ namespace BarberSystem.Dados
         [StringLength(20)]
         public string cep { get; set; }
 
-        public int numero { get; set; }
+        public int? numero { get; set; }
 
         [Required]
         [StringLength(20)]

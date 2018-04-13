@@ -17,6 +17,7 @@ namespace BarberSystem.Dados {
         public virtual DbSet<CONTAS_RECEBER> CONTAS_RECEBER { get; set; }
         public virtual DbSet<FORNECEDORES> FORNECEDORES { get; set; }
         public virtual DbSet<FUNCIONARIOS> FUNCIONARIOS { get; set; }
+        public virtual DbSet<PRODUTOS> PRODUTOS { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
@@ -186,7 +187,12 @@ namespace BarberSystem.Dados {
                 .Property(e => e.estado)
                 .IsUnicode(false);
 
-//-------------------------------------------------------------------
+            modelBuilder.Entity<FORNECEDORES>()
+                .HasMany(e => e.PRODUTOS)
+                .WithOptional(e => e.FORNECEDORES)
+                .HasForeignKey(e => e.codfornecedor);
+
+            //-------------------------------------------------------------------
 
             modelBuilder.Entity<FUNCIONARIOS>()
               .Property(e => e.nome)
@@ -223,6 +229,14 @@ namespace BarberSystem.Dados {
             modelBuilder.Entity<FUNCIONARIOS>()
                .Property(e => e.sexo)
                .IsUnicode(false);
+
+            modelBuilder.Entity<PRODUTOS>()
+             .Property(e => e.descricao)
+             .IsUnicode(false);
+
+            modelBuilder.Entity<PRODUTOS>()
+              .Property(e => e.nome_fornecedor)
+              .IsUnicode(false);
 
         }
     }

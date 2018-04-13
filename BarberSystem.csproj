@@ -94,6 +94,7 @@
     <Compile Include="Dados\CONTAS_RECEBER.cs" />
     <Compile Include="Dados\FORNECEDORES.cs" />
     <Compile Include="Dados\FUNCIONARIOS.cs" />
+    <Compile Include="Dados\PRODUTOS.cs" />
     <Compile Include="Dados\USUARIOS.cs" />
     <Compile Include="Janelas\Agenda.xaml.cs">
       <DependentUpon>Agenda.xaml</DependentUpon>
@@ -138,6 +139,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Janelas\Produtos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -172,6 +177,9 @@
     </Compile>
     <Compile Include="Janelas\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Produtos.xaml.cs">
+      <DependentUpon>Produtos.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -48,13 +48,16 @@ namespace BarberSystem.Janelas {
 
         //Botao de voltar
         private void btnVoltar_Click(object sender, RoutedEventArgs e) {
-            janela.dgAgenda.ItemsSource = listaAgenda;
+            var sql = from a in conexao.AGENDA 
+                      where a.data == DateTime.Today 
+                      select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
+            janela.dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
             this.Close();
         }
 
         //Botao de Novo
         private void btnCadastrar_Click(object sender, RoutedEventArgs e) {
-            txtCliente.Focus();
+            txtCodCliente.Focus();
             limpaCampos();
         }
 
@@ -70,6 +73,7 @@ namespace BarberSystem.Janelas {
             txtPesquisar.Clear();
             MtxtHinicio.Clear();
             dpData.Text = "";
+            cbBarbeiro.Text = "";
         }
 
         //Botao limpar

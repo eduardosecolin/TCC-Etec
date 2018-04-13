@@ -73,7 +73,11 @@ namespace BarberSystem.Janelas {
             else {
                 cp.data_vencto = DateTime.Parse(dpVencto.SelectedDate.ToString());
             }
-            cp.vl_unitario = (txtUnitario.Text == "") ? 0 : double.Parse(txtUnitario.Text);
+            if (txtUnitario.Text == ""){
+                cp.vl_unitario = null;
+            }else{
+                cp.vl_unitario = double.Parse(txtUnitario.Text);
+            }
         }
 
 
@@ -155,8 +159,8 @@ namespace BarberSystem.Janelas {
                 cp.descricao = null;
                 cp.data_pagto = null;
                 cp.data_vencto = null;
-                cp.vl_unitario = 0;
-                cp.vl_total = 0;
+                cp.vl_unitario = null;
+                cp.vl_total = null;
                 limpaCampos();
                 conexao.SaveChanges();
                 MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -208,7 +212,7 @@ namespace BarberSystem.Janelas {
                     return;
                 }
                 cp.vl_total = cp.vl_unitario;
-                double temp = 0.0;
+                double? temp = 0.0;
                 foreach (CONTAS_PAGAR item in listaPagar) {                    
                     item.vl_total = temp;
                     item.vl_total += item.vl_unitario;

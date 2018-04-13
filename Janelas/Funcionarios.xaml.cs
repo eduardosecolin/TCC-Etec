@@ -138,7 +138,7 @@ namespace BarberSystem.Janelas {
                 funcionario = conexao.FUNCIONARIOS.Remove(funcionario);
                 funcionario.nome = null;
                 funcionario.endereco = null;
-                funcionario.numero = 0;
+                funcionario.numero = null;
                 funcionario.bairro = null;
                 funcionario.cidade = null;
                 funcionario.estado = null;
@@ -146,7 +146,7 @@ namespace BarberSystem.Janelas {
                 funcionario.sexo = null;
                 funcionario.telefone = null;
                 funcionario.celular = null;
-                funcionario.salario = 0.0;
+                funcionario.salario = null;
                 funcionario.cargo = null;
                 conexao.SaveChanges();
                 MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);

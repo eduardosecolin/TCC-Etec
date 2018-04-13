@@ -19,7 +19,7 @@ namespace BarberSystem.Dados {
         [StringLength(30)]
         public string bairro { get; set; }
 
-        public int numero { get; set; }
+        public int? numero { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -49,7 +49,7 @@ namespace BarberSystem.Dados {
         [StringLength(15)]
         public string sexo { get; set; }
 
-        public double salario { get; set; }
+        public double? salario { get; set; }
     }
 
 }

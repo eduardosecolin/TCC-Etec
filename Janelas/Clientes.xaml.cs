@@ -55,6 +55,7 @@ namespace BarberSystem.Janelas
             MtxtTelefone.Clear();
             MtxtCelular.Clear();
             txtPesquisar.Clear();
+            cbSexo.Text = "";
         }
 
         // botao novo
@@ -105,7 +106,7 @@ namespace BarberSystem.Janelas
                 cliente.nome = null;
                 cliente.sexo = null;
                 cliente.endereco = null;
-                cliente.numero = 0;
+                cliente.numero = null;
                 cliente.bairro = null;
                 cliente.cidade = null;
                 cliente.estado = null;

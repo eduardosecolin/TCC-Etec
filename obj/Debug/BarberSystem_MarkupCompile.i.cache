@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\App.xaml
-11-495028336
+12-1362423873
 
-281551580749
+30-1693380470
 321637228694
-Janelas\Agenda.xaml;Janelas\Barbeiros.xaml;Janelas\Clientes.xaml;Janelas\Configurações de Usuários.xaml;Janelas\ContasPagar.xaml;Janelas\ContasReceber.xaml;Janelas\Fornecedores.xaml;Janelas\Funcionarios.xaml;Janelas\Login.xaml;Janelas\Menu.xaml;MainWindow.xaml;
+Janelas\Agenda.xaml;Janelas\Barbeiros.xaml;Janelas\Clientes.xaml;Janelas\Configurações de Usuários.xaml;Janelas\ContasPagar.xaml;Janelas\ContasReceber.xaml;Janelas\Fornecedores.xaml;Janelas\Funcionarios.xaml;Janelas\Login.xaml;Janelas\Menu.xaml;Janelas\Produtos.xaml;MainWindow.xaml;
 
-True
+False
 

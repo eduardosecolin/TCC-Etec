@@ -4,6 +4,12 @@ using System.ComponentModel.DataAnnotations;
 namespace BarberSystem.Dados {
     public class FORNECEDORES {
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public FORNECEDORES(){
+            PRODUTOS = new HashSet<PRODUTOS>();
+        }
+        
+
         [Key]
         public int? codigo { get; set; }
 
@@ -19,7 +25,7 @@ namespace BarberSystem.Dados {
         [StringLength(30)]
         public string bairro { get; set; }
 
-        public int numero { get; set; }
+        public int? numero { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -40,5 +46,10 @@ namespace BarberSystem.Dados {
         [Required]
         [StringLength(2)]
         public string estado { get; set; }
+
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUTOS> PRODUTOS { get; set; }
     }
 }

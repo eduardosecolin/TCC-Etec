@@ -12,8 +12,8 @@ namespace BarberSystem.Dados {
         public string descricao { get; set; }
         public DateTime? data_vencto { get; set; }
         public DateTime? data_pagto { get; set; }
-        public double vl_unitario { get; set; }
-        public double vl_total { get; set; }
+        public double? vl_unitario { get; set; }
+        public double? vl_total { get; set; }
 
     }
 }

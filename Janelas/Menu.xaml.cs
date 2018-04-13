@@ -43,7 +43,6 @@ namespace BarberSystem.Janelas
         //Quando form carregado validar usuario(admin ou user) e mostrar items do statusBar
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             
-            sbHora.Content = sbHora.Content + " " + DateTime.Now.ToShortTimeString();
             sbData.Content = sbData.Content + " " + DateTime.Now.ToLongDateString();
             sbUsuario.Content = sbUsuario.Content + " " + Login.usuarioLogado;
 
@@ -171,6 +170,16 @@ namespace BarberSystem.Janelas
         // botao funcionarios menuItem
         private void MenuItem_Click_8(object sender, RoutedEventArgs e) {
             btnFuncionarios_Click(sender, e);
+        }
+
+        // botao produtos
+        private void btnProdutos_Click(object sender, RoutedEventArgs e) {
+            Produtos janela = new Produtos();
+            janela.Show();
+        }
+        // botao menuItem produtos
+        private void MenuItem_Click_9(object sender, RoutedEventArgs e) {
+            btnProdutos_Click(sender, e);
         }
     }
 }

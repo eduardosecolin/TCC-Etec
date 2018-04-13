@@ -66,7 +66,11 @@ namespace BarberSystem.Janelas {
             else {
                 cr.data_vencto = DateTime.Parse(dpVencto.SelectedDate.ToString());
             }
-            cr.vl_unitario = (txtUnitario.Text == "") ? 0 : double.Parse(txtUnitario.Text);
+            if(txtUnitario.Text == ""){
+                cr.vl_unitario = null;
+            }else{
+                cr.vl_unitario = double.Parse(txtUnitario.Text);
+            }
         }
 
         // metodo para carregar o dataGrid
@@ -99,7 +103,7 @@ namespace BarberSystem.Janelas {
                     return;
                 }
                 cr.vl_total = cr.vl_unitario;
-                double temp = 0.0;
+                double? temp = 0.0;
                 foreach (CONTAS_RECEBER item in listaReceber) {
                     item.vl_total = temp;
                     item.vl_total += item.vl_unitario;
@@ -150,8 +154,8 @@ namespace BarberSystem.Janelas {
                 cr.descricao = null;
                 cr.data_pagto = null;
                 cr.data_vencto = null;
-                cr.vl_unitario = 0;
-                cr.vl_total = 0;
+                cr.vl_unitario = null;
+                cr.vl_total = null;
                 conexao.SaveChanges();
                 MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 carregaGrid();

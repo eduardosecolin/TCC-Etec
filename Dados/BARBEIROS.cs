@@ -28,7 +28,7 @@ namespace BarberSystem.Dados
         [StringLength(30)]
         public string bairro { get; set; }
 
-        public int numero { get; set; }
+        public int? numero { get; set; }
 
         [Required]
         [StringLength(30)]

@@ -127,7 +127,7 @@ namespace BarberSystem.Janelas {
                 fornecedores = conexao.FORNECEDORES.Remove(fornecedores);
                 fornecedores.nome = null;
                 fornecedores.endereco = null;
-                fornecedores.numero = 0;
+                fornecedores.numero = null;
                 fornecedores.bairro = null;
                 fornecedores.cidade = null;
                 fornecedores.estado = null;

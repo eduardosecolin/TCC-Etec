@@ -11,177 +11,61 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BarberSystem.Janelas;
 using BarberSystem.Dados;
+using System.Data.Entity.Migrations;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
-using System.Data.Entity.Migrations;
 
-namespace BarberSystem.Janelas {
+namespace BarberSystem.Janelas
+{
     /// <summary>
-    /// Lógica interna para Barbeiros.xaml
+    /// Lógica interna para Produtos.xaml
     /// </summary>
-    public partial class Barbeiros : Excel.Window {
+    public partial class Produtos : Excel.Window {
 
-        private BARBEIROS barbeiro = new BARBEIROS();
-        private List<BARBEIROS> listaBarber;
-        private BancoDados conexao = new BancoDados();
+        PRODUTOS produto = new PRODUTOS();
+        BancoDados conexao = new BancoDados();
+        private List<PRODUTOS> listaProdutos = new List<PRODUTOS>(); 
 
-        public Barbeiros() {
+        public Produtos(){
             InitializeComponent();
-            dgBarbeiro.RowBackground = null;
+            dgProdutos.RowBackground = null;
             carregaGrid();
+            carregaComboBoxFornecedor();
         }
 
+        // metodo para limpar os campos
         public void limpaCampos(){
             txtCodigo.Clear();
-            txtNome.Clear();
-            txtEndereco.Clear();
-            txtNumero.Clear();
-            txtCidade.Clear();
-            cbEstado.Text = "";
-            MtxtCep.Clear();
-            cbSexo.Text = "";
-            MtxtCelular.Clear();
             txtPesquisar.Clear();
-            txtBairro.Clear();
+            txtDescricao.Clear();
+            txtFornecedor.Clear();
+            txtUnitario.Clear();
+            cbCodFornecedor.Text = "";
+        }
+
+        // metodo para carregar o dataGrid
+        public void carregaGrid(){
+            listaProdutos = conexao.PRODUTOS.ToList();
+            dgProdutos.ItemsSource = null;
+            dgProdutos.ItemsSource = listaProdutos.OrderBy(user => user.codigo);
         }
 
         // botao novo
         private void btnNovo_Click(object sender, RoutedEventArgs e) {
-            txtNome.Focus();
+            txtDescricao.Focus();
             limpaCampos();
         }
-
-        // botao voltar
-        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
-            this.Close();
-        }
-
-        // botao gravar
-        private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            barbeiro.nome = txtNome.Text;
-            barbeiro.endereco = txtEndereco.Text;
-            barbeiro.numero = int.Parse(txtNumero.Text);
-            barbeiro.bairro = txtBairro.Text;
-            barbeiro.cidade = txtCidade.Text;
-            barbeiro.estado = cbEstado.Text;
-            barbeiro.cep = MtxtCep.Text;
-            barbeiro.sexo = cbSexo.Text;
-            barbeiro.celular = MtxtCelular.Text;
-
-            conexao.BARBEIROS.Add(barbeiro);
-            conexao.SaveChanges();
-
-            txtCodigo.Text = barbeiro.codigo.ToString();
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
-            carregaGrid();
-        }
-
-
-        // carregar a grid
-        public void carregaGrid(){
-            listaBarber = conexao.BARBEIROS.ToList();
-            dgBarbeiro.ItemsSource = null;
-            dgBarbeiro.ItemsSource = listaBarber.OrderBy(user => user.nome);
-        }
-
-        // botao limpar
-        private void btnLimpar_Click(object sender, RoutedEventArgs e) {
-            limpaCampos();
-        }
-
-        // botao excluir
-        private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(resultado == MessageBoxResult.Yes){
-                barbeiro = conexao.BARBEIROS.Remove(barbeiro);
-                barbeiro.nome = null;
-                barbeiro.endereco = null;
-                barbeiro.numero = null;
-                barbeiro.bairro = null;
-                barbeiro.cidade = null;
-                barbeiro.estado = null;
-                barbeiro.cep = null;
-                barbeiro.sexo = null;
-                barbeiro.celular = null;
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carregaGrid();
-                limpaCampos();
-            }
-            else{
-                limpaCampos();
-                return;
-            }
-        }
-
-        // botao pesquisar
-        private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
-            try {
-                if (txtPesquisar.Text != "") {
-                    barbeiro = conexao.BARBEIROS.Find(int.Parse(txtPesquisar.Text));
-                    txtCodigo.Text = barbeiro.codigo.ToString();
-                    txtNome.Text = barbeiro.nome;
-                    txtEndereco.Text = barbeiro.endereco;
-                    txtNumero.Text = barbeiro.numero.ToString();
-                    txtBairro.Text = barbeiro.bairro;
-                    txtCidade.Text = barbeiro.cidade;
-                    cbEstado.Text = barbeiro.estado;
-                    MtxtCep.Text = barbeiro.cep;
-                    cbSexo.Text = barbeiro.sexo;
-                    MtxtCelular.Text = barbeiro.celular;
-                }
-                else {
-                    MessageBox.Show("Barbeiro não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                    limpaCampos();
-                }
-            }catch(Exception a){
-                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
-                                MessageBoxImage.Exclamation);
-                limpaCampos();
-                return;
-            }
-        }
-
-        // exportar para o excel
-        private void btnExportar_Click(object sender, RoutedEventArgs e) {
-            Excel.Application excel = new Excel.Application();
-            excel.Visible = true;
-            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-
-            for (int j = 0; j < dgBarbeiro.Columns.Count; j++) {
-                Range myRange = (Range)sheet1.Cells[1, j + 1];
-                sheet1.Cells[1, j + 1].Font.Bold = true;
-                sheet1.Columns[j + 1].ColumnWidth = 15;
-                myRange.Value2 = dgBarbeiro.Columns[j].Header;
-            }
-            for (int i = 0; i < dgBarbeiro.Columns.Count; i++) {
-                for (int j = 0; j < dgBarbeiro.Items.Count; j++) {
-                    TextBlock b = dgBarbeiro.Columns[i].GetCellContent(dgBarbeiro.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text;
-                }
-            }
-        }
-
 
         // botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
             try {
                 if (txtCodigo.Text != "") {
-                    barbeiro.nome = txtNome.Text;
-                    barbeiro.endereco = txtEndereco.Text;
-                    barbeiro.numero = int.Parse(txtNumero.Text);
-                    barbeiro.bairro = txtBairro.Text;
-                    barbeiro.cidade = txtCidade.Text;
-                    barbeiro.estado = cbEstado.Text;
-                    barbeiro.cep = MtxtCep.Text;
-                    barbeiro.sexo = cbSexo.Text;
-                    barbeiro.celular = MtxtCelular.Text;
-                    conexao.BARBEIROS.AddOrUpdate(barbeiro);
+                    produto.descricao = txtDescricao.Text;
+                    produto.vl_unitario = double.Parse(txtUnitario.Text);
+                    produto.codfornecedor = int.Parse(cbCodFornecedor.Text);
+                    produto.nome_fornecedor = txtFornecedor.Text;
+                    conexao.PRODUTOS.AddOrUpdate(produto);
                     conexao.SaveChanges();
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
@@ -200,6 +84,124 @@ namespace BarberSystem.Janelas {
             }
         }
 
+        // botao pesquisar
+        private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
+            try {
+                if (txtPesquisar.Text != "") {
+                    produto = conexao.PRODUTOS.Find(int.Parse(txtPesquisar.Text));
+                    txtDescricao.Text = produto.descricao;
+                    txtCodigo.Text = produto.codigo.ToString();
+                    txtUnitario.Text = produto.vl_unitario.ToString();
+                    txtFornecedor.Text = produto.nome_fornecedor;
+                    cbCodFornecedor.Text = produto.codfornecedor.ToString();
+                }
+                else {
+                    MessageBox.Show("Produto não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                }
+            }
+            catch (Exception a) {
+                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
+                                 MessageBoxImage.Exclamation);
+                limpaCampos();
+                return;
+            }
+        }
+
+        // botao excluir
+        private void btnExcluir_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (resultado == MessageBoxResult.Yes) {
+                produto = conexao.PRODUTOS.Remove(produto);
+                limpaCampos();
+                produto.descricao = null;
+                produto.vl_unitario = null;
+                produto.codfornecedor = null;
+                produto.nome_fornecedor = null;
+                conexao.SaveChanges();
+                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                carregaGrid();
+                limpaCampos();
+            }
+            else {
+                limpaCampos();
+                return;
+            }
+        }
+
+        // botao gravar
+        private void btnGravar_Click(object sender, RoutedEventArgs e) {
+            produto.descricao = txtDescricao.Text;
+            produto.vl_unitario = double.Parse(txtUnitario.Text);
+            produto.codfornecedor = int.Parse(cbCodFornecedor.Text);
+            produto.nome_fornecedor = txtFornecedor.Text;
+
+            conexao.PRODUTOS.Add(produto);
+            conexao.SaveChanges();
+
+            txtCodigo.Text = produto.codigo.ToString();
+            carregaGrid();
+
+            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+            limpaCampos();
+        }
+
+        // botao limpar
+        private void btnLimpar_Click(object sender, RoutedEventArgs e) {
+            limpaCampos();
+        }
+
+        // botao voltar
+        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
+        // carregar combobox com codigos do fornecedor
+        public void carregaComboBoxFornecedor(){
+            List<FORNECEDORES> listaFornecedores = conexao.FORNECEDORES.ToList();
+            cbCodFornecedor.ItemsSource = null;
+            cbCodFornecedor.ItemsSource = listaFornecedores.OrderBy(user => user.codigo);
+            cbCodFornecedor.DisplayMemberPath = "codigo";
+        }
+       
+        // metodo para preencher campo fornecedor automatico
+        private void txtFornecedor_GotFocus(object sender, RoutedEventArgs e) {
+            FORNECEDORES fornecedor = new FORNECEDORES();
+            try {
+                if (cbCodFornecedor.SelectedItem != null) {
+                    fornecedor = conexao.FORNECEDORES.Find(int.Parse(cbCodFornecedor.Text));
+                    txtFornecedor.Text = fornecedor.nome;
+                }
+            }
+            catch (Exception a) {
+                MessageBox.Show("Código do fornecedor invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                cbCodFornecedor.Text = "";
+                txtFornecedor.Clear();
+                cbCodFornecedor.Focus();
+            }
+        }
+
+        // botao excel
+        private void btnExportar_Click(object sender, RoutedEventArgs e) {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < dgProdutos.Columns.Count; j++) {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = dgProdutos.Columns[j].Header;
+            }
+            for (int i = 0; i < dgProdutos.Columns.Count; i++) {
+                for (int j = 0; j < dgProdutos.Items.Count; j++) {
+                    TextBlock b = dgProdutos.Columns[i].GetCellContent(dgProdutos.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
+        }
 
 
 
@@ -212,7 +214,11 @@ namespace BarberSystem.Janelas {
 
 
 
-        //------------ REFERENCIAS PARA EXCEL ------------------------------------------------------------
+
+
+
+
+        // ----------------- RTEFERENCIAS PARA EXCEL ------------------------------------------------------------------
         dynamic Excel.Window.Activate() {
             throw new NotImplementedException();
         }
@@ -347,7 +353,8 @@ namespace BarberSystem.Janelas {
 
         public bool DisplayRuler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool AutoFilterDateGrouping { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); 
-       }
+        public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+
     }
 }
