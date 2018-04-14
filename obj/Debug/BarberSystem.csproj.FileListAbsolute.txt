@@ -58,3 +58,5 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Funcion
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Funcionarios.baml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Produtos.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Produtos.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Estoque.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Estoque.baml

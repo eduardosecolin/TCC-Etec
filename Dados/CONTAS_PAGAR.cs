@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 
 namespace BarberSystem.Dados {
+
+    [Table("dbo.CONTAS_PAGAR")]
     public partial class CONTAS_PAGAR {
    
         [Key]

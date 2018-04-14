@@ -18,6 +18,7 @@ namespace BarberSystem.Dados {
         public virtual DbSet<FORNECEDORES> FORNECEDORES { get; set; }
         public virtual DbSet<FUNCIONARIOS> FUNCIONARIOS { get; set; }
         public virtual DbSet<PRODUTOS> PRODUTOS { get; set; }
+        public virtual DbSet<ESTOQUE> ESTOQUE { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
@@ -236,6 +237,15 @@ namespace BarberSystem.Dados {
 
             modelBuilder.Entity<PRODUTOS>()
               .Property(e => e.nome_fornecedor)
+              .IsUnicode(false);
+
+            modelBuilder.Entity<PRODUTOS>()
+               .HasMany(e => e.ESTOQUE)
+                .WithOptional(e => e.PRODUTOS)
+                .HasForeignKey(e => e.codproduto);
+
+            modelBuilder.Entity<ESTOQUE>()
+              .Property(e => e.produto)
               .IsUnicode(false);
 
         }

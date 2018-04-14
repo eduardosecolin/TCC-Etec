@@ -181,6 +181,16 @@ namespace BarberSystem.Janelas
         private void MenuItem_Click_9(object sender, RoutedEventArgs e) {
             btnProdutos_Click(sender, e);
         }
+
+        // botao estoque
+        private void btnEstoque_Click(object sender, RoutedEventArgs e) {
+            Estoque janela = new Estoque();
+            janela.Show();
+        }
+        // botao estoque menuItem
+        private void MenuItem_Click_10(object sender, RoutedEventArgs e) {
+            btnEstoque_Click(sender, e);
+        }
     }
 }
 

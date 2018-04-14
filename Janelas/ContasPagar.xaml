@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         mc:Ignorable="d"
-        Title="Contas a Pagar" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png">
+        Title="Contas a Pagar" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png" ResizeMode="NoResize">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/JanelaAgenda/Agenda1.jpg"/>
 	</Window.Background>

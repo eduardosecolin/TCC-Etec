@@ -128,6 +128,7 @@ namespace BarberSystem.Janelas {
 
         // botao pesquisar
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
+            btnGravar.IsEnabled = false;
             try {
              if(txtPesquisar.Text != ""){
                     cp = conexao.CONTAS_PAGAR.Find(int.Parse(txtPesquisar.Text));
@@ -170,6 +171,7 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
         // botao calcular valor total
@@ -229,6 +231,7 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
 

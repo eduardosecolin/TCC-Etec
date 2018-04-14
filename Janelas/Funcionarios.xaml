@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="BarberSystem.Janelas.Funcionarios"
         mc:Ignorable="d"
-        Title="Funcionarios" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png">
+        Title="Funcionarios" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png" ResizeMode="NoResize">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/JanelaAgenda/Agenda1.jpg"/>
 	</Window.Background>

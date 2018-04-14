@@ -111,6 +111,7 @@ namespace BarberSystem.Janelas {
 
         // pesquisar
         private void BtnPesquisar_Click(object sender, RoutedEventArgs e) {
+            btnGravar.IsEnabled = false;
             try {
                 if (txtPesquisar.Text != "") {
                     agendamento = conexao.AGENDA.Find(int.Parse(txtPesquisar.Text));
@@ -156,6 +157,7 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
         // exportar para o excel
@@ -249,6 +251,7 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
 

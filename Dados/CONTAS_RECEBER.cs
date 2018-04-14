@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BarberSystem.Dados {
+
+    [Table("dbo.CONTAS_RECEBER")]
     public partial class CONTAS_RECEBER {
 
         [Key]

@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BarberSystem.Dados {
+    
+    [Table("dbo.FUNCIONARIOS")]
     public class FUNCIONARIOS {
 
         [Key]

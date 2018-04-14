@@ -92,6 +92,7 @@
     <Compile Include="Dados\CLIENTES.cs" />
     <Compile Include="Dados\CONTAS_PAGAR.cs" />
     <Compile Include="Dados\CONTAS_RECEBER.cs" />
+    <Compile Include="Dados\ESTOQUE.cs" />
     <Compile Include="Dados\FORNECEDORES.cs" />
     <Compile Include="Dados\FUNCIONARIOS.cs" />
     <Compile Include="Dados\PRODUTOS.cs" />
@@ -120,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Janelas\ContasReceber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Estoque.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +170,9 @@
     </Compile>
     <Compile Include="Janelas\ContasReceber.xaml.cs">
       <DependentUpon>ContasReceber.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Estoque.xaml.cs">
+      <DependentUpon>Estoque.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Fornecedores.xaml.cs">
       <DependentUpon>Fornecedores.xaml</DependentUpon>
@@ -331,6 +339,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imagens\icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconEntrada2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoes\iconSaida.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

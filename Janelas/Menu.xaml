@@ -19,7 +19,7 @@
 				<MenuItem Header="Funcionários" Click="MenuItem_Click_8" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Barbeiros" Click="MenuItem_Click_4" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Produtos" Background="#FF191919" BorderBrush="#FF474747" Click="MenuItem_Click_9"/>
-				<MenuItem Header="Estoque" Background="#FF191919" BorderBrush="#FF474747"/>
+				<MenuItem Header="Estoque" Background="#FF191919" BorderBrush="#FF474747" Click="MenuItem_Click_10"/>
 			</MenuItem>
 			<MenuItem Header="Financeiro" Foreground="#FFFDF9F9">
 				<MenuItem Header="Contas a Pagar" Click="MenuItem_Click_5" Background="#FF191919" Foreground="#FFFDFBFB" BorderBrush="#FF474747"/>
@@ -50,7 +50,7 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconProdutos.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnEstoque" Content="Estoque" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand">
+			<Button x:Name="btnEstoque" Content="Estoque" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnEstoque_Click">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconEstoque.png" Stretch="Uniform"/>
 				</Button.Background>

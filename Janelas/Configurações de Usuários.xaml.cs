@@ -108,8 +108,9 @@ namespace BarberSystem.Janelas {
 
         // botao pesquisar
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
-         try{
-          if(txtPesquisar.Text != ""){
+            btnGravar.IsEnabled = false;
+            try {
+               if(txtPesquisar.Text != ""){
                     usuario = conexao.USUARIOS.Find(int.Parse(txtPesquisar.Text));
                     txtCodigo.Text = usuario.codigo.ToString();
                     txtUsuario.Text = usuario.nome_usuario;
@@ -122,11 +123,11 @@ namespace BarberSystem.Janelas {
                     txtEmail.Text = usuario.email;
                     cbTipo.Text = usuario.tipo;
                     txtCidade.Text = usuario.cidade;
-          }else{
+               }else{
                     MessageBox.Show("Usuário não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
-          }
-         }catch (Exception a) {
+               }
+            }catch (Exception a) {
                 MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
                                       MessageBoxImage.Exclamation);
                 limpaCampos();
@@ -156,6 +157,7 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
         // botao exportar para o excel

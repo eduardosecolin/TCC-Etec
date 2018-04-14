@@ -18,61 +18,131 @@ using Microsoft.Office.Interop.Excel;
 
 namespace BarberSystem.Janelas {
     /// <summary>
-    /// Lógica interna para Fornecedores.xaml
+    /// Lógica interna para Estoque.xaml
     /// </summary>
-    public partial class Fornecedores : Excel.Window {
+    ///
 
-        private FORNECEDORES fornecedores = new FORNECEDORES();
-        private List<FORNECEDORES> listaFornecedores;
-        private BancoDados conexao = new BancoDados();
-        public Fornecedores() {
+    public partial class Estoque : Excel.Window {
+
+
+        ESTOQUE estoque = new ESTOQUE();
+        BancoDados conexao = new BancoDados();
+        private List<ESTOQUE> listaEstoque = new List<ESTOQUE>();
+
+        public Estoque() {
             InitializeComponent();
-            dgFornecedores.RowBackground = null;
+            dgEstoque.RowBackground = null;
             carregaGrid();
+            carregaComboBox();
         }
 
-        // metodo para limpar campos
-        public void limpaCampos() {
-            txtCodigo.Clear();
-            txtNome.Clear();
-            txtEndereco.Clear();
-            txtNumero.Clear();
-            txtCidade.Clear();
-            cbEstado.Text = "";
-            MtxtCep.Clear();
-            cbTipo.Text = "";
-            MtxtTelefone.Clear();
+        // limpar os campos
+        private void limpaCampos(){
             txtPesquisar.Clear();
-            txtBairro.Clear();
+            txtCodigo.Clear();
+            cbCodProduto.Text = "";
+            txtProduto.Clear();
+            txtUnitario.Clear();
+            txtTotal.Clear();
+            txtQuantidade.Clear();
+            txtEntrada.Clear();
+            txtSaida.Clear();
         }
 
-        // carregar a grid
-        public void carregaGrid() {
-            listaFornecedores = conexao.FORNECEDORES.ToList();
-            dgFornecedores.ItemsSource = null;
-            dgFornecedores.ItemsSource = listaFornecedores.OrderBy(user => user.nome);
+        // carregar o dataGrid
+        private void carregaGrid(){
+            listaEstoque = conexao.ESTOQUE.ToList();
+            dgEstoque.ItemsSource = null;
+            dgEstoque.ItemsSource = listaEstoque.OrderBy(user => user.codigo);
+        }
+
+        // carregar comboBox com o codigo do produto
+        private void carregaComboBox(){
+            List<PRODUTOS> listaProduto = conexao.PRODUTOS.ToList();
+            cbCodProduto.ItemsSource = null;
+            cbCodProduto.ItemsSource = listaProduto.OrderBy(user => user.codigo);
+            cbCodProduto.DisplayMemberPath = "codigo";
+        }
+
+        // preencher nome do produto automatico
+        private void txtProduto_GotFocus(object sender, RoutedEventArgs e) {
+            try {
+                if (cbCodProduto.SelectedItem != null) {
+                    PRODUTOS produto = new PRODUTOS();
+                    produto = conexao.PRODUTOS.Find(int.Parse(cbCodProduto.Text));
+                    txtProduto.Text = produto.descricao;
+                    txtUnitario.Text = produto.vl_unitario.ToString();
+                }
+            }
+            catch (Exception a) {
+                MessageBox.Show("Código do produto invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                cbCodProduto.Text = "";
+                txtProduto.Clear();
+                cbCodProduto.Focus();
+            }
         }
 
         // botao novo
         private void btnNovo_Click(object sender, RoutedEventArgs e) {
-            txtNome.Focus();
+            cbCodProduto.Focus();
             limpaCampos();
+        }
+
+        // botao gravar
+        private void btnGravar_Click(object sender, RoutedEventArgs e) {
+            estoque.codproduto = int.Parse(cbCodProduto.Text);
+            estoque.produto = txtProduto.Text;
+            estoque.vl_produto = double.Parse(txtUnitario.Text);
+            estoque.vl_total = double.Parse(txtTotal.Text);
+            estoque.quantidade = int.Parse(txtQuantidade.Text);
+
+            conexao.ESTOQUE.Add(estoque);
+            conexao.SaveChanges();
+
+            txtCodigo.Text = estoque.codigo.ToString();
+            carregaGrid();
+
+            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+            limpaCampos();
+        }
+
+        // botao entrada
+        private void btnEntrada_Click(object sender, RoutedEventArgs e) {
+           if(txtProduto.Text == ""){
+                MessageBox.Show("O campo produto não pode estar vazio", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                return;
+           }
+            estoque.entradaEstoque(int.Parse(txtEntrada.Text));
+            txtQuantidade.Text = estoque.quantidade.ToString();
+            estoque.vl_produto = double.Parse(txtUnitario.Text);
+            txtTotal.Text = estoque.calculaTotal().ToString();
+            txtEntrada.Clear();
+        }
+
+        // botao saida
+        private void btnSaida_Click(object sender, RoutedEventArgs e) {
+            if (txtProduto.Text == "") {
+                MessageBox.Show("O campo produto não pode estar vazio", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                return;
+            }
+            estoque.saidaEstoque(int.Parse(txtSaida.Text));
+            txtQuantidade.Text = estoque.quantidade.ToString();
+            estoque.vl_produto = double.Parse(txtUnitario.Text);
+            txtTotal.Text = estoque.calculaTotal().ToString();
+            txtSaida.Clear();
         }
 
         // botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
             try {
                 if (txtCodigo.Text != "") {
-                    fornecedores.nome = txtNome.Text;
-                    fornecedores.endereco = txtEndereco.Text;
-                    fornecedores.numero = int.Parse(txtNumero.Text);
-                    fornecedores.bairro = txtBairro.Text;
-                    fornecedores.cidade = txtCidade.Text;
-                    fornecedores.estado = cbEstado.Text;
-                    fornecedores.cep = MtxtCep.Text;
-                    fornecedores.tipo = cbTipo.Text;
-                    fornecedores.telefone = MtxtTelefone.Text;
-                    conexao.FORNECEDORES.AddOrUpdate(fornecedores);
+                    estoque.produto = txtProduto.Text;
+                    estoque.vl_produto = double.Parse(txtUnitario.Text);
+                    estoque.vl_total = double.Parse(txtTotal.Text);
+                    estoque.quantidade = int.Parse(txtQuantidade.Text);
+                    conexao.ESTOQUE.AddOrUpdate(estoque);
                     conexao.SaveChanges();
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
@@ -97,26 +167,22 @@ namespace BarberSystem.Janelas {
             btnGravar.IsEnabled = false;
             try {
                 if (txtPesquisar.Text != "") {
-                    fornecedores = conexao.FORNECEDORES.Find(int.Parse(txtPesquisar.Text));
-                    txtCodigo.Text = fornecedores.codigo.ToString();
-                    txtNome.Text = fornecedores.nome;
-                    txtEndereco.Text = fornecedores.endereco;
-                    txtNumero.Text = fornecedores.numero.ToString();
-                    txtBairro.Text = fornecedores.bairro;
-                    txtCidade.Text = fornecedores.cidade;
-                    cbEstado.Text = fornecedores.estado;
-                    MtxtCep.Text = fornecedores.cep;
-                    cbTipo.Text = fornecedores.tipo;
-                    MtxtTelefone.Text = fornecedores.telefone;
+                    estoque = conexao.ESTOQUE.Find(int.Parse(txtPesquisar.Text));
+                    cbCodProduto.Text = estoque.codproduto.ToString();
+                    txtProduto.Text = estoque.produto;
+                    txtCodigo.Text = estoque.codigo.ToString();
+                    txtUnitario.Text = estoque.vl_produto.ToString();
+                    txtTotal.Text = estoque.vl_total.ToString();
+                    txtQuantidade.Text = estoque.quantidade.ToString();
                 }
                 else {
-                    MessageBox.Show("Fornecedor não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Produto no estoque não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                 }
             }
             catch (Exception a) {
                 MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
-                                MessageBoxImage.Exclamation);
+                                 MessageBoxImage.Exclamation);
                 limpaCampos();
                 return;
             }
@@ -126,16 +192,12 @@ namespace BarberSystem.Janelas {
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes) {
-                fornecedores = conexao.FORNECEDORES.Remove(fornecedores);
-                fornecedores.nome = null;
-                fornecedores.endereco = null;
-                fornecedores.numero = null;
-                fornecedores.bairro = null;
-                fornecedores.cidade = null;
-                fornecedores.estado = null;
-                fornecedores.cep = null;
-                fornecedores.tipo = null;
-                fornecedores.telefone = null;
+                estoque = conexao.ESTOQUE.Remove(estoque);
+                limpaCampos();
+                estoque.produto = null;
+                estoque.vl_produto = null;
+                estoque.vl_total = null;
+                estoque.quantidade = null;
                 conexao.SaveChanges();
                 MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 carregaGrid();
@@ -146,27 +208,6 @@ namespace BarberSystem.Janelas {
                 return;
             }
             btnGravar.IsEnabled = true;
-        }
-
-        // botao gravar
-        private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            fornecedores.nome = txtNome.Text;
-            fornecedores.endereco = txtEndereco.Text;
-            fornecedores.numero = int.Parse(txtNumero.Text);
-            fornecedores.bairro = txtBairro.Text;
-            fornecedores.cidade = txtCidade.Text;
-            fornecedores.estado = cbEstado.Text;
-            fornecedores.cep = MtxtCep.Text;
-            fornecedores.tipo = cbTipo.Text;
-            fornecedores.telefone = MtxtTelefone.Text;
-
-            conexao.FORNECEDORES.Add(fornecedores);
-            conexao.SaveChanges();
-
-            txtCodigo.Text = fornecedores.codigo.ToString();
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
-            carregaGrid();
         }
 
         // botao limpar
@@ -186,15 +227,15 @@ namespace BarberSystem.Janelas {
             Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
             Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
 
-            for (int j = 0; j < dgFornecedores.Columns.Count; j++) {
+            for (int j = 0; j < dgEstoque.Columns.Count; j++) {
                 Range myRange = (Range)sheet1.Cells[1, j + 1];
                 sheet1.Cells[1, j + 1].Font.Bold = true;
                 sheet1.Columns[j + 1].ColumnWidth = 15;
-                myRange.Value2 = dgFornecedores.Columns[j].Header;
+                myRange.Value2 = dgEstoque.Columns[j].Header;
             }
-            for (int i = 0; i < dgFornecedores.Columns.Count; i++) {
-                for (int j = 0; j < dgFornecedores.Items.Count; j++) {
-                    TextBlock b = dgFornecedores.Columns[i].GetCellContent(dgFornecedores.Items[j]) as TextBlock;
+            for (int i = 0; i < dgEstoque.Columns.Count; i++) {
+                for (int j = 0; j < dgEstoque.Items.Count; j++) {
+                    TextBlock b = dgEstoque.Columns[i].GetCellContent(dgEstoque.Items[j]) as TextBlock;
                     Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
                     myRange.Value2 = b.Text;
                 }
@@ -214,10 +255,7 @@ namespace BarberSystem.Janelas {
 
 
 
-
-
-
-        //--------------------- REFERENCIAS PARA EXCEL --------------------------------------------------------
+        // ---------------------- REFERENCIAS PARA EXCEL ---------------------------------------------------------------------------------
         dynamic Excel.Window.Activate() {
             throw new NotImplementedException();
         }

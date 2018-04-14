@@ -121,12 +121,14 @@ namespace BarberSystem.Janelas
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
         // botao pesquisar
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
-         try{
-           if(txtPesquisar.Text != ""){
+            btnGravar.IsEnabled = false;
+            try {
+              if(txtPesquisar.Text != ""){
                     cliente = conexao.CLIENTES.Find(int.Parse(txtPesquisar.Text));
                     txtCodigo.Text = cliente.codigo.ToString();
                     txtNome.Text = cliente.nome;
@@ -139,11 +141,11 @@ namespace BarberSystem.Janelas
                     MtxtCep.Text = cliente.cep;
                     MtxtTelefone.Text = cliente.telefone;
                     MtxtCelular.Text = cliente.celular;
-           }else{
+              }else{
                     MessageBox.Show("Cliente não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
-           }
-         }catch(Exception a){
+              }
+            }catch(Exception a){
                 MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
                                       MessageBoxImage.Exclamation);
                 limpaCampos();
@@ -204,6 +206,7 @@ namespace BarberSystem.Janelas
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
 

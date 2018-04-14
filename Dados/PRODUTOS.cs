@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BarberSystem.Dados {
+
+    [Table("dbo.PRODUTOS")]
     public partial class PRODUTOS {
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public PRODUTOS(){
-          
+            ESTOQUE = new HashSet<ESTOQUE>();
         }
        
         [Key]
@@ -23,6 +27,10 @@ namespace BarberSystem.Dados {
         public string nome_fornecedor { get; set; }
 
         public virtual FORNECEDORES FORNECEDORES { get; set; }
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESTOQUE> ESTOQUE { get; set; }
 
     }
 }

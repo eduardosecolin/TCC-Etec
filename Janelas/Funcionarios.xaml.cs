@@ -96,11 +96,12 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 return;
             }
-
+            btnGravar.IsEnabled = true;
         }
 
         // botao pesquisar
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
+            btnGravar.IsEnabled = false;
             try {
                 if (txtPesquisar.Text != "") {
                     funcionario = conexao.FUNCIONARIOS.Find(int.Parse(txtPesquisar.Text));
@@ -157,6 +158,7 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 return;
             }
+            btnGravar.IsEnabled = true;
         }
 
         // botao gravar
