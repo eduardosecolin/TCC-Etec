@@ -89,6 +89,7 @@
     <Compile Include="Dados\AGENDA.cs" />
     <Compile Include="Dados\BancoDados.cs" />
     <Compile Include="Dados\BARBEIROS.cs" />
+    <Compile Include="Dados\CAIXA.cs" />
     <Compile Include="Dados\CLIENTES.cs" />
     <Compile Include="Dados\CONTAS_PAGAR.cs" />
     <Compile Include="Dados\CONTAS_RECEBER.cs" />
@@ -105,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Janelas\Barbeiros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Caixa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +153,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Janelas\Sobre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,6 +167,9 @@
     </Compile>
     <Compile Include="Janelas\Barbeiros.xaml.cs">
       <DependentUpon>Barbeiros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Caixa.xaml.cs">
+      <DependentUpon>Caixa.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
@@ -188,6 +200,9 @@
     </Compile>
     <Compile Include="Janelas\Produtos.xaml.cs">
       <DependentUpon>Produtos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Sobre.xaml.cs">
+      <DependentUpon>Sobre.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -345,6 +360,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imagens\imgBotoes\iconSaida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\JanelaAgenda\Copyright-Symbol-PNG-File.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

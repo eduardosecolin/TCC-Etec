@@ -19,6 +19,7 @@ namespace BarberSystem.Dados {
         public virtual DbSet<FUNCIONARIOS> FUNCIONARIOS { get; set; }
         public virtual DbSet<PRODUTOS> PRODUTOS { get; set; }
         public virtual DbSet<ESTOQUE> ESTOQUE { get; set; }
+        public virtual DbSet<CAIXA> CAIXA { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {

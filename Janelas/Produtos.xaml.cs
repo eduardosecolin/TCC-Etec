@@ -176,7 +176,7 @@ namespace BarberSystem.Janelas
                     txtFornecedor.Text = fornecedor.nome;
                 }
             }
-            catch (Exception a) {
+            catch (Exception) {
                 MessageBox.Show("Código do fornecedor invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                 cbCodFornecedor.Text = "";
                 txtFornecedor.Clear();

@@ -17,7 +17,7 @@
 		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
 		<Label x:Name="label_Copy" Content="Descrição:" HorizontalAlignment="Left" Margin="189,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="262,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="521" FontSize="14" FontWeight="SemiBold" TabIndex="1"/>
+		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="262,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="521" FontSize="14" FontWeight="SemiBold" TabIndex="1" MaxLength="50"/>
 		<Label x:Name="label_Copy2" Content="Valor Unitário:" HorizontalAlignment="Left" Margin="91,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtUnitario" HorizontalAlignment="Left" Height="23" Margin="191,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
 		<Button x:Name="btnNovo" Content="Novo" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,96,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnNovo_Click">
@@ -153,7 +153,7 @@
 		</ComboBox>
 		<Label x:Name="label_Copy5" Content="Código Fornecedor:" HorizontalAlignment="Left" Margin="338,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy9" Content="Fornecedor:" HorizontalAlignment="Left" Margin="91,176,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtFornecedor" HorizontalAlignment="Left" Height="23" Margin="176,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" FontSize="14" FontWeight="SemiBold" TabIndex="4" IsReadOnly="True" GotFocus="txtFornecedor_GotFocus"/>
+		<TextBox x:Name="txtFornecedor" HorizontalAlignment="Left" Height="23" Margin="176,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" FontSize="14" FontWeight="SemiBold" TabIndex="4" IsReadOnly="True" GotFocus="txtFornecedor_GotFocus" MaxLength="50"/>
 
 	</Grid>
 </Window>

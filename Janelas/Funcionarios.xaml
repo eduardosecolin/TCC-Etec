@@ -17,9 +17,9 @@
 		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
 		<Label x:Name="label_Copy" Content="Nome:" HorizontalAlignment="Left" Margin="189,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="23" Margin="240,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" FontSize="14" FontWeight="SemiBold" TabIndex="1"/>
+		<TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="23" Margin="240,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" FontSize="14" FontWeight="SemiBold" TabIndex="1" MaxLength="50"/>
 		<Label x:Name="label_Copy2" Content="Endereço:" HorizontalAlignment="Left" Margin="91,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtEndereco" HorizontalAlignment="Left" Height="23" Margin="163,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="501" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
+		<TextBox x:Name="txtEndereco" HorizontalAlignment="Left" Height="23" Margin="163,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="501" FontSize="14" FontWeight="SemiBold" TabIndex="2" MaxLength="50"/>
 		<Label x:Name="label_Copy3" Content="Numero:" HorizontalAlignment="Left" Margin="664,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtNumero" HorizontalAlignment="Left" Height="23" Margin="728,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
 		<ComboBox x:Name="cbEstado" HorizontalAlignment="Left" Margin="724,177,0,0" VerticalAlignment="Top" Width="59" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="6">
@@ -190,9 +190,9 @@
 		<Label x:Name="label_Copy8" Content="Pesquisar agendamento pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="291,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="0"/>
 		<Label x:Name="label_Copy1" Content="Cidade:" HorizontalAlignment="Left" Margin="383,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
+		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="5" MaxLength="30"/>
 		<Label x:Name="label_Copy4" Content="Cep:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<xctk:MaskedTextBox x:Name="MtxtCep" Mask="99999-999" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="14" FontWeight="SemiBold" TabIndex="7"/>
+		<xctk:MaskedTextBox x:Name="MtxtCep" Mask="99999-999" HorizontalAlignment="Left" Height="23" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="14" FontWeight="SemiBold" TabIndex="7" MaxLength="8"/>
 		<ComboBox x:Name="cbSexo" HorizontalAlignment="Left" Margin="277,224,0,0" VerticalAlignment="Top" Width="247" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -206,7 +206,7 @@
 		</ComboBox>
 		<Label x:Name="label_Copy5" Content="Sexo:" HorizontalAlignment="Left" Margin="234,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy7" Content="Telefone:" HorizontalAlignment="Left" Margin="92,268,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<xctk:MaskedTextBox x:Name="MtxtTelefone" Mask="(99)9999-9999" HorizontalAlignment="Left" Height="23" Margin="160,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="14" FontWeight="SemiBold" TabIndex="10" RenderTransformOrigin="0.5,0.5">
+		<xctk:MaskedTextBox x:Name="MtxtTelefone" Mask="(99)9999-9999" HorizontalAlignment="Left" Height="23" Margin="160,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="14" FontWeight="SemiBold" TabIndex="10" RenderTransformOrigin="0.5,0.5" MaxLength="10">
 			<xctk:MaskedTextBox.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
@@ -217,9 +217,9 @@
 			</xctk:MaskedTextBox.RenderTransform>
 		</xctk:MaskedTextBox>
 		<Label x:Name="label_Copy9" Content="Bairro:" HorizontalAlignment="Left" Margin="91,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="144,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
+		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="144,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="4" MaxLength="30"/>
 		<Label x:Name="label_Copy10" Content="Celular:" HorizontalAlignment="Left" Margin="287,268,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<xctk:MaskedTextBox x:Name="MtxtCelular" Mask="(99)99999-9999" HorizontalAlignment="Left" Height="23" Margin="347,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="14" FontWeight="SemiBold" TabIndex="11" RenderTransformOrigin="0.5,0.5">
+		<xctk:MaskedTextBox x:Name="MtxtCelular" Mask="(99)99999-9999" HorizontalAlignment="Left" Height="23" Margin="347,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="14" FontWeight="SemiBold" TabIndex="11" RenderTransformOrigin="0.5,0.5" MaxLength="11">
 			<xctk:MaskedTextBox.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
@@ -230,7 +230,7 @@
 			</xctk:MaskedTextBox.RenderTransform>
 		</xctk:MaskedTextBox>
 		<Label x:Name="label_Copy11" Content="Cargo:" HorizontalAlignment="Left" Margin="538,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCargo" HorizontalAlignment="Left" Height="23" Margin="591,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" FontSize="14" FontWeight="SemiBold" TabIndex="9"/>
+		<TextBox x:Name="txtCargo" HorizontalAlignment="Left" Height="23" Margin="591,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" FontSize="14" FontWeight="SemiBold" TabIndex="9" MaxLength="20"/>
 		<Label x:Name="label_Copy12" Content="Salário:" HorizontalAlignment="Left" Margin="480,267,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtSalario" HorizontalAlignment="Left" Height="23" Margin="536,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" FontSize="14" FontWeight="SemiBold" TabIndex="12"/>
 

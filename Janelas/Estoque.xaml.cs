@@ -74,7 +74,7 @@ namespace BarberSystem.Janelas {
                     txtUnitario.Text = produto.vl_unitario.ToString();
                 }
             }
-            catch (Exception a) {
+            catch (Exception) {
                 MessageBox.Show("Código do produto invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                 cbCodProduto.Text = "";
                 txtProduto.Clear();
@@ -84,6 +84,7 @@ namespace BarberSystem.Janelas {
 
         // botao novo
         private void btnNovo_Click(object sender, RoutedEventArgs e) {
+            MessageBox.Show("Insira o código do produto.", "Informação", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             cbCodProduto.Focus();
             limpaCampos();
         }
