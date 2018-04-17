@@ -1,8 +1,8 @@
 ﻿<Application x:Class="BarberSystem.App"
+			 StartupUri="MainWindow.xaml"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:BarberSystem"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:BarberSystem" ShutdownMode="OnLastWindowClose">
     <Application.Resources>
 		<Style x:Key="MyButton" TargetType="Button">
 			<Setter Property="OverridesDefaultStyle" Value="True" />

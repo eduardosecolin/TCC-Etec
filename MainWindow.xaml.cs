@@ -10,6 +10,8 @@ namespace BarberSystem {
     /// Interação lógica para MainWindow.xam
     /// </summary>
     public partial class MainWindow : Window {
+
+        private const int TEMP = 700;
          public MainWindow() {
             InitializeComponent();
         }
@@ -17,10 +19,10 @@ namespace BarberSystem {
 
         private void criarConstrucao() {
             PB.IsIndeterminate = false;
-            PB.Maximum = 700;
+            PB.Maximum = TEMP;
             PB.Value = 0;
 
-            for (int i = 0; i < 700; i++) {
+            for (int i = 0; i < TEMP; i++) {
                 PB.Dispatcher.Invoke(new ProgressBarDelegate(UpdateProgress), DispatcherPriority.Background);
             }
         }
