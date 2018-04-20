@@ -21,6 +21,19 @@ namespace BarberSystem.Janelas
     /// </summary>
     public  partial class Menu : Window
     {
+        Clientes janelaClientes = new Clientes();
+        Fornecedores janelaFornecedore = new Fornecedores();
+        Produtos janelaProdutos = new Produtos();
+        Estoque janelaEstoque = new Estoque();
+        ContasPagar janelaPagar = new ContasPagar();
+        ContasReceber janelaReceber = new ContasReceber();
+        Caixa janelaCaixa = new Caixa();
+        Funcionarios janelaFuncionarios = new Funcionarios();
+        Barbeiros janelaBarbeiros = new Barbeiros();
+        Configurações_de_Usuários janelaUsuario = new Configurações_de_Usuários();
+        Sobre janelaSobre = new Sobre();
+
+
         BancoDados conexao = new BancoDados();
         public Menu()
         {
@@ -83,20 +96,17 @@ namespace BarberSystem.Janelas
 
         // botao Barbeiros
         private void btnBarbeiros_Click(object sender, RoutedEventArgs e) {
-            Barbeiros janela = new Barbeiros();
-            janela.Show();
+            janelaBarbeiros.Show();
         }
 
         // botao Clientes
         private void btnClientes_Click(object sender, RoutedEventArgs e) {
-            Clientes janela = new Clientes();
-            janela.Show();
+            janelaClientes.Show();
         }
 
         // botao config. usuarios
         private void btnConfig_Click(object sender, RoutedEventArgs e) {
-            Configurações_de_Usuários janela = new Configurações_de_Usuários();
-            janela.Show();           
+            janelaUsuario.Show();           
         }
 
         // botao menuitem agenda
@@ -120,20 +130,18 @@ namespace BarberSystem.Janelas
         }
 
         // botao contas pagar
-        private void btnPagar_Click(object sender, RoutedEventArgs e) {
-            ContasPagar janela = new ContasPagar();
-            janela.Show();
+        private void BtnPagar_Click(object sender, RoutedEventArgs e) {
+            janelaPagar.Show();
         }
 
         // botao menuitem contas pagar
         private void MenuItem_Click_5(object sender, RoutedEventArgs e) {
-            btnPagar_Click(sender, e);
+            BtnPagar_Click(sender, e);
         }
 
         // botao contas a receber
         private void btnReceber_Click(object sender, RoutedEventArgs e) {
-            ContasReceber janela = new ContasReceber();
-            janela.Show();
+            janelaReceber.Show();
         }
 
         // botao contas a receber menuItem
@@ -143,8 +151,7 @@ namespace BarberSystem.Janelas
 
         // botao fornecedores
         private void btnFornecedores_Click(object sender, RoutedEventArgs e) {
-            Fornecedores janela = new Fornecedores();
-            janela.Show();
+            janelaFornecedore.Show();
         }
 
         // botao fornecedores menuItem
@@ -163,8 +170,7 @@ namespace BarberSystem.Janelas
 
         // botao funcionarios
         private void btnFuncionarios_Click(object sender, RoutedEventArgs e) {
-            Funcionarios janela = new Funcionarios();
-            janela.Show();
+            janelaFuncionarios.Show();
         }
 
         // botao funcionarios menuItem
@@ -174,8 +180,7 @@ namespace BarberSystem.Janelas
 
         // botao produtos
         private void btnProdutos_Click(object sender, RoutedEventArgs e) {
-            Produtos janela = new Produtos();
-            janela.Show();
+            janelaProdutos.Show();
         }
         // botao menuItem produtos
         private void MenuItem_Click_9(object sender, RoutedEventArgs e) {
@@ -184,8 +189,7 @@ namespace BarberSystem.Janelas
 
         // botao estoque
         private void btnEstoque_Click(object sender, RoutedEventArgs e) {
-            Estoque janela = new Estoque();
-            janela.Show();
+            janelaEstoque.Show();
         }
         // botao estoque menuItem
         private void MenuItem_Click_10(object sender, RoutedEventArgs e) {
@@ -194,18 +198,38 @@ namespace BarberSystem.Janelas
 
         // botao sobre
         private void MenuItem_Click_11(object sender, RoutedEventArgs e) {
-            Sobre janela = new Sobre();
-            janela.Show();
+            janelaSobre.Show();
         }
 
         // botao caixa
         private void btnCaixa_Click(object sender, RoutedEventArgs e) {
-            Caixa janela = new Caixa();
-            janela.Show();
+            janelaCaixa.Show();
         }
         // botao caixa menuItem
         private void MenuItem_Click_12(object sender, RoutedEventArgs e) {
             btnCaixa_Click(sender, e);
+        }
+
+        // botao logout menuItem
+        private void MenuItem_Click_13(object sender, RoutedEventArgs e) {
+            Login janela = new Login();
+            janela.Show();
+            fecharJanelasAbertas();
+            this.Close();
+        }
+
+        // metodo para fechar as janelas
+        private void fecharJanelasAbertas(){
+            janelaClientes.Close();
+            janelaFornecedore.Close();
+            janelaProdutos.Close();
+            janelaEstoque.Close();
+            janelaPagar.Close();
+            janelaReceber.Close();
+            janelaCaixa.Close();
+            janelaFuncionarios.Close();
+            janelaBarbeiros.Close();
+            janelaUsuario.Close();
         }
     }
 }

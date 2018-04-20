@@ -14,6 +14,7 @@ namespace BarberSystem {
         private const int TEMP = 700;
          public MainWindow() {
             InitializeComponent();
+            carregarprogressBar();
         }
         private delegate void ProgressBarDelegate();
 
@@ -30,7 +31,8 @@ namespace BarberSystem {
             PB.Value += 1;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) {
+
+        private void carregarprogressBar(){
             int cont = 0;
             while (cont < 5) {
                 if (cont >= 1) {

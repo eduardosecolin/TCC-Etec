@@ -28,6 +28,7 @@
 			</MenuItem>
 			<MenuItem Header="Sobre" Click="MenuItem_Click_11"/>
 			<MenuItem Header="Sair" Click="MenuItem_Click"/>
+			<MenuItem Header="Logout" Margin="1100,0,0,0" Padding="6,0" Click="MenuItem_Click_13"/>
 		</Menu>
 		<ToolBar x:Name="toolBar" HorizontalAlignment="Left" Height="97" Margin="-2,20,0,0" VerticalAlignment="Top" Width="1364" Background="#FF191919" BorderBrush="#FFF7F5F5" BorderThickness="1" UseLayoutRounding="False">
 			<Button x:Name="btnAgenda" Content="Agenda" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBFBFB" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Click="btnAgenda_Click" Cursor="Hand">
@@ -55,7 +56,7 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconEstoque.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnPagar" Content="Contas a Pagar" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnPagar_Click">
+			<Button x:Name="btnPagar" Content="Contas a Pagar" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="BtnPagar_Click">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconPagar.png" Stretch="Uniform"/>
 				</Button.Background>
