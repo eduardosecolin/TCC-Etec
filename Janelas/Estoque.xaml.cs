@@ -91,20 +91,25 @@ namespace BarberSystem.Janelas {
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            estoque.codproduto = int.Parse(cbCodProduto.Text);
-            estoque.produto = txtProduto.Text;
-            estoque.vl_produto = double.Parse(txtUnitario.Text);
-            estoque.vl_total = double.Parse(txtTotal.Text);
-            estoque.quantidade = int.Parse(txtQuantidade.Text);
+            try {
+                estoque.codproduto = int.Parse(cbCodProduto.Text);
+                estoque.produto = txtProduto.Text;
+                estoque.vl_produto = double.Parse(txtUnitario.Text);
+                estoque.vl_total = double.Parse(txtTotal.Text);
+                estoque.quantidade = int.Parse(txtQuantidade.Text);
 
-            conexao.ESTOQUE.Add(estoque);
-            conexao.SaveChanges();
+                conexao.ESTOQUE.Add(estoque);
+                conexao.SaveChanges();
 
-            txtCodigo.Text = estoque.codigo.ToString();
-            carregaGrid();
+                txtCodigo.Text = estoque.codigo.ToString();
+                carregaGrid();
 
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
+                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         // botao entrada

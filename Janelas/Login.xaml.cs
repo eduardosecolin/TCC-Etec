@@ -77,7 +77,7 @@ namespace BarberSystem.Janelas {
 
         //Botao sair
         private void button_Copy1_Click(object sender, RoutedEventArgs e) {
-            Close();
+            App.Current.Shutdown();
         }
 
         // entrar com a tecla enter

@@ -16,8 +16,8 @@
 
 		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="91,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
-		<Label x:Name="label_Copy" Content="Descrição:" HorizontalAlignment="Left" Margin="189,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="262,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="521" FontSize="14" FontWeight="SemiBold" TabIndex="1" MaxLength="50"/>
+		<Label x:Name="label_Copy" Content="Nome:" HorizontalAlignment="Left" Margin="189,92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="242,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="543" FontSize="14" FontWeight="SemiBold" TabIndex="1" MaxLength="50"/>
 		<Label x:Name="label_Copy2" Content="Valor Unitário:" HorizontalAlignment="Left" Margin="91,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtUnitario" HorizontalAlignment="Left" Height="23" Margin="191,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
 		<Button x:Name="btnNovo" Content="Novo" Style="{StaticResource MyButton}" HorizontalAlignment="Left" Margin="842,96,0,0" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnNovo_Click">
@@ -127,7 +127,7 @@
 				<DataGridTextColumn  Header="Fornecedor" Binding="{Binding nome_fornecedor}"  Foreground="#FFFDFBFB"/>
 			</DataGrid.Columns>
 		</DataGrid>
-		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
+		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="338,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconPesquisar.png" Stretch="Uniform">
 					<ImageBrush.RelativeTransform>
@@ -141,8 +141,8 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Label x:Name="label_Copy8" Content="Pesquisar agendamento pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
-		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="291,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="0"/>
+		<Label x:Name="label_Copy8" Content="Pesquisar produto pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
+		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="259,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="0"/>
 		<ComboBox x:Name="cbCodFornecedor" HorizontalAlignment="Left" Margin="474,131,0,0" VerticalAlignment="Top" Width="82" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="3">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">

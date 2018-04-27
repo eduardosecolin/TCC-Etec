@@ -98,22 +98,27 @@ namespace BarberSystem.Janelas {
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            calculaValorTotal();
-            verificaVazios();
-            if (txtDescricao.Text == "") {
+            try {
+                calculaValorTotal();
+                verificaVazios();
+                if (txtDescricao.Text == "") {
+                    return;
+                }
+                cp.vl_total += cp.vl_unitario;
+
+                conexao.CONTAS_PAGAR.Add(cp);
+                conexao.SaveChanges();
+
+
+                txtCodigo.Text = cp.codigo.ToString();
+                carregaGrid();
+
+                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            cp.vl_total += cp.vl_unitario;
-
-            conexao.CONTAS_PAGAR.Add(cp);
-            conexao.SaveChanges();
-
-
-            txtCodigo.Text = cp.codigo.ToString();
-            carregaGrid();
-
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
         }
 
         // botao limpar

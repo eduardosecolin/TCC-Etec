@@ -42,12 +42,17 @@ namespace BarberSystem.Janelas
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
-    
-            conexao.CAIXA.AddOrUpdate(caixa);
-            conexao.SaveChanges();
+            try {
 
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
+                conexao.CAIXA.AddOrUpdate(caixa);
+                conexao.SaveChanges();
+
+                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         // botao entrada

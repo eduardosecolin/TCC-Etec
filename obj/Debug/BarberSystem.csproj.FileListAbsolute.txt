@@ -64,3 +64,13 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Sobre.g
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Sobre.baml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Caixa.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Caixa.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\ControlzEx.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MahApps.Metro.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MaterialDesignColors.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\ControlzEx.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MahApps.Metro.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MahApps.Metro.xml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MaterialDesignThemes.Wpf.xml

@@ -172,7 +172,7 @@
 				<DataGridTextColumn  Header="Tipo" Binding="{Binding tipo}" Foreground="#FFF9F9F9"/>
 			</DataGrid.Columns>
 		</DataGrid>
-		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
+		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="343,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconPesquisar.png" Stretch="Uniform">
 					<ImageBrush.RelativeTransform>
@@ -186,8 +186,8 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Label x:Name="label_Copy8" Content="Pesquisar agendamento pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
-		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="291,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="10"/>
+		<Label x:Name="label_Copy8" Content="Pesquisar usuário pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
+		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="264,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="10"/>
 		<Label x:Name="label_Copy1" Content="Cidade:" HorizontalAlignment="Left" Margin="383,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="5" MaxLength="30"/>
 		<Label x:Name="label_Copy4" Content="Cpf:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>

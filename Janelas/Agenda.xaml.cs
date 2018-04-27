@@ -83,6 +83,7 @@ namespace BarberSystem.Janelas {
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
+            try {
                 verificaCampos();
                 agendamento.cliente = txtCliente.Text;
                 agendamento.descricao = txtDescricao.Text;
@@ -97,9 +98,13 @@ namespace BarberSystem.Janelas {
 
                 txtCodigo.Text = agendamento.codigo.ToString();
                 carrgearGrid();
-          
+
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
+                limpaCampos();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         // carregar a grid

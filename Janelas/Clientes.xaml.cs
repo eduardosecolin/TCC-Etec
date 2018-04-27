@@ -66,25 +66,30 @@ namespace BarberSystem.Janelas
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            cliente.nome = txtNome.Text;
-            cliente.sexo = cbSexo.Text;
-            cliente.endereco = txtEndereco.Text;
-            cliente.numero = int.Parse(txtNumero.Text);
-            cliente.bairro = txtBairro.Text;
-            cliente.cidade = txtCidade.Text;
-            cliente.estado = cbEstado.Text;
-            cliente.cep = MtxtCep.Text;
-            cliente.telefone = MtxtTelefone.Text;
-            cliente.celular = MtxtCelular.Text;
+            try {
+                cliente.nome = txtNome.Text;
+                cliente.sexo = cbSexo.Text;
+                cliente.endereco = txtEndereco.Text;
+                cliente.numero = int.Parse(txtNumero.Text);
+                cliente.bairro = txtBairro.Text;
+                cliente.cidade = txtCidade.Text;
+                cliente.estado = cbEstado.Text;
+                cliente.cep = MtxtCep.Text;
+                cliente.telefone = MtxtTelefone.Text;
+                cliente.celular = MtxtCelular.Text;
 
-            conexao.CLIENTES.Add(cliente);
-            conexao.SaveChanges();
+                conexao.CLIENTES.Add(cliente);
+                conexao.SaveChanges();
 
-            txtCodigo.Text = cliente.codigo.ToString();
-            carregarGrid();
+                txtCodigo.Text = cliente.codigo.ToString();
+                carregarGrid();
 
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
+                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         // botao limpar

@@ -127,7 +127,7 @@
 				<DataGridTextColumn  Header="Valor Total" Binding="{Binding vl_total, ConverterCulture=pt-BR}" Foreground="#FF767676"/>
 			</DataGrid.Columns>
 		</DataGrid>
-		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
+		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="378,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconPesquisar.png" Stretch="Uniform">
 					<ImageBrush.RelativeTransform>
@@ -141,11 +141,11 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Label x:Name="label_Copy8" Content="Pesquisar agendamento pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
-		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="291,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
-		<DatePicker x:Name="dpPagto" HorizontalAlignment="Left" Margin="536,137,0,0" VerticalAlignment="Top" Height="23" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
+		<Label x:Name="label_Copy8" Content="Pesquisar contas a receber pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
+		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="299,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
+		<DatePicker x:Name="dpPagto" CalendarStyle="{DynamicResource DateTimeCalendar}" HorizontalAlignment="Left" Margin="536,137,0,0" VerticalAlignment="Top" Height="23" FontSize="14" FontWeight="SemiBold" TabIndex="3"/>
 		<Label x:Name="label_Copy1" Content="Data de Vencimento:" HorizontalAlignment="Left" Margin="91,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<DatePicker x:Name="dpVencto" HorizontalAlignment="Left" Margin="232,137,0,0" VerticalAlignment="Top" Height="23" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
+		<DatePicker x:Name="dpVencto" CalendarStyle="{DynamicResource DateTimeCalendar}" HorizontalAlignment="Left" Margin="232,137,0,0" VerticalAlignment="Top" Height="23" FontSize="14" FontWeight="SemiBold" TabIndex="2"/>
 		<Rectangle Fill="#FF0FF104" HorizontalAlignment="Left" Height="69" Margin="323,178,0,0" Stroke="Black" VerticalAlignment="Top" Width="371" Opacity="0.5"/>
 		<Label x:Name="label1" Content="Valor Total R$:" HorizontalAlignment="Left" Margin="324,200,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFBF9F9"/>
 		<Label x:Name="lblTotal" Content="0" HorizontalAlignment="Left" Margin="421,180,0,0" VerticalAlignment="Top" FontSize="40" FontWeight="SemiBold" Foreground="#FFFBF9F9"/>

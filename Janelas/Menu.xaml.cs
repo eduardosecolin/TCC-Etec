@@ -21,19 +21,20 @@ namespace BarberSystem.Janelas
     /// </summary>
     public  partial class Menu : Window
     {
-        Clientes janelaClientes = new Clientes();
-        Fornecedores janelaFornecedore = new Fornecedores();
-        Produtos janelaProdutos = new Produtos();
-        Estoque janelaEstoque = new Estoque();
-        ContasPagar janelaPagar = new ContasPagar();
-        ContasReceber janelaReceber = new ContasReceber();
-        Caixa janelaCaixa = new Caixa();
-        Funcionarios janelaFuncionarios = new Funcionarios();
-        Barbeiros janelaBarbeiros = new Barbeiros();
-        Configurações_de_Usuários janelaUsuario = new Configurações_de_Usuários();
-        Sobre janelaSobre = new Sobre();
+        Clientes janelaClientes;
+        Fornecedores janelaFornecedore;
+        Produtos janelaProdutos;
+        Estoque janelaEstoque;
+        ContasPagar janelaPagar;
+        ContasReceber janelaReceber;
+        Caixa janelaCaixa;
+        Funcionarios janelaFuncionarios;
+        Barbeiros janelaBarbeiros;
+        Configurações_de_Usuários janelaUsuario;
+        Sobre janelaSobre;
 
-
+        Agenda janelaAgenda;
+        
         BancoDados conexao = new BancoDados();
         public Menu()
         {
@@ -42,12 +43,13 @@ namespace BarberSystem.Janelas
             carregaGrig();
         }
 
+
         //Botao de sair menuitem
         private void MenuItem_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult resultado = MessageBox.Show("Deseja realmente sair do sitema?", "Sair", 
                                                           MessageBoxButton.YesNo, MessageBoxImage.Question);
            if(resultado == MessageBoxResult.Yes){
-                Close();
+                App.Current.Shutdown();
            }else{
                 return;
            }          
@@ -71,6 +73,12 @@ namespace BarberSystem.Janelas
 
         //Metodo para validar usuario deixando inacessivel os botoes para user
         public void esconderBotoes(){
+            btnPagar.Opacity = .50;
+            btnReceber.Opacity = .50;
+            btnCaixa.Opacity = .50;
+            btnFuncionarios.Opacity = .50;
+            btnConfig.Opacity = .50;
+
             btnPagar.IsEnabled = false;
             btnReceber.IsEnabled = false;
             btnCaixa.IsEnabled = false;
@@ -80,8 +88,8 @@ namespace BarberSystem.Janelas
 
         //Botao agenda
         private void btnAgenda_Click(object sender, RoutedEventArgs e) {
-            Agenda janela = new Agenda(this);
-            janela.Show(); 
+            janelaAgenda = new Agenda(this);
+            janelaAgenda.Show(); 
         }
 
 
@@ -96,16 +104,19 @@ namespace BarberSystem.Janelas
 
         // botao Barbeiros
         private void btnBarbeiros_Click(object sender, RoutedEventArgs e) {
+            janelaBarbeiros = new Barbeiros();
             janelaBarbeiros.Show();
         }
 
         // botao Clientes
         private void btnClientes_Click(object sender, RoutedEventArgs e) {
+            janelaClientes = new Clientes();
             janelaClientes.Show();
         }
 
         // botao config. usuarios
         private void btnConfig_Click(object sender, RoutedEventArgs e) {
+            janelaUsuario = new Configurações_de_Usuários();
             janelaUsuario.Show();           
         }
 
@@ -131,6 +142,7 @@ namespace BarberSystem.Janelas
 
         // botao contas pagar
         private void BtnPagar_Click(object sender, RoutedEventArgs e) {
+            janelaPagar = new ContasPagar();
             janelaPagar.Show();
         }
 
@@ -141,6 +153,7 @@ namespace BarberSystem.Janelas
 
         // botao contas a receber
         private void btnReceber_Click(object sender, RoutedEventArgs e) {
+            janelaReceber = new ContasReceber();
             janelaReceber.Show();
         }
 
@@ -151,6 +164,7 @@ namespace BarberSystem.Janelas
 
         // botao fornecedores
         private void btnFornecedores_Click(object sender, RoutedEventArgs e) {
+            janelaFornecedore = new Fornecedores();
             janelaFornecedore.Show();
         }
 
@@ -170,6 +184,7 @@ namespace BarberSystem.Janelas
 
         // botao funcionarios
         private void btnFuncionarios_Click(object sender, RoutedEventArgs e) {
+            janelaFuncionarios = new Funcionarios();
             janelaFuncionarios.Show();
         }
 
@@ -180,6 +195,7 @@ namespace BarberSystem.Janelas
 
         // botao produtos
         private void btnProdutos_Click(object sender, RoutedEventArgs e) {
+            janelaProdutos = new Produtos();
             janelaProdutos.Show();
         }
         // botao menuItem produtos
@@ -189,6 +205,7 @@ namespace BarberSystem.Janelas
 
         // botao estoque
         private void btnEstoque_Click(object sender, RoutedEventArgs e) {
+            janelaEstoque = new Estoque();
             janelaEstoque.Show();
         }
         // botao estoque menuItem
@@ -198,11 +215,13 @@ namespace BarberSystem.Janelas
 
         // botao sobre
         private void MenuItem_Click_11(object sender, RoutedEventArgs e) {
+            janelaSobre = new Sobre();
             janelaSobre.Show();
         }
 
         // botao caixa
         private void btnCaixa_Click(object sender, RoutedEventArgs e) {
+            janelaCaixa = new Caixa();
             janelaCaixa.Show();
         }
         // botao caixa menuItem
@@ -214,6 +233,9 @@ namespace BarberSystem.Janelas
         private void MenuItem_Click_13(object sender, RoutedEventArgs e) {
             Login janela = new Login();
             janela.Show();
+            if (janelaAgenda != null) {
+                janelaAgenda.Close();
+            }
             fecharJanelasAbertas();
             this.Close();
         }

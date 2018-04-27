@@ -60,23 +60,28 @@ namespace BarberSystem.Janelas {
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            barbeiro.nome = txtNome.Text;
-            barbeiro.endereco = txtEndereco.Text;
-            barbeiro.numero = int.Parse(txtNumero.Text);
-            barbeiro.bairro = txtBairro.Text;
-            barbeiro.cidade = txtCidade.Text;
-            barbeiro.estado = cbEstado.Text;
-            barbeiro.cep = MtxtCep.Text;
-            barbeiro.sexo = cbSexo.Text;
-            barbeiro.celular = MtxtCelular.Text;
+            try {
+                barbeiro.nome = txtNome.Text;
+                barbeiro.endereco = txtEndereco.Text;
+                barbeiro.numero = int.Parse(txtNumero.Text);
+                barbeiro.bairro = txtBairro.Text;
+                barbeiro.cidade = txtCidade.Text;
+                barbeiro.estado = cbEstado.Text;
+                barbeiro.cep = MtxtCep.Text;
+                barbeiro.sexo = cbSexo.Text;
+                barbeiro.celular = MtxtCelular.Text;
 
-            conexao.BARBEIROS.Add(barbeiro);
-            conexao.SaveChanges();
+                conexao.BARBEIROS.Add(barbeiro);
+                conexao.SaveChanges();
 
-            txtCodigo.Text = barbeiro.codigo.ToString();
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
-            carregaGrid();
+                txtCodigo.Text = barbeiro.codigo.ToString();
+                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                carregaGrid();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
 

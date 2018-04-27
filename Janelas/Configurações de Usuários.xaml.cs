@@ -64,18 +64,19 @@ namespace BarberSystem.Janelas {
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
-            usuario.nome_usuario = txtUsuario.Text;
-            usuario.senha = txtSenha.Text;
-            usuario.endereco = txtEndereco.Text;
-            usuario.bairro = txtBairro.Text;
-            usuario.cidade = txtCidade.Text;
-            usuario.estado = cbEstado.Text;
-            usuario.cpf = MtxtCpf.Text;
-            usuario.email = txtEmail.Text;
-            usuario.tipo = cbTipo.Text;
+            try {
+                usuario.nome_usuario = txtUsuario.Text;
+                usuario.senha = txtSenha.Text;
+                usuario.endereco = txtEndereco.Text;
+                usuario.bairro = txtBairro.Text;
+                usuario.cidade = txtCidade.Text;
+                usuario.estado = cbEstado.Text;
+                usuario.cpf = MtxtCpf.Text;
+                usuario.email = txtEmail.Text;
+                usuario.tipo = cbTipo.Text;
 
                 if (txtUsuario.Text != "") {
-                var query = from u in conexao.USUARIOS where u.nome_usuario == txtUsuario.Text select u.nome_usuario;
+                    var query = from u in conexao.USUARIOS where u.nome_usuario == txtUsuario.Text select u.nome_usuario;
                     if (query.FirstOrDefault() == txtUsuario.Text) {
                         MessageBox.Show("Usuário já existe!", "BarberSystem Information", MessageBoxButton.OK, MessageBoxImage.Stop);
                         limpaCampos();
@@ -83,16 +84,20 @@ namespace BarberSystem.Janelas {
                     }
                 }
 
-            txtSenhaOculta.Password = usuario.senha;
+                txtSenhaOculta.Password = usuario.senha;
 
-            conexao.USUARIOS.Add(usuario);
-            conexao.SaveChanges();
+                conexao.USUARIOS.Add(usuario);
+                conexao.SaveChanges();
 
-            txtCodigo.Text = usuario.codigo.ToString();
-            carregaGrid();
+                txtCodigo.Text = usuario.codigo.ToString();
+                carregaGrid();
 
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
+                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
 

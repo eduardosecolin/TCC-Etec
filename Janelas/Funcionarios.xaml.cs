@@ -163,6 +163,7 @@ namespace BarberSystem.Janelas {
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
+            try {
                 funcionario.nome = txtNome.Text;
                 funcionario.endereco = txtEndereco.Text;
                 funcionario.numero = int.Parse(txtNumero.Text);
@@ -179,10 +180,14 @@ namespace BarberSystem.Janelas {
                 conexao.FUNCIONARIOS.Add(funcionario);
                 conexao.SaveChanges();
 
-            txtCodigo.Text = funcionario.codigo.ToString();
-            MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
-            limpaCampos();
-            carregaGrid();
+                txtCodigo.Text = funcionario.codigo.ToString();
+                MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpaCampos();
+                carregaGrid();
+            }catch(Exception a){
+                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         // botao limpar
