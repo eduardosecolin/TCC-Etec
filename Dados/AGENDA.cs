@@ -37,5 +37,6 @@ namespace BarberSystem.Dados{
         public virtual CLIENTES CLIENTES { get; set; }
 
         public virtual BARBEIROS BARBEIROS { get; set; }
+
     }
 }

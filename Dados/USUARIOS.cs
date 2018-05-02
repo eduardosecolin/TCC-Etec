@@ -15,7 +15,7 @@ namespace BarberSystem.Dados{
         [StringLength(15)]
         public string nome_usuario { get; set; }
 
-        [StringLength(15)]
+        [StringLength(50)]
         public string senha { get; set; }
 
         [StringLength(50)]

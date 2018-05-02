@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BarberSystem"
         mc:Ignorable="d"
         Title="MainWindow" Height="598" Width="533" WindowStartupLocation="CenterScreen" Visibility="Visible" VerticalAlignment="Center" UseLayoutRounding="True" ResizeMode="NoResize" BorderThickness="0" WindowStyle="None" AllowsTransparency="True">
-	
+
 	<Window.Background>
 		<ImageBrush ImageSource="imagens/logoSplash.png"/>
 	</Window.Background>

@@ -74,3 +74,6 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MahApps.Metro.p
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MahApps.Metro.xml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Navegador.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Navegador.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\XamlAnimatedGif.dll

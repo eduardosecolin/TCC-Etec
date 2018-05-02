@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BarberSystem.Janelas;
+using BarberSystem.Utils;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
@@ -67,16 +68,20 @@ namespace BarberSystem.Janelas
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
-                cliente.nome = txtNome.Text;
-                cliente.sexo = cbSexo.Text;
-                cliente.endereco = txtEndereco.Text;
+                cliente.nome = Util.VerificarCamposVazios(txtNome.Text);
+                cliente.sexo = Util.VerificarCamposVazios(cbSexo.Text);
+                cliente.endereco = Util.VerificarCamposVazios(txtEndereco.Text);
                 cliente.numero = int.Parse(txtNumero.Text);
-                cliente.bairro = txtBairro.Text;
-                cliente.cidade = txtCidade.Text;
-                cliente.estado = cbEstado.Text;
+                cliente.bairro = Util.VerificarCamposVazios(txtBairro.Text);
+                cliente.cidade = Util.VerificarCamposVazios(txtCidade.Text);
+                cliente.estado = Util.VerificarCamposVazios(cbEstado.Text);
                 cliente.cep = MtxtCep.Text;
                 cliente.telefone = MtxtTelefone.Text;
                 cliente.celular = MtxtCelular.Text;
+
+                if (Util.vazio == true) {
+                    return;
+                }
 
                 conexao.CLIENTES.Add(cliente);
                 conexao.SaveChanges();

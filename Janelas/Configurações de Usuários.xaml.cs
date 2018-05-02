@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BarberSystem.Janelas;
+using BarberSystem.Utils;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
@@ -65,15 +66,19 @@ namespace BarberSystem.Janelas {
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
-                usuario.nome_usuario = txtUsuario.Text;
-                usuario.senha = txtSenha.Text;
-                usuario.endereco = txtEndereco.Text;
-                usuario.bairro = txtBairro.Text;
-                usuario.cidade = txtCidade.Text;
-                usuario.estado = cbEstado.Text;
+                usuario.nome_usuario = Util.VerificarCamposVazios(txtUsuario.Text);
+                usuario.senha = Util.VerificarCamposVazios(Util.encrypt(txtSenha.Text));
+                usuario.endereco = Util.VerificarCamposVazios(txtEndereco.Text);
+                usuario.bairro = Util.VerificarCamposVazios(txtBairro.Text);
+                usuario.cidade = Util.VerificarCamposVazios(txtCidade.Text);
+                usuario.estado = Util.VerificarCamposVazios(cbEstado.Text);
                 usuario.cpf = MtxtCpf.Text;
-                usuario.email = txtEmail.Text;
-                usuario.tipo = cbTipo.Text;
+                usuario.email = Util.VerificarCamposVazios(txtEmail.Text);
+                usuario.tipo = Util.VerificarCamposVazios(cbTipo.Text);
+
+                if (Util.vazio == true) {
+                    return;
+                }
 
                 if (txtUsuario.Text != "") {
                     var query = from u in conexao.USUARIOS where u.nome_usuario == txtUsuario.Text select u.nome_usuario;

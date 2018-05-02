@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="BarberSystem.Janelas.Menu"
         mc:Ignorable="d"
@@ -106,6 +107,17 @@
 				<DataGridTextColumn Binding="{Binding nome_barbeiro}"  Foreground="#FFFBF9F9" Header="Barbeiro" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" CanUserResize="False" Width="160"/>
 			</DataGrid.Columns>
 		</DataGrid>
+		<Button x:Name="btnNavegador" Style="{StaticResource ButtonMenu}" Content="" HorizontalAlignment="Left" Margin="66,596,0,0" VerticalAlignment="Top" Width="64" Click="btnTeste_Click" Height="60">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/Navegador.png" Stretch="Uniform"/>
+			</Button.Background>
+		</Button>
+		<Button x:Name="btnOutlook" Style="{StaticResource ResourceKey=ButtonMenu}" Content="" HorizontalAlignment="Left" Margin="179,596,0,0" VerticalAlignment="Top" Width="65" Height="60" Click="btnOutlook_Click">
+			<Button.Background>
+				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/Outlook.png" Stretch="Uniform"/>
+			</Button.Background>
+		</Button>
+		<Image x:Name="image" HorizontalAlignment="Left" Height="122" Margin="113,447,0,0" VerticalAlignment="Top" Width="90" gif:AnimationBehavior.SourceUri="/BarberSystem;component/Gifs/barberPole.gif" Opacity="0.85"/>
 
 	</Grid>
 </Window>

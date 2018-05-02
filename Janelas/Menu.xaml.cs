@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BarberSystem.Dados;
+using System.Diagnostics;
 
 namespace BarberSystem.Janelas
 {
@@ -32,6 +33,7 @@ namespace BarberSystem.Janelas
         Barbeiros janelaBarbeiros;
         Configurações_de_Usuários janelaUsuario;
         Sobre janelaSobre;
+        Navegador janelaNavegador;
 
         Agenda janelaAgenda;
         
@@ -242,16 +244,55 @@ namespace BarberSystem.Janelas
 
         // metodo para fechar as janelas
         private void fecharJanelasAbertas(){
-            janelaClientes.Close();
-            janelaFornecedore.Close();
-            janelaProdutos.Close();
-            janelaEstoque.Close();
-            janelaPagar.Close();
-            janelaReceber.Close();
-            janelaCaixa.Close();
-            janelaFuncionarios.Close();
-            janelaBarbeiros.Close();
-            janelaUsuario.Close();
+            if (janelaClientes != null) {
+                janelaClientes.Close();
+            }
+            if (janelaFornecedore != null) {
+                janelaFornecedore.Close();
+            }
+            if (janelaProdutos != null) {
+                janelaProdutos.Close();
+            }
+            if(janelaEstoque != null) {
+                janelaEstoque.Close();
+            }
+            if (janelaPagar != null) {
+                janelaPagar.Close();
+            }
+            if (janelaReceber != null) {
+                janelaReceber.Close();
+            }
+            if (janelaCaixa != null) {
+                janelaCaixa.Close();
+            }
+            if (janelaFuncionarios != null) {
+                janelaFuncionarios.Close();
+            }
+            if (janelaBarbeiros != null) {
+                janelaBarbeiros.Close();
+            }
+            if (janelaUsuario != null) {
+                janelaUsuario.Close();
+            }
+            if (janelaSobre != null) {
+                janelaSobre.Close();
+            }
+            if (janelaNavegador != null) {
+                janelaNavegador.Close();
+            }
+            
+        }
+
+
+        // abrir navegador
+        private void btnTeste_Click(object sender, RoutedEventArgs e) {
+                    janelaNavegador = new Navegador();
+                    janelaNavegador.Show();
+        }
+
+        // abrir outlook
+        private void btnOutlook_Click(object sender, RoutedEventArgs e) {
+            System.Diagnostics.Process.Start("outlook.exe");
         }
     }
 }

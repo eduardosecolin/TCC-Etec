@@ -83,6 +83,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="XamlAnimatedGif, Version=1.1.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XamlAnimatedGif.1.1.10\lib\net45\XamlAnimatedGif.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -122,6 +125,10 @@
     <Compile Include="Janelas\Agenda.xaml.cs">
       <DependentUpon>Agenda.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Janelas\Navegador.xaml.cs">
+      <DependentUpon>Navegador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Util.cs" />
     <Page Include="Janelas\Agenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Janelas\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Navegador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -387,6 +398,23 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="iconeEXE.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\iconRefresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\Navegador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagens\imgBotoesJanelas\Outlook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gifs\Pole.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gifs\BarberPole.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

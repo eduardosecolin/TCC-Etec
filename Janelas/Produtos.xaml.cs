@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BarberSystem.Utils;
 using BarberSystem.Dados;
 using System.Data.Entity.Migrations;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -135,10 +136,14 @@ namespace BarberSystem.Janelas
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
-                produto.descricao = txtDescricao.Text;
+                produto.descricao = Util.VerificarCamposVazios(txtDescricao.Text);
                 produto.vl_unitario = double.Parse(txtUnitario.Text);
                 produto.codfornecedor = int.Parse(cbCodFornecedor.Text);
-                produto.nome_fornecedor = txtFornecedor.Text;
+                produto.nome_fornecedor = Util.VerificarCamposVazios(txtFornecedor.Text);
+
+                if (Util.vazio == true) {
+                    return;
+                }
 
                 conexao.PRODUTOS.Add(produto);
                 conexao.SaveChanges();

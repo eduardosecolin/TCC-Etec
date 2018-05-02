@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BarberSystem.Utils;
 using BarberSystem.Dados;
 using System.Data.Entity.Migrations;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -93,10 +94,14 @@ namespace BarberSystem.Janelas {
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
                 estoque.codproduto = int.Parse(cbCodProduto.Text);
-                estoque.produto = txtProduto.Text;
+                estoque.produto = Util.VerificarCamposVazios(txtProduto.Text);
                 estoque.vl_produto = double.Parse(txtUnitario.Text);
                 estoque.vl_total = double.Parse(txtTotal.Text);
                 estoque.quantidade = int.Parse(txtQuantidade.Text);
+
+                if (Util.vazio == true) {
+                    return;
+                }
 
                 conexao.ESTOQUE.Add(estoque);
                 conexao.SaveChanges();

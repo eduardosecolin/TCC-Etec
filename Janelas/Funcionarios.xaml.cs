@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BarberSystem.Utils;
 using BarberSystem.Dados;
 using System.Data.Entity.Migrations;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -164,18 +165,22 @@ namespace BarberSystem.Janelas {
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
-                funcionario.nome = txtNome.Text;
-                funcionario.endereco = txtEndereco.Text;
+                funcionario.nome = Util.VerificarCamposVazios(txtNome.Text);
+                funcionario.endereco = Util.VerificarCamposVazios(txtEndereco.Text);
                 funcionario.numero = int.Parse(txtNumero.Text);
-                funcionario.bairro = txtBairro.Text;
-                funcionario.cidade = txtCidade.Text;
-                funcionario.estado = cbEstado.Text;
+                funcionario.bairro = Util.VerificarCamposVazios(txtBairro.Text);
+                funcionario.cidade = Util.VerificarCamposVazios(txtCidade.Text);
+                funcionario.estado = Util.VerificarCamposVazios(cbEstado.Text);
                 funcionario.cep = MtxtCep.Text;
-                funcionario.sexo = cbSexo.Text;
+                funcionario.sexo = Util.VerificarCamposVazios(cbSexo.Text);
                 funcionario.telefone = MtxtTelefone.Text;
                 funcionario.celular = MtxtCelular.Text;
-                funcionario.cargo = txtCargo.Text;
+                funcionario.cargo = Util.VerificarCamposVazios(txtCargo.Text);
                 funcionario.salario = double.Parse(txtSalario.Text);
+
+                if (Util.vazio == true) {
+                    return;
+                }
 
                 conexao.FUNCIONARIOS.Add(funcionario);
                 conexao.SaveChanges();

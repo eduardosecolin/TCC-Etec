@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Data.SqlClient;
+using BarberSystem.Utils;
 using BarberSystem.Dados;
 
 namespace BarberSystem.Janelas {
@@ -31,27 +32,46 @@ namespace BarberSystem.Janelas {
         private void button_Click(object sender, RoutedEventArgs e) {
             try {
                 BancoDados bd = new BancoDados();
-                var sql = from u in bd.USUARIOS
+               /* var sql = from u in bd.USUARIOS
                           where u.nome_usuario == txtUsuario.Text && u.senha == txtSenha.Password.ToString()
-                          select u.codigo;
+                          select u.codigo;*/
                 if (txtUsuario.Text == "" || txtSenha.Password.ToString() == "") {
                     MessageBox.Show("Campo usuário ou senha vazio!");
                     txtUsuario.Focus();
                     return;
                 }
-                if (sql.FirstOrDefault() == 0) {
-                    MessageBox.Show("Usuário ou senha inválidos!");
-                    txtUsuario.Clear();
-                    txtSenha.Clear();
-                    txtUsuario.Focus();
-                }
-                else {
+                var query = bd.USUARIOS.Where(usuario => usuario.nome_usuario == txtUsuario.Text);
+                USUARIOS usu = query.FirstOrDefault();
+                string usuResult = usu.nome_usuario;
+                string usuSenhaResult = usu.senha;
+
+                if((txtUsuario.Text == usu.nome_usuario) && Util.descrypt(txtSenha.Password.ToString(), usu.senha)){
                     usuarioLogado = txtUsuario.Text;
                     Menu janela = new Menu();
                     janela.Show();
                     this.Hide();
                     Close();
+                }else{
+                    MessageBox.Show("Usuário ou senha inválidos!");
+                    txtUsuario.Clear();
+                    txtSenha.Clear();
+                    txtUsuario.Focus();
                 }
+           
+
+                /*  if (sql.FirstOrDefault() == 0) {
+                      MessageBox.Show("Usuário ou senha inválidos!");
+                      txtUsuario.Clear();
+                      txtSenha.Clear();
+                      txtUsuario.Focus();
+                  }
+                  else {
+                      usuarioLogado = txtUsuario.Text;
+                      Menu janela = new Menu();
+                      janela.Show();
+                      this.Hide();
+                      Close();
+                  }*/
             }
             catch(Exception a){
                 MessageBox.Show(a.Message);

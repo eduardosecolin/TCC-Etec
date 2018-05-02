@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Globalization;
+using BarberSystem.Utils;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
@@ -35,14 +36,16 @@ namespace BarberSystem.Janelas {
             dgAgendamento.RowBackground = null;
             carrgearGrid();
             carregarComboBox();
+            carregaComboCodClient();
         }
 
         // metodo para campos vazios
         public void verificaCampos(){
-          if(txtCodCliente.Text == ""){
+          if(cbCodCliente.Equals(string.Empty)){
                 agendamento.codcliente = null;
           }else{
-                agendamento.codcliente = int.Parse(txtCodCliente.Text);
+                string codigo = cbCodCliente.Text.Substring(0, 1);
+                agendamento.codcliente = int.Parse(codigo);
           }
         }
 
@@ -57,14 +60,14 @@ namespace BarberSystem.Janelas {
 
         //Botao de Novo
         private void btnCadastrar_Click(object sender, RoutedEventArgs e) {
-            txtCodCliente.Focus();
+            cbCodCliente.Focus();
             limpaCampos();
         }
 
         //Metodo para limpar os campos(textBox)
         public void limpaCampos(){
             txtCodigo.Clear();
-            txtCodCliente.Clear();
+            cbCodCliente.Text = string.Empty;
             txtCliente.Clear();
             txtDescricao.Clear();
             MtxtHinicio.Clear();
@@ -74,6 +77,7 @@ namespace BarberSystem.Janelas {
             MtxtHinicio.Clear();
             dpData.Text = "";
             cbBarbeiro.Text = "";
+            txtCodCliente.Clear();
         }
 
         //Botao limpar
@@ -85,13 +89,17 @@ namespace BarberSystem.Janelas {
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
                 verificaCampos();
-                agendamento.cliente = txtCliente.Text;
-                agendamento.descricao = txtDescricao.Text;
+                agendamento.cliente = Util.VerificarCamposVazios(txtCliente.Text);
+                agendamento.descricao = Util.VerificarCamposVazios(txtDescricao.Text);
                 agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);
                 agendamento.hora_fim = DateTime.Parse(MtxtHfim.Text);
                 agendamento.data = DateTime.Parse(dpData.SelectedDate.ToString());
                 agendamento.codbarbeiro = int.Parse(txtCodBarbeiro.Text);
-                agendamento.nome_barbeiro = cbBarbeiro.Text;
+                agendamento.nome_barbeiro = Util.VerificarCamposVazios(cbBarbeiro.Text);
+
+                if (Util.vazio == true) {
+                    return;
+                }
 
                 conexao.AGENDA.Add(agendamento);
                 conexao.SaveChanges();
@@ -116,10 +124,11 @@ namespace BarberSystem.Janelas {
 
         // pesquisar
         private void BtnPesquisar_Click(object sender, RoutedEventArgs e) {
-            btnGravar.IsEnabled = false;
+            btnGravar.IsEnabled = false;           
             try {
                 if (txtPesquisar.Text != "") {
                     agendamento = conexao.AGENDA.Find(int.Parse(txtPesquisar.Text));
+                    cbCodCliente.Text = agendamento.codcliente.ToString();
                     txtCodCliente.Text = agendamento.codcliente.ToString();
                     txtCodigo.Text = agendamento.codigo.ToString();
                     txtCliente.Text = agendamento.cliente;
@@ -195,6 +204,16 @@ namespace BarberSystem.Janelas {
             cbBarbeiro.DisplayMemberPath = "nome";
         }
 
+        // carregar comboBox com o codigo do cliente
+        public void carregaComboCodClient(){
+            var sql = from a in conexao.CLIENTES
+                      where a.codigo > 0
+                      select a.codigo + " - " + a.nome;
+
+            cbCodCliente.ItemsSource = null;
+            cbCodCliente.ItemsSource = sql.ToList();
+        }
+
         //mostrar barbeiro automatico
         private void txtCodBarbeiro_LostFocus(object sender, RoutedEventArgs e) {
             BARBEIROS barber = new BARBEIROS();
@@ -213,18 +232,21 @@ namespace BarberSystem.Janelas {
         }
 
         // mostrar cliente automatico
-        private void txtCodCliente_LostFocus(object sender, RoutedEventArgs e) {
-            CLIENTES cliente = new CLIENTES();
-            try{
-             if(txtCodCliente.Text != ""){
-                    cliente = conexao.CLIENTES.Find(int.Parse(txtCodCliente.Text));
+        private void txtCliente_GotFocus(object sender, RoutedEventArgs e) {
+            try {
+              if(cbCodCliente.SelectedItem != null){
+                    string codigo = cbCodCliente.Text.Substring(0, 1);
+                    CLIENTES cliente = new CLIENTES();
+                    cliente = conexao.CLIENTES.Find(int.Parse(codigo));
                     txtCliente.Text = cliente.nome;
-             }
-            }catch(Exception){
+
+              }
+            }
+            catch (Exception) {
                 MessageBox.Show("Código do cliente invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                txtCodCliente.Clear();
+                cbCodCliente.Text = "";
                 txtCliente.Clear();
-                txtCodCliente.Focus();
+                cbCodCliente.Focus();
             }
         }
 
@@ -257,6 +279,33 @@ namespace BarberSystem.Janelas {
                 return;
             }
             btnGravar.IsEnabled = true;
+        }
+
+        // mostrar registros da grid pela data selecionada
+        private void dpCurrent_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
+            var sql = from a in conexao.AGENDA
+                      where a.data == dpCurrent.SelectedDate
+                      select new {a.codigo, a.codcliente, a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.codbarbeiro, a.nome_barbeiro };
+            dgAgendamento.ItemsSource = null;
+            dgAgendamento.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+        }
+
+        private void txtCodCliente_GotFocus(object sender, RoutedEventArgs e) {
+            try {
+                if (cbCodCliente.SelectedItem != null) {
+                    string codigo = cbCodCliente.Text.Substring(0, 1);
+                    CLIENTES cliente = new CLIENTES();
+                    cliente = conexao.CLIENTES.Find(int.Parse(codigo));
+                    txtCodCliente.Text = cliente.codigo.ToString();
+
+                }
+            }
+            catch (Exception) {
+                MessageBox.Show("Código do cliente invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                cbCodCliente.Text = "";
+                txtCliente.Clear();
+                cbCodCliente.Focus();
+            }
         }
 
 
@@ -407,5 +456,7 @@ namespace BarberSystem.Janelas {
         public bool DisplayRuler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool AutoFilterDateGrouping { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+
     }
 }
