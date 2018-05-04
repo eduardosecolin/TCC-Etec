@@ -41,11 +41,10 @@ namespace BarberSystem.Janelas {
 
         // metodo para campos vazios
         public void verificaCampos(){
-          if(cbCodCliente.Equals(string.Empty)){
+          if(txtCodCliente.Equals(string.Empty)){
                 agendamento.codcliente = null;
           }else{
-                string codigo = cbCodCliente.Text.Substring(0, 1);
-                agendamento.codcliente = int.Parse(codigo);
+                agendamento.codcliente = int.Parse(txtCodCliente.Text);
           }
         }
 
@@ -124,11 +123,11 @@ namespace BarberSystem.Janelas {
 
         // pesquisar
         private void BtnPesquisar_Click(object sender, RoutedEventArgs e) {
-            btnGravar.IsEnabled = false;           
+            btnGravar.IsEnabled = false;
+            cbCodCliente.IsEnabled = false;
             try {
                 if (txtPesquisar.Text != "") {
                     agendamento = conexao.AGENDA.Find(int.Parse(txtPesquisar.Text));
-                    cbCodCliente.Text = agendamento.codcliente.ToString();
                     txtCodCliente.Text = agendamento.codcliente.ToString();
                     txtCodigo.Text = agendamento.codigo.ToString();
                     txtCliente.Text = agendamento.cliente;
@@ -172,6 +171,7 @@ namespace BarberSystem.Janelas {
                 return;
             }
             btnGravar.IsEnabled = true;
+            cbCodCliente.IsEnabled = true;
         }
 
         // exportar para o excel
@@ -212,23 +212,6 @@ namespace BarberSystem.Janelas {
 
             cbCodCliente.ItemsSource = null;
             cbCodCliente.ItemsSource = sql.ToList();
-        }
-
-        //mostrar barbeiro automatico
-        private void txtCodBarbeiro_LostFocus(object sender, RoutedEventArgs e) {
-            BARBEIROS barber = new BARBEIROS();
-            try{
-              if(txtCodBarbeiro.Text != ""){
-                    barber = conexao.BARBEIROS.Find(int.Parse(txtCodBarbeiro.Text));
-                    cbBarbeiro.Text = barber.nome.ToString();
-              }
-            }catch(Exception){
-                MessageBox.Show("Código do barbeiro invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                txtCodBarbeiro.Clear();
-                cbBarbeiro.Text = "";
-                txtCodBarbeiro.Focus();
-            }
-
         }
 
         // mostrar cliente automatico
@@ -279,6 +262,7 @@ namespace BarberSystem.Janelas {
                 return;
             }
             btnGravar.IsEnabled = true;
+            cbCodCliente.IsEnabled = true;
         }
 
         // mostrar registros da grid pela data selecionada
@@ -307,6 +291,12 @@ namespace BarberSystem.Janelas {
                 cbCodCliente.Focus();
             }
         }
+
+        // pegar codigo do barbeiro
+
+
+        // pegar o nome do barbeiro
+
 
 
 
@@ -458,5 +448,23 @@ namespace BarberSystem.Janelas {
         public bool DisplayWhitespace { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
 
+        // mostrar codigo barbeiro automatico
+        private void cbBarbeiro_DropDownClosed(object sender, EventArgs e) {
+            try {
+                if (cbBarbeiro.SelectedItem != null) {
+                    var sql = conexao.BARBEIROS.Where(barbeiro => barbeiro.nome == cbBarbeiro.Text);
+                    BARBEIROS barber = new BARBEIROS();
+                    barber = sql.FirstOrDefault();
+                    string resultado = barber.codigo.ToString();
+                    txtCodBarbeiro.Text = resultado;
+                }
+            }
+            catch (Exception) {
+                MessageBox.Show("Código do barbeiro invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                cbBarbeiro.Text = "";
+                txtCodBarbeiro.Clear();
+                cbBarbeiro.Focus();
+            }
+        }
     }
 }
