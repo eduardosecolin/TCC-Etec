@@ -33,12 +33,12 @@
 			<MenuItem Header="Logout" Margin="1100,0,0,0" Padding="6,0" Click="MenuItem_Click_13"/>
 		</Menu>
 		<ToolBar x:Name="toolBar" HorizontalAlignment="Left" Height="97" Margin="-2,20,0,0" VerticalAlignment="Top" Width="1364" Background="#FF191919" BorderBrush="#FFF7F5F5" BorderThickness="1" UseLayoutRounding="False">
-			<Button x:Name="btnAgenda" Content="Agenda" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBFBFB" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Click="btnAgenda_Click" Cursor="Hand">
+			<Button x:Name="btnAgenda" Content="Agenda" Style="{StaticResource MyButtonMenu}" Height="78" Margin="0,9,0,3" Width="120" Foreground="#FFFBFBFB" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Click="btnAgenda_Click" Cursor="Hand" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconAgenda.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnClientes" Content="Clientes" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnClientes_Click">
+			<Button x:Name="btnClientes" Content="Clientes" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnClientes_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconClientes.png" Stretch="Uniform"/>
 				</Button.Background>
@@ -48,27 +48,27 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconFornecedores.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnProdutos" Content="Produtos" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnProdutos_Click">
+			<Button x:Name="btnProdutos" Content="Produtos" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnProdutos_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconProdutos.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnEstoque" Content="Estoque" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnEstoque_Click">
+			<Button x:Name="btnEstoque" Content="Estoque" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnEstoque_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconEstoque.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnPagar" Content="Contas a Pagar" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="BtnPagar_Click">
+			<Button x:Name="btnPagar" Content="Contas a Pagar" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="BtnPagar_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconPagar.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnReceber" Content="Contas a Receber" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnReceber_Click">
+			<Button x:Name="btnReceber" Content="Contas a Receber" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnReceber_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconReceber.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnCaixa" Content="Caixa" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnCaixa_Click">
+			<Button x:Name="btnCaixa" Content="Caixa" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnCaixa_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconCaixa.png" Stretch="Uniform"/>
 				</Button.Background>
@@ -78,12 +78,12 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconFuncionarios.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnBarbeiros" Content="Barbeiros" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnBarbeiros_Click">
+			<Button x:Name="btnBarbeiros" Content="Barbeiros" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnBarbeiros_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconBarbeiros.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnConfig" Content="Config. Usuários" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnConfig_Click">
+			<Button x:Name="btnConfig" Content="Config. Usuários" Style="{StaticResource MyButtonMenu}" Height="78" Margin="0,9,0,3" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnConfig_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconConfig.png" Stretch="Uniform"/>
 				</Button.Background>

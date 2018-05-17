@@ -67,7 +67,7 @@ namespace BarberSystem.Janelas {
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
                 usuario.nome_usuario = Util.VerificarCamposVazios(txtUsuario.Text);
-                usuario.senha = Util.VerificarCamposVazios(Util.encrypt(txtSenha.Text));
+                usuario.senha = Util.VerificarCamposVazios(Criptografia.Encrypt(txtSenhaOculta.Password));
                 usuario.endereco = Util.VerificarCamposVazios(txtEndereco.Text);
                 usuario.bairro = Util.VerificarCamposVazios(txtBairro.Text);
                 usuario.cidade = Util.VerificarCamposVazios(txtCidade.Text);
@@ -89,7 +89,7 @@ namespace BarberSystem.Janelas {
                     }
                 }
 
-                txtSenhaOculta.Password = usuario.senha;
+                txtSenha.Text = Criptografia.Decrypt(usuario.senha);
 
                 conexao.USUARIOS.Add(usuario);
                 conexao.SaveChanges();
@@ -124,7 +124,7 @@ namespace BarberSystem.Janelas {
                     usuario = conexao.USUARIOS.Find(int.Parse(txtPesquisar.Text));
                     txtCodigo.Text = usuario.codigo.ToString();
                     txtUsuario.Text = usuario.nome_usuario;
-                    txtSenha.Text = usuario.senha;
+                    txtSenha.Text = Criptografia.Decrypt(usuario.senha);
                     txtSenhaOculta.Password = usuario.senha;
                     txtEndereco.Text = usuario.endereco;
                     txtBairro.Text = usuario.bairro;
@@ -207,7 +207,7 @@ namespace BarberSystem.Janelas {
             try {
                 if (txtCodigo.Text != "") {
                     usuario.nome_usuario = txtUsuario.Text;
-                    usuario.senha = txtSenha.Text;
+                    usuario.senha = Criptografia.Encrypt((txtSenhaOculta.Password));
                     usuario.endereco = txtEndereco.Text;
                     usuario.bairro = txtBairro.Text;
                     usuario.cidade = txtCidade.Text;

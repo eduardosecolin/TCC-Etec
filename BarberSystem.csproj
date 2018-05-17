@@ -128,6 +128,7 @@
     <Compile Include="Janelas\Navegador.xaml.cs">
       <DependentUpon>Navegador.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Criptografia.cs" />
     <Compile Include="Utils\Util.cs" />
     <Page Include="Janelas\Agenda.xaml">
       <SubType>Designer</SubType>

@@ -66,7 +66,7 @@ namespace BarberSystem.Janelas
 
             BancoDados bd = new BancoDados();
             var sql = from u in bd.USUARIOS where u.nome_usuario == Login.usuarioLogado select u.tipo;
-            if(sql.FirstOrDefault() == "admin"){
+            if(string.Equals(sql.FirstOrDefault(),"admin",StringComparison.OrdinalIgnoreCase)){
                 return;
             }else{
                 esconderBotoes();

@@ -41,7 +41,7 @@ namespace BarberSystem.Janelas {
 
         // metodo para campos vazios
         public void verificaCampos(){
-          if(txtCodCliente.Equals(string.Empty)){
+          if(txtCodCliente.Text.Equals(string.Empty)){
                 agendamento.codcliente = null;
           }else{
                 agendamento.codcliente = int.Parse(txtCodCliente.Text);
@@ -99,7 +99,7 @@ namespace BarberSystem.Janelas {
                 if (Util.vazio == true) {
                     return;
                 }
-
+            
                 conexao.AGENDA.Add(agendamento);
                 conexao.SaveChanges();
 
@@ -209,7 +209,7 @@ namespace BarberSystem.Janelas {
             var sql = from a in conexao.CLIENTES
                       where a.codigo > 0
                       select a.codigo + " - " + a.nome;
-
+            
             cbCodCliente.ItemsSource = null;
             cbCodCliente.ItemsSource = sql.ToList();
         }
@@ -292,10 +292,21 @@ namespace BarberSystem.Janelas {
             }
         }
 
-        // pegar codigo do barbeiro
+        private void txtCliente_LostFocus(object sender, RoutedEventArgs e) {
+          if (cbCodCliente.SelectedItem != null) {
+                string codigo = cbCodCliente.Text.Substring(0, 1);
+                CLIENTES cliente = new CLIENTES();
+                cliente = conexao.CLIENTES.Find(int.Parse(codigo));
+                string aux = cliente.nome;
+         
+            if(txtCliente.Text != aux){
+                    txtCliente.Text = string.Empty;
+                    txtCliente.Focus();
+                    return;
+            }
+          }
+        }
 
-
-        // pegar o nome do barbeiro
 
 
 

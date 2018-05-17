@@ -45,7 +45,7 @@ namespace BarberSystem.Janelas {
                 string usuResult = usu.nome_usuario;
                 string usuSenhaResult = usu.senha;
 
-                if((txtUsuario.Text == usu.nome_usuario) && Util.descrypt(txtSenha.Password.ToString(), usu.senha)){
+                if((txtUsuario.Text == usu.nome_usuario) && (txtSenha.Password.ToString() == Criptografia.Decrypt(usu.senha))){
                     usuarioLogado = txtUsuario.Text;
                     Menu janela = new Menu();
                     janela.Show();

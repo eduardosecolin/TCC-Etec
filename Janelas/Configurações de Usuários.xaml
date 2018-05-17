@@ -15,7 +15,7 @@
 			<ImageBrush/>
 		</Grid.Background>
 		<TextBox x:Name="txtSenha" HorizontalAlignment="Left" Height="23" Margin="576,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" FontSize="14" FontWeight="SemiBold" TabIndex="2" MaxLength="15" Visibility="Hidden"/>
-		<PasswordBox x:Name="txtSenhaOculta" HorizontalAlignment="Left" Margin="576,93,0,0" VerticalAlignment="Top" Width="207" Height="23" MaxLength="15"/>
+		<PasswordBox x:Name="txtSenhaOculta" HorizontalAlignment="Left" Margin="576,93,0,0" VerticalAlignment="Top" Width="207" Height="23" MaxLength="15" TabIndex="2"/>
 
 		<Rectangle Fill="#FFF10404" HorizontalAlignment="Left" Height="30" Margin="0,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="1117" Opacity="0.3"/>
 
