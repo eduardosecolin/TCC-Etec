@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using BarberSystem.Dados;
 using System.Data.Entity.Migrations;
 using System.Globalization;
+using BarberSystem.Controle;
 
 namespace BarberSystem.Janelas
 {
@@ -51,6 +52,8 @@ namespace BarberSystem.Janelas
                 limpaCampos();
             }catch(Exception a){
                 MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(a);
+                Log.logMessage(a.Message);
                 return;
             }
         }

@@ -15,6 +15,7 @@ using System.Threading;
 using System.Data.SqlClient;
 using BarberSystem.Utils;
 using BarberSystem.Dados;
+using BarberSystem.Controle;
 
 namespace BarberSystem.Janelas {
     /// <summary>
@@ -75,6 +76,8 @@ namespace BarberSystem.Janelas {
             }
             catch(Exception a){
                 MessageBox.Show(a.Message);
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 

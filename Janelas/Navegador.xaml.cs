@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BarberSystem.Controle;
 
 namespace BarberSystem.Janelas {
     /// <summary>
@@ -29,6 +30,8 @@ namespace BarberSystem.Janelas {
             }
             catch (Exception a) {
                 MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 
@@ -39,6 +42,8 @@ namespace BarberSystem.Janelas {
             }
             catch (Exception a) {
                 MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 
@@ -59,6 +64,8 @@ namespace BarberSystem.Janelas {
                 }
             }catch(Exception a){
                 MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 
@@ -69,6 +76,8 @@ namespace BarberSystem.Janelas {
             }
             catch (Exception a) {
                 MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
     }

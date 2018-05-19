@@ -1,0 +1,5 @@
+18/05/2018 09:12:29
+Cadeia de caracteres não foi reconhecida como DateTime válido.
+   em System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   em System.DateTime.Parse(String s)
+   em BarberSystem.Janelas.Agenda.btnAlterar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Agenda.xaml.cs:linha 245

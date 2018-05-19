@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BarberSystem.Dados;
 using System.Diagnostics;
+using BarberSystem.Controle;
 
 namespace BarberSystem.Janelas
 {
@@ -59,17 +60,22 @@ namespace BarberSystem.Janelas
 
         //Quando form carregado validar usuario(admin ou user) e mostrar items do statusBar
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            
-            sbData.Content = sbData.Content + " " + DateTime.Now.ToLongDateString();
-            sbUsuario.Content = sbUsuario.Content + " " + Login.usuarioLogado;
+            try {
+                sbData.Content = sbData.Content + " " + DateTime.Now.ToLongDateString();
+                sbUsuario.Content = sbUsuario.Content + " " + Login.usuarioLogado;
 
 
-            BancoDados bd = new BancoDados();
-            var sql = from u in bd.USUARIOS where u.nome_usuario == Login.usuarioLogado select u.tipo;
-            if(string.Equals(sql.FirstOrDefault(),"admin",StringComparison.OrdinalIgnoreCase)){
-                return;
-            }else{
-                esconderBotoes();
+                BancoDados bd = new BancoDados();
+                var sql = from u in bd.USUARIOS where u.nome_usuario == Login.usuarioLogado select u.tipo;
+                if (string.Equals(sql.FirstOrDefault(), "admin", StringComparison.OrdinalIgnoreCase)) {
+                    return;
+                }
+                else {
+                    esconderBotoes();
+                }
+            }catch(Exception a){
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 
@@ -97,10 +103,16 @@ namespace BarberSystem.Janelas
 
         //Popular o dataGrid
         public void carregaGrig() {
-            var sql = from a in conexao.AGENDA where a.data == DateTime.Today 
-            select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
-            dgAgenda.ItemsSource = null;
-            dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+            try {
+                var sql = from a in conexao.AGENDA
+                          where a.data == DateTime.Today
+                          select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
+                dgAgenda.ItemsSource = null;
+                dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+            }catch(Exception a){
+                Log.logException(a);
+                Log.logMessage(a.Message);
+            }
         }
 
 
@@ -177,11 +189,16 @@ namespace BarberSystem.Janelas
 
         // selecionar a data e mostrar no datagrid
         private void calendario_SelectedDatesChanged(object sender, SelectionChangedEventArgs e) {
-            var sql = from a in conexao.AGENDA
-                      where a.data == calendario.SelectedDate
-                      select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
-            dgAgenda.ItemsSource = null;
-            dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+            try {
+                var sql = from a in conexao.AGENDA
+                          where a.data == calendario.SelectedDate
+                          select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
+                dgAgenda.ItemsSource = null;
+                dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+            }catch(Exception a){
+                Log.logException(a);
+                Log.logMessage(a.Message);
+            }
         }
 
         // botao funcionarios
@@ -233,13 +250,18 @@ namespace BarberSystem.Janelas
 
         // botao logout menuItem
         private void MenuItem_Click_13(object sender, RoutedEventArgs e) {
-            Login janela = new Login();
-            janela.Show();
-            if (janelaAgenda != null) {
-                janelaAgenda.Close();
+            try {
+                Login janela = new Login();
+                janela.Show();
+                if (janelaAgenda != null) {
+                    janelaAgenda.Close();
+                }
+                fecharJanelasAbertas();
+                this.Close();
+            }catch(Exception a){
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
-            fecharJanelasAbertas();
-            this.Close();
         }
 
         // metodo para fechar as janelas

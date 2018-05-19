@@ -3,6 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Threading;
+using BarberSystem.Controle;
 
 
 namespace BarberSystem {
@@ -49,6 +50,8 @@ namespace BarberSystem {
             }
             catch (Exception a) {
                 MessageBox.Show(a.Message);
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
     }

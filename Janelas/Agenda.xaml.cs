@@ -5,13 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Globalization;
+using BarberSystem.Controle;
 using BarberSystem.Utils;
 using BarberSystem.Dados;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -110,6 +104,8 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
             }catch(Exception a){
                 MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(a);
+                Log.logMessage(a.Message);
                 return;
             }
         }
@@ -146,6 +142,8 @@ namespace BarberSystem.Janelas {
                 MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK, 
                                  MessageBoxImage.Exclamation);
                 limpaCampos();
+                Log.logException(a);
+                Log.logMessage(a.Message);
                 return;
             }
         }
@@ -225,11 +223,13 @@ namespace BarberSystem.Janelas {
 
               }
             }
-            catch (Exception) {
+            catch (Exception a) {
                 MessageBox.Show("Código do cliente invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                 cbCodCliente.Text = "";
                 txtCliente.Clear();
                 cbCodCliente.Focus();
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 
@@ -259,6 +259,8 @@ namespace BarberSystem.Janelas {
             }catch(Exception a){
                 MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
+                Log.logException(a);
+                Log.logMessage(a.Message);
                 return;
             }
             btnGravar.IsEnabled = true;
@@ -284,11 +286,13 @@ namespace BarberSystem.Janelas {
 
                 }
             }
-            catch (Exception) {
+            catch (Exception a) {
                 MessageBox.Show("Código do cliente invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                 cbCodCliente.Text = "";
                 txtCliente.Clear();
                 cbCodCliente.Focus();
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 

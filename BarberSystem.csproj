@@ -110,6 +110,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controle\Log.cs" />
     <Compile Include="Dados\AGENDA.cs" />
     <Compile Include="Dados\BancoDados.cs" />
     <Compile Include="Dados\BARBEIROS.cs" />

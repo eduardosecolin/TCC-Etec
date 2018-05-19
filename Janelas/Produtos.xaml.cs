@@ -16,6 +16,7 @@ using BarberSystem.Dados;
 using System.Data.Entity.Migrations;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using BarberSystem.Controle;
 
 namespace BarberSystem.Janelas
 {
@@ -81,6 +82,8 @@ namespace BarberSystem.Janelas
             catch (Exception a) {
                 MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
+                Log.logException(a);
+                Log.logMessage(a.Message);
                 return;
             }
             btnGravar.IsEnabled = true;
@@ -107,6 +110,8 @@ namespace BarberSystem.Janelas
                 MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
                                  MessageBoxImage.Exclamation);
                 limpaCampos();
+                Log.logException(a);
+                Log.logMessage(a.Message);
                 return;
             }
         }
@@ -155,6 +160,8 @@ namespace BarberSystem.Janelas
                 limpaCampos();
             }catch(Exception a){
                 MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(a);
+                Log.logMessage(a.Message);
                 return;
             }
         }
@@ -191,6 +198,8 @@ namespace BarberSystem.Janelas
                 cbCodFornecedor.Text = "";
                 txtFornecedor.Clear();
                 cbCodFornecedor.Focus();
+                Log.logException(a);
+                Log.logMessage(a.Message);
             }
         }
 
