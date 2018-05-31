@@ -13,8 +13,12 @@
 	<Window.CacheMode>
 		<BitmapCache/>
 	</Window.CacheMode>
+	<Border Background="Black" CornerRadius="22,20,20,20">
 	<Grid Margin="0,0,2,0">
-		<ProgressBar x:Name="PB" HorizontalAlignment="Left" Height="5" Margin="0,521,0,0" VerticalAlignment="Top" Width="553" Background="#FF590000" BorderBrush="#FF590000" Foreground="#FFF90404"/>
+			<Grid.Background>
+				<ImageBrush ImageSource="imagens/logoSplash.png" Stretch="Uniform"/>
+			</Grid.Background>
+			<ProgressBar x:Name="PB" HorizontalAlignment="Left" Height="5" Margin="0,521,0,0" VerticalAlignment="Top" Width="553" Background="#FF590000" BorderBrush="#FF590000" Foreground="#FFF90404"/>
 		<Rectangle Fill="#FF9B0101" HorizontalAlignment="Left" Height="5" Margin="0,510,0,0" Stroke="Black" VerticalAlignment="Top" Width="553" Opacity="0.75"/>
 		<Rectangle Fill="#FF9B0101" HorizontalAlignment="Left" Height="5" Margin="0,502,0,0" Stroke="Black" VerticalAlignment="Top" Width="553" Opacity="0.5"/>
 		<Rectangle Fill="#FF9B0101" HorizontalAlignment="Left" Height="5" Margin="0,494,0,0" Stroke="Black" VerticalAlignment="Top" Width="553" Opacity="0.25"/>
@@ -30,4 +34,5 @@
 		</Grid>
 
 	</Grid>
+	</Border>
 </Window>

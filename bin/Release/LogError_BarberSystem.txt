@@ -1,0 +1,54 @@
+19/05/2018 10:44:12
+Cadeia de caracteres não foi reconhecida como DateTime válido.
+   em System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   em BarberSystem.Janelas.Agenda.btnGravar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Agenda.xaml.cs:linha 87
+31/05/2018 11:37:01
+Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
+   em System.Data.Entity.Migrations.DbMigrator.Upgrade(IEnumerable`1 pendingMigrations, String targetMigrationId, String lastMigrationId)
+   em System.Data.Entity.Migrations.DbMigrator.UpdateInternal(String targetMigration)
+   em System.Data.Entity.Migrations.DbMigrator.<>c__DisplayClasse.<Update>b__d()
+   em System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   em System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   em System.Data.Entity.MigrateDatabaseToLatestVersion`2.InitializeDatabase(TContext context)
+   em System.Data.Entity.Internal.InternalContext.<>c__DisplayClassf`1.<CreateInitializationAction>b__e()
+   em System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   em System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+   em System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+   em System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+   em System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+   em System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+   em System.Data.Entity.Internal.InternalContext.Initialize()
+   em System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   em System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   em System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   em System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   em System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   em BarberSystem.Janelas.Login.button_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Login.xaml.cs:linha 44
+31/05/2018 11:40:35
+Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
+   em System.Data.Entity.Migrations.DbMigrator.Upgrade(IEnumerable`1 pendingMigrations, String targetMigrationId, String lastMigrationId)
+   em System.Data.Entity.Migrations.DbMigrator.UpdateInternal(String targetMigration)
+   em System.Data.Entity.Migrations.DbMigrator.<>c__DisplayClasse.<Update>b__d()
+   em System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   em System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   em System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   em System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext, DatabaseExistenceState existenceState)
+   em System.Data.Entity.Database.Create(DatabaseExistenceState existenceState)
+   em System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+   em System.Data.Entity.Internal.InternalContext.<>c__DisplayClassf`1.<CreateInitializationAction>b__e()
+   em System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   em System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+   em System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+   em System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+   em System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+   em System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+   em System.Data.Entity.Internal.InternalContext.Initialize()
+   em System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   em System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   em System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   em System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   em System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   em BarberSystem.Janelas.Login.button_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Login.xaml.cs:linha 44
+31/05/2018 12:14:15
+Referência de objeto não definida para uma instância de um objeto.
+   em BarberSystem.Janelas.Login.button_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Login.xaml.cs:linha 44

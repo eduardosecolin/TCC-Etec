@@ -1,0 +1,4 @@
+19/05/2018 10:44:12 Cadeia de caracteres não foi reconhecida como DateTime válido.
+31/05/2018 11:37:01 Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
+31/05/2018 11:40:35 Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
+31/05/2018 12:14:15 Referência de objeto não definida para uma instância de um objeto.

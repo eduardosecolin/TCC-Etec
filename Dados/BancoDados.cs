@@ -3,10 +3,12 @@ namespace BarberSystem.Dados {
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using BarberSystem.Migrations;
 
     public partial class BancoDados : DbContext {
         public BancoDados()
-            : base("name=BancoDados") {
+            : base("name=BARBER_DATABASE") {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<BancoDados>());
         }
 
         public virtual DbSet<AGENDA> AGENDA { get; set; }

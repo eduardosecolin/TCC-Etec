@@ -4,7 +4,8 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Threading;
 using BarberSystem.Controle;
-
+using BarberSystem.Dados;
+using System.Data.Entity;
 
 namespace BarberSystem {
     /// <summary>
@@ -12,11 +13,21 @@ namespace BarberSystem {
     /// </summary>
     public partial class MainWindow : Window {
 
+        public BancoDados conexao = new BancoDados();
+
         private const int TEMP = 700;
-         public MainWindow() {
+        public MainWindow() {
             InitializeComponent();
+            // SqlServer.createIfNotExists("Data Source="+SqlServer.getServer()+"\\"+ SqlServer.getInstance()+";Initial Catalog=BARBER_DATABASE;Integrated Security=True");
+            //SqlServer.existeTabela("dbo.AGENDA");
+            conexao.Database.CreateIfNotExists();
+            if (!SqlServer.existeDados()) {
+              SqlServer.acesso();
+            }
+
             carregarprogressBar();
         }
+
         private delegate void ProgressBarDelegate();
 
         private void criarConstrucao() {

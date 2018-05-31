@@ -37,7 +37,7 @@
     <StartupObject>BarberSystem.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>iconeEXE.ico</ApplicationIcon>
+    <ApplicationIcon>iconeExeFinal.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
@@ -111,6 +111,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controle\Log.cs" />
+    <Compile Include="Controle\SqlServer.cs" />
     <Compile Include="Dados\AGENDA.cs" />
     <Compile Include="Dados\BancoDados.cs" />
     <Compile Include="Dados\BARBEIROS.cs" />
@@ -129,6 +130,11 @@
     <Compile Include="Janelas\Navegador.xaml.cs">
       <DependentUpon>Navegador.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805311445032_BARBER_DATABASE.cs" />
+    <Compile Include="Migrations\201805311445032_BARBER_DATABASE.Designer.cs">
+      <DependentUpon>201805311445032_BARBER_DATABASE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Utils\Criptografia.cs" />
     <Compile Include="Utils\Util.cs" />
     <Page Include="Janelas\Agenda.xaml">
@@ -257,6 +263,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201805311445032_BARBER_DATABASE.resx">
+      <DependentUpon>201805311445032_BARBER_DATABASE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -268,7 +277,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imagens\logoSplash.png" />
@@ -417,6 +428,9 @@
     <Resource Include="Gifs\BarberPole.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconeExeFinal.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

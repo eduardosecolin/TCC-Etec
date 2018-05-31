@@ -21,7 +21,6 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\ro\Xceed.Wpf.
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.csprojResolveAssemblyReference.cache
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.csproj.ResolveComReference.cache
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Janelas\Agenda.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Janelas\Barbeiros.g.cs
@@ -64,3 +63,18 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.csproj.CopyComplete
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.exe
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\ControlzEx.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\MahApps.Metro.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\MaterialDesignColors.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\MaterialDesignThemes.Wpf.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\System.Windows.Interactivity.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\XamlAnimatedGif.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\ControlzEx.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\MahApps.Metro.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\MahApps.Metro.xml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\MaterialDesignThemes.Wpf.pdb
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\MaterialDesignThemes.Wpf.xml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Janelas\Navegador.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Janelas\Navegador.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.csprojResolveAssemblyReference.cache
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.Migrations.BARBER_DATABASE.resources

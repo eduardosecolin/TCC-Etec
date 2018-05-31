@@ -3,3 +3,9 @@ Cadeia de caracteres não foi reconhecida como DateTime válido.
    em System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
    em System.DateTime.Parse(String s)
    em BarberSystem.Janelas.Agenda.btnAlterar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Agenda.xaml.cs:linha 245
+19/05/2018 01:20:38
+Referência de objeto não definida para uma instância de um objeto.
+   em BarberSystem.Janelas.Login.button_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Login.xaml.cs:linha 46
+19/05/2018 01:20:56
+Referência de objeto não definida para uma instância de um objeto.
+   em BarberSystem.Janelas.Login.button_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Login.xaml.cs:linha 46

@@ -26,7 +26,7 @@ namespace BarberSystem.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=EDUARDO-PC\\SQLEXPRESS;Initial Catalog=BarberBanco;Integrated Security" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=BARBER_DATABASE;Integrated Security" +
             "=True")]
         public string BarberBancoConnectionString {
             get {
