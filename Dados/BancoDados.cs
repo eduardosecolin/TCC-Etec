@@ -8,7 +8,7 @@ namespace BarberSystem.Dados {
     public partial class BancoDados : DbContext {
         public BancoDados()
             : base("name=BARBER_DATABASE") {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<BancoDados>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BancoDados,Configuration>());
         }
 
         public virtual DbSet<AGENDA> AGENDA { get; set; }

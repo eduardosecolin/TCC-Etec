@@ -18,13 +18,8 @@ namespace BarberSystem {
         private const int TEMP = 700;
         public MainWindow() {
             InitializeComponent();
-            // SqlServer.createIfNotExists("Data Source="+SqlServer.getServer()+"\\"+ SqlServer.getInstance()+";Initial Catalog=BARBER_DATABASE;Integrated Security=True");
-            //SqlServer.existeTabela("dbo.AGENDA");
-            conexao.Database.CreateIfNotExists();
-            if (!SqlServer.existeDados()) {
-              SqlServer.acesso();
-            }
-
+            //createDataBase();
+            createDataBaseEF();
             carregarprogressBar();
         }
 
@@ -63,6 +58,21 @@ namespace BarberSystem {
                 MessageBox.Show(a.Message);
                 Log.logException(a);
                 Log.logMessage(a.Message);
+            }
+        }
+
+        private void createDataBase(){
+            SqlServer.createIfNotExists("Data Source=" + SqlServer.getServer() + "\\" + SqlServer.getInstance() + ";Initial Catalog=BARBER_DATABASE;Integrated Security=True");
+            SqlServer.existeTabela("dbo.AGENDA");
+            if (!SqlServer.existeDados()) {
+                SqlServer.acesso();
+            }
+        }
+
+        private void createDataBaseEF(){
+            conexao.Database.CreateIfNotExists();
+            if (!SqlServer.existeDados()) {
+                SqlServer.acesso();
             }
         }
     }

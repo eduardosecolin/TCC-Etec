@@ -1,4 +1,3 @@
-C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csprojResolveAssemblyReference.cache
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\MainWindow.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\App.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem_MarkupCompile.cache
@@ -77,3 +76,5 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\MaterialDesignT
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Navegador.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Navegador.baml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\XamlAnimatedGif.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.Migrations.BARBER_DATABASE.resources
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csprojResolveAssemblyReference.cache

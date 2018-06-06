@@ -27,7 +27,7 @@
 		<wpfTool:MaskedTextBox  x:Name="MtxtHfim" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="695,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="14" FontWeight="SemiBold" TabIndex="6"/>
 		<Label x:Name="label_Copy4" Content="Horário Final:" HorizontalAlignment="Left" Margin="602,172,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy5" Content="Data:" HorizontalAlignment="Left" Margin="87,213,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="127,214,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="7" Width="163" CalendarStyle="{DynamicResource DateTimeCalendar}" mah:ControlsHelper.FocusBorderBrush="#FF3A3939" mah:ControlsHelper.MouseOverBorderBrush="#FF3A3939" Background="#FF191919"/>
+		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="127,214,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="7" Width="163" CalendarStyle="{DynamicResource DateTimeCalendar}" Background="#FF191919"/>
 		<ComboBox x:Name="cbBarbeiro" HorizontalAlignment="Left" Margin="360,213,0,0" VerticalAlignment="Top" Width="185" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8" DropDownClosed="cbBarbeiro_DropDownClosed">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
