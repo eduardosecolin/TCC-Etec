@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,5 +12,12 @@ namespace BarberSystem {
     /// Interação lógica para App.xaml
     /// </summary>
     public partial class App : Application {
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(App));
+        protected override void OnStartup(StartupEventArgs e) {
+            log4net.Config.XmlConfigurator.Configure();
+            log.Info("     =============  Started Logging  =============     ");
+            base.OnStartup(e);
+        }
     }
 }

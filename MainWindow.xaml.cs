@@ -6,12 +6,16 @@ using System.Windows.Threading;
 using BarberSystem.Controle;
 using BarberSystem.Dados;
 using System.Data.Entity;
+using log4net;
 
 namespace BarberSystem {
     /// <summary>
     /// Interação lógica para MainWindow.xam
     /// </summary>
     public partial class MainWindow : Window {
+
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
         public BancoDados conexao = new BancoDados();
 
@@ -20,7 +24,11 @@ namespace BarberSystem {
             InitializeComponent();
             //createDataBase();
             createDataBaseEF();
+            if (!SqlServer.existeDados()) {
+                SqlServer.acesso();
+            }
             carregarprogressBar();
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         private delegate void ProgressBarDelegate();
@@ -70,9 +78,8 @@ namespace BarberSystem {
         }
 
         private void createDataBaseEF(){
-            conexao.Database.CreateIfNotExists();
-            if (!SqlServer.existeDados()) {
-                SqlServer.acesso();
+            if (!conexao.Database.Exists()) {
+                conexao.Database.CreateIfNotExists();
             }
         }
     }

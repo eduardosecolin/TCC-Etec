@@ -2,3 +2,6 @@
 31/05/2018 11:37:01 Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
 31/05/2018 11:40:35 Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
 31/05/2018 12:14:15 Referência de objeto não definida para uma instância de um objeto.
+06/06/2018 05:33:53 Referência de objeto não definida para uma instância de um objeto.
+06/06/2018 05:33:59 Referência de objeto não definida para uma instância de um objeto.
+06/06/2018 05:49:51 Erro de rede ou específico à instância ao estabelecer conexão com o SQL Server. O servidor não foi encontrado ou não estava acessível. Verifique se o nome da instância está correto e se o SQL Server está configurado para permitir conexões remotas. (provider: Named Pipes Provider, error: 40 - Não foi possível abrir uma conexão com o SQL Server)

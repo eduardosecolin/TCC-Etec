@@ -12,7 +12,7 @@ namespace BarberSystem.Controle {
     public class SqlServer {
 
         // criar banco de dados se nao existir
-        public string ConnectionString { get; protected set; }
+        public static string ConnectionString { get; protected set; }
         public SqlServer(string connectionString) {
             ConnectionString = connectionString;
         }
@@ -22,7 +22,7 @@ namespace BarberSystem.Controle {
         }
 
         public void createIfNotExists() {
-            try {
+          /*  try {
                 var connectionStringBuilder = new SqlConnectionStringBuilder(ConnectionString);
                 var databaseName = connectionStringBuilder.InitialCatalog;
                 connectionStringBuilder.InitialCatalog = "master";
@@ -44,8 +44,37 @@ namespace BarberSystem.Controle {
             catch (Exception e) {
                 Log.logException(e);
                 Log.logMessage(e.Message);
-            }
+            }*/
 
+        }
+
+        public static bool existDatabase(){
+            bool result = false;
+            try {
+                var connectionStringBuilder = new SqlConnectionStringBuilder(ConnectionString);
+                var databaseName = connectionStringBuilder.InitialCatalog;
+                connectionStringBuilder.InitialCatalog = "master";
+                using (var connection = new SqlConnection(connectionStringBuilder.ToString())) {
+                    connection.Open();
+                    using (var cmd = connection.CreateCommand()) {
+                        cmd.CommandText = string.Format("select * from master.dbo.sysdatabases where name='{0}'", databaseName);
+                        using (var reader = cmd.ExecuteReader()) {
+                            if (reader.HasRows) {
+                                result = false;
+                            }else{
+                                result = true;
+                            }
+                           
+                        }
+                    }
+                }
+                return result;
+            }
+            catch (Exception e) {
+                Log.logException(e);
+                Log.logMessage(e.Message);
+                return result;
+            }
         }
 
         // verificar se existe as tabelas
@@ -81,20 +110,11 @@ namespace BarberSystem.Controle {
 
         // verificar se a tabela esta fazia
         public static bool existeDados() {
-            string connection = "Data Source="+getServer()+"\\"+getInstance()+";Initial Catalog=BARBER_DATABASE;Integrated Security=True";
-            SqlConnection con = new SqlConnection(connection);
-            string sql = string.Format("select * from dbo.USUARIOS");
-            SqlCommand cmd = new SqlCommand(sql, con);
-            DataTable dados = new DataTable();
-            con.Open();
-            dados.Load(cmd.ExecuteReader());
-            if (dados.Rows.Count > 0) {
-                con.Close();
-                return true;
-            }
-            else {
-                con.Close();
+            BancoDados conexao = new BancoDados();
+            if(!conexao.USUARIOS.Any()){
                 return false;
+            }else{
+                return true;
             }
         }
 

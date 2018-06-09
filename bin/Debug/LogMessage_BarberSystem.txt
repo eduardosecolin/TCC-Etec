@@ -2,3 +2,10 @@
 18/05/2018 09:12:30 Cadeia de caracteres não foi reconhecida como DateTime válido.
 19/05/2018 01:20:38 Referência de objeto não definida para uma instância de um objeto.
 19/05/2018 01:20:56 Referência de objeto não definida para uma instância de um objeto.
+06/06/2018 05:53:20 Erro de rede ou específico à instância ao estabelecer conexão com o SQL Server. O servidor não foi encontrado ou não estava acessível. Verifique se o nome da instância está correto e se o SQL Server está configurado para permitir conexões remotas. (provider: Named Pipes Provider, error: 40 - Não foi possível abrir uma conexão com o SQL Server)
+08/06/2018 10:36:56 Referência de objeto não definida para uma instância de um objeto.
+08/06/2018 10:37:04 Referência de objeto não definida para uma instância de um objeto.
+08/06/2018 10:37:14 Método não-estático requer um destino.
+08/06/2018 10:37:18 Método não-estático requer um destino.
+08/06/2018 11:03:35 Referência de objeto não definida para uma instância de um objeto.
+08/06/2018 11:03:36 Referência de objeto não definida para uma instância de um objeto.

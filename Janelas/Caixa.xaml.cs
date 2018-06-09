@@ -65,15 +65,22 @@ namespace BarberSystem.Janelas
                 limpaCampos();
                 return;
             }
-            int codigo = 1;
-            caixa = conexao.CAIXA.Find(codigo);
-            caixa.codigo = codigo;
-            caixa.entrada = double.Parse(txtEntrada.Text);
-            caixa.entradaCaixa(decimal.Parse(txtEntrada.Text));
-            lblTotal.Content = caixa.vl_total.ToString();
-            caixa.vl_total = decimal.Parse(lblTotal.Content.ToString());
-            txtEntrada.Clear();
-            mudaCorRetangulo();
+            try {
+                int codigo = 1;
+                if (conexao.CAIXA.Count() > 0) {
+                    caixa = conexao.CAIXA.Find(codigo);
+                }
+                caixa.entrada = double.Parse(txtEntrada.Text);
+                caixa.entradaCaixa(decimal.Parse(txtEntrada.Text));
+                lblTotal.Content = caixa.vl_total.ToString();
+                caixa.vl_total = decimal.Parse(lblTotal.Content.ToString());
+                txtEntrada.Clear();
+                mudaCorRetangulo();
+            }catch(Exception ex){
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+            }
+            
         }
 
         // botao saida
@@ -83,15 +90,21 @@ namespace BarberSystem.Janelas
                 limpaCampos();
                 return;
             }
-            int codigo = 1;
-            caixa = conexao.CAIXA.Find(codigo);
-            caixa.codigo = codigo;
-            caixa.saida = double.Parse(txtSaida.Text);
-            caixa.saidaCaixa(decimal.Parse(txtSaida.Text));
-            lblTotal.Content = caixa.vl_total.ToString();
-            caixa.vl_total = decimal.Parse(lblTotal.Content.ToString());
-            txtSaida.Clear();
-            mudaCorRetangulo();
+            try {
+                int codigo = 1;
+                if (conexao.CAIXA.Count() > 0) {
+                    caixa = conexao.CAIXA.Find(codigo);
+                }
+                caixa.saida = double.Parse(txtSaida.Text);
+                caixa.saidaCaixa(decimal.Parse(txtSaida.Text));
+                lblTotal.Content = caixa.vl_total.ToString();
+                caixa.vl_total = decimal.Parse(lblTotal.Content.ToString());
+                txtSaida.Clear();
+                mudaCorRetangulo();
+            }catch(Exception ex){
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+            }
         }
 
         // botao limpar
