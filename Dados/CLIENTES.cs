@@ -51,6 +51,10 @@ namespace BarberSystem.Dados{
         [StringLength(15)]
         public string sexo { get; set; }
 
+        [Required]
+        [StringLength(15)]
+        public string status_cliente { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AGENDA> AGENDA { get; set; }
     }

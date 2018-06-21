@@ -105,33 +105,37 @@ namespace BarberSystem.Janelas {
 
         // botao excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(resultado == MessageBoxResult.Yes){
-                barbeiro = conexao.BARBEIROS.Remove(barbeiro);
-                barbeiro.nome = null;
-                barbeiro.endereco = null;
-                barbeiro.numero = null;
-                barbeiro.bairro = null;
-                barbeiro.cidade = null;
-                barbeiro.estado = null;
-                barbeiro.cep = null;
-                barbeiro.sexo = null;
-                barbeiro.celular = null;
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carregaGrid();
-                limpaCampos();
+            try {
+                MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultado == MessageBoxResult.Yes) {
+                    barbeiro = conexao.BARBEIROS.Remove(barbeiro);
+                    barbeiro.nome = null;
+                    barbeiro.endereco = null;
+                    barbeiro.numero = null;
+                    barbeiro.bairro = null;
+                    barbeiro.cidade = null;
+                    barbeiro.estado = null;
+                    barbeiro.cep = null;
+                    barbeiro.sexo = null;
+                    barbeiro.celular = null;
+                    conexao.SaveChanges();
+                    MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    carregaGrid();
+                    limpaCampos();
+                }
+                else {
+                    limpaCampos();
+                    return;
+                }
+            } catch(Exception ex){
+                MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
             }
-            else{
-                limpaCampos();
-                return;
-            }
-            btnGravar.IsEnabled = true;
         }
 
         // botao pesquisar
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
-            btnGravar.IsEnabled = false;
             try {
                 if (txtPesquisar.Text != "") {
                     barbeiro = conexao.BARBEIROS.Find(int.Parse(txtPesquisar.Text));
@@ -199,7 +203,6 @@ namespace BarberSystem.Janelas {
                 Log.logMessage(a.Message);
                 return;
             }
-            btnGravar.IsEnabled = true;
         }
     }
 }

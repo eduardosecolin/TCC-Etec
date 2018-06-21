@@ -97,7 +97,7 @@
 			<Separator/>
 			<Label Content="Bem vindo ao sistema!" FontSize="9" FontWeight="SemiBold" Foreground="#FFF9F9F9"/>
 		</StatusBar>
-		<DataGrid x:Name="dgAgenda" HorizontalAlignment="Left" Height="535" Margin="307,135,0,0" VerticalAlignment="Top" Width="1018" Background="{x:Null}" BorderBrush="{x:Null}" AutoGenerateColumns="False" FontWeight="SemiBold" Focusable="False">
+		<DataGrid x:Name="dgAgenda" HorizontalAlignment="Left" Height="535" Margin="307,135,0,0" VerticalAlignment="Top" Width="1018" Background="{x:Null}" BorderBrush="{x:Null}" AutoGenerateColumns="False" FontWeight="SemiBold" Focusable="False" Foreground="#FF040404">
 			<DataGrid.Columns>
 				<DataGridTextColumn Binding="{Binding cliente}"  Foreground="#FFFDF8F8" Header="Cliente" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" Width="200"/>
 				<DataGridTextColumn Binding="{Binding descricao}"  Foreground="#FFFDF8F8" Header="Descrição" IsReadOnly="True" FontWeight="SemiBold" FontSize="11" Width="400"/>

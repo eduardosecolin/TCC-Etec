@@ -119,7 +119,13 @@ namespace BarberSystem.Janelas
 
         // botao calculadora windows
         private void btnCalcWindows_Click(object sender, RoutedEventArgs e) {
-            System.Diagnostics.Process.Start("calc.exe");
+            try {
+                System.Diagnostics.Process.Start("calc.exe");
+            }catch(Exception ex){
+                MessageBox.Show("Sistema não encontrou a calculadora!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+            }
         }
 
         // colorir retangulo

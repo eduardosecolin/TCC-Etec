@@ -56,6 +56,7 @@ namespace BarberSystem.Janelas
             MtxtCelular.Clear();
             txtPesquisar.Clear();
             cbSexo.Text = "";
+            cbStatus.Text = "";
         }
 
         // botao novo
@@ -77,6 +78,7 @@ namespace BarberSystem.Janelas
                 cliente.cep = MtxtCep.Text;
                 cliente.telefone = MtxtTelefone.Text;
                 cliente.celular = MtxtCelular.Text;
+                cliente.status_cliente = Util.VerificarCamposVazios(cbStatus.Text);
 
                 if (Util.vazio == true) {
                     return;
@@ -110,29 +112,47 @@ namespace BarberSystem.Janelas
 
         // botao excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir",
-                                                          MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(resultado == MessageBoxResult.Yes){
-                cliente = conexao.CLIENTES.Remove(cliente);
-                cliente.nome = null;
-                cliente.sexo = null;
-                cliente.endereco = null;
-                cliente.numero = null;
-                cliente.bairro = null;
-                cliente.cidade = null;
-                cliente.estado = null;
-                cliente.cep = null;
-                cliente.telefone = null;
-                cliente.celular = null;
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carregarGrid();
-                limpaCampos();
-            }else{
-                limpaCampos();
-                return;
+            try {
+                if (txtCodigo.Text != string.Empty) {
+                    string status = conexao.Database.SqlQuery<string>("select status_cliente from clientes where codigo=" + int.Parse(txtCodigo.Text)).FirstOrDefault();
+                    if (status.Equals("Inativo", StringComparison.OrdinalIgnoreCase)) {
+                        MessageBox.Show("Cliente inativado! impossivél excluir!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                }
+
+
+                MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir",
+                                                              MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultado == MessageBoxResult.Yes) {
+                    cliente = conexao.CLIENTES.Remove(cliente);
+                    cliente.nome = null;
+                    cliente.sexo = null;
+                    cliente.endereco = null;
+                    cliente.numero = null;
+                    cliente.bairro = null;
+                    cliente.cidade = null;
+                    cliente.estado = null;
+                    cliente.cep = null;
+                    cliente.telefone = null;
+                    cliente.celular = null;
+                    cliente.status_cliente = null;
+                    conexao.SaveChanges();
+                    MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    carregarGrid();
+                    limpaCampos();
+                }
+                else {
+                    btnGravar.IsEnabled = true;
+                    limpaCampos();
+                    return;
+                }
+                btnGravar.IsEnabled = true;
+            }catch(Exception ex){
+                MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
             }
-            btnGravar.IsEnabled = true;
         }
 
         // botao pesquisar
@@ -152,6 +172,7 @@ namespace BarberSystem.Janelas
                     MtxtCep.Text = cliente.cep;
                     MtxtTelefone.Text = cliente.telefone;
                     MtxtCelular.Text = cliente.celular;
+                    cbStatus.Text = cliente.status_cliente;
               }else{
                     MessageBox.Show("Cliente não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
@@ -186,6 +207,7 @@ namespace BarberSystem.Janelas
                     cliente.cep = MtxtCep.Text;
                     cliente.telefone = MtxtTelefone.Text;
                     cliente.celular = MtxtCelular.Text;
+                    cliente.status_cliente = cbStatus.Text;
                     conexao.CLIENTES.AddOrUpdate(cliente);
                     conexao.SaveChanges();
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);

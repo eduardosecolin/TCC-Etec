@@ -24,34 +24,46 @@ namespace BarberSystem.Dados {
      public virtual PRODUTOS PRODUTOS { get; set; }
 
      // Entrada no estoque
-     public void entradaEstoque(int qtd){
-            if (this.quantidade == null) {
-                this.quantidade = 0;
-                this.quantidade += qtd;
-            }
-            else {
-                this.quantidade += qtd;
+     public void entradaEstoque(int qtd) {
+            try {
+                if (this.quantidade == null) {
+                    this.quantidade = 0;
+                    this.quantidade += qtd;
+                }
+                else {
+                    this.quantidade += qtd;
+                }
+            }catch(Exception){
+                throw;
             }
      }
 
      // Saida no estoque
      public void saidaEstoque(int qtd){
-            if (this.quantidade == null) {
-                this.quantidade = 0;
-                this.quantidade -= qtd;
-            }
-            else {
-                this.quantidade -= qtd;
+            try {
+                if (this.quantidade == null) {
+                    this.quantidade = 0;
+                    this.quantidade -= qtd;
+                }
+                else {
+                    this.quantidade -= qtd;
+                }
+            }catch(Exception ex){
+                throw;
             }
      }
 
      // calcular valor total
      public double? calculaTotal(){
-            if (this.quantidade == null) {
-                return this.vl_produto;
-            }
-            else {
-                return this.vl_produto * this.quantidade;
+            try {
+                if (this.quantidade == null) {
+                    return this.vl_produto;
+                }
+                else {
+                    return this.vl_produto * this.quantidade;
+                }
+            }catch(Exception){
+                throw;
             }
      }
 

@@ -116,24 +116,30 @@ namespace BarberSystem.Janelas
 
         // botao excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (resultado == MessageBoxResult.Yes) {
-                produto = conexao.PRODUTOS.Remove(produto);
-                limpaCampos();
-                produto.descricao = null;
-                produto.vl_unitario = null;
-                produto.codfornecedor = null;
-                produto.nome_fornecedor = null;
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carregaGrid();
-                limpaCampos();
+            try {
+                MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultado == MessageBoxResult.Yes) {
+                    produto = conexao.PRODUTOS.Remove(produto);
+                    limpaCampos();
+                    produto.descricao = null;
+                    produto.vl_unitario = null;
+                    produto.codfornecedor = null;
+                    produto.nome_fornecedor = null;
+                    conexao.SaveChanges();
+                    MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    carregaGrid();
+                    limpaCampos();
+                }
+                else {
+                    limpaCampos();
+                    return;
+                }
+                btnGravar.IsEnabled = true;
+            }catch(Exception ex){
+                MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
             }
-            else {
-                limpaCampos();
-                return;
-            }
-            btnGravar.IsEnabled = true;
         }
 
         // botao gravar
@@ -141,7 +147,7 @@ namespace BarberSystem.Janelas
             try {
                 produto.descricao = Util.VerificarCamposVazios(txtDescricao.Text);
                 produto.vl_unitario = double.Parse(txtUnitario.Text);
-                produto.codfornecedor = int.Parse(cbCodFornecedor.Text);
+                produto.codfornecedor = int.Parse(Util.VerificarCamposVazios(cbCodFornecedor.Text));
                 produto.nome_fornecedor = Util.VerificarCamposVazios(txtFornecedor.Text);
 
                 if (Util.vazio == true) {

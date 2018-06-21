@@ -168,6 +168,7 @@
 				<DataGridTextColumn  Header="Cep" Binding="{Binding Path=cep}" Foreground="#FFF7F5F5"/>
 				<DataGridTextColumn Binding="{Binding Path=telefone}" Foreground="#FFFBF6F6" Header="Telefone"/>
 				<DataGridTextColumn  Header="Celular" Binding="{Binding Path=celular}" Foreground="#FFF9F9F9"/>
+				<DataGridTextColumn Binding="{Binding Path=status_cliente}" ClipboardContentBinding="{x:Null}" Foreground="#FFFDF8F8" Header="Status"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="340,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
@@ -208,5 +209,16 @@
 		<TextBox x:Name="txtBairro" HorizontalAlignment="Left" Height="23" Margin="144,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="14" FontWeight="SemiBold" TabIndex="5" MaxLength="30"/>
 		<Label x:Name="label_Copy10" Content="Telefone:" HorizontalAlignment="Left" Margin="215,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<wpfTool:MaskedTextBox x:Name="MtxtTelefone" Mask="(99)9999-9999" HorizontalAlignment="Left" Height="23" Margin="280,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="14" FontWeight="SemiBold" TabIndex="9" MaxLength="10"/>
+		<Label x:Name="Status" Content="Status:" HorizontalAlignment="Left" Margin="575,226,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" Width="54"/>
+		<ComboBox x:Name="cbStatus" HorizontalAlignment="Left" Margin="629,228,0,0" VerticalAlignment="Top" Width="154" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="2">
+			<ComboBox.Background>
+				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+					<GradientStop Color="#FFF0F0F0" Offset="0"/>
+					<GradientStop Color="#FFFBFBFB" Offset="1"/>
+				</LinearGradientBrush>
+			</ComboBox.Background>
+			<ComboBoxItem Content="Ativo"/>
+			<ComboBoxItem Content="Inativo"/>
+		</ComboBox>
 	</Grid>
 </Window>

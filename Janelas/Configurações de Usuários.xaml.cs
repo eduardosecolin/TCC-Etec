@@ -150,27 +150,34 @@ namespace BarberSystem.Janelas {
 
         // botao excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir",
-                                                           MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(resultado == MessageBoxResult.Yes){
-                usuario = conexao.USUARIOS.Remove(usuario);
-                usuario.nome_usuario = null;
-                usuario.senha = null;
-                usuario.endereco = null;
-                usuario.bairro = null;
-                usuario.estado = null;
-                usuario.cpf = null;
-                usuario.email = null;
-                usuario.tipo = null;
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carregaGrid();
-                limpaCampos();
-            }else{
-                limpaCampos();
-                return;
+            try {
+                MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir",
+                                                               MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultado == MessageBoxResult.Yes) {
+                    usuario = conexao.USUARIOS.Remove(usuario);
+                    usuario.nome_usuario = null;
+                    usuario.senha = null;
+                    usuario.endereco = null;
+                    usuario.bairro = null;
+                    usuario.estado = null;
+                    usuario.cpf = null;
+                    usuario.email = null;
+                    usuario.tipo = null;
+                    conexao.SaveChanges();
+                    MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    carregaGrid();
+                    limpaCampos();
+                }
+                else {
+                    limpaCampos();
+                    return;
+                }
+                btnGravar.IsEnabled = true;
+            }catch(Exception ex){
+                MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
             }
-            btnGravar.IsEnabled = true;
         }
 
         // botao exportar para o excel

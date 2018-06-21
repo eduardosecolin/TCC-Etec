@@ -59,7 +59,8 @@ namespace BarberSystem.Migrations
                         telefone = c.String(nullable: false, maxLength: 20, unicode: false),
                         celular = c.String(nullable: false, maxLength: 20, unicode: false),
                         sexo = c.String(nullable: false, maxLength: 15, unicode: false),
-                    })
+                        status_cliente = c.String(nullable: false, maxLength: 15, unicode: false),
+                })
                 .PrimaryKey(t => t.codigo);
             
             CreateTable(

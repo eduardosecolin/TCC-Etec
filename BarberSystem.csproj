@@ -148,6 +148,10 @@
     <Compile Include="Migrations\201805311445032_BARBER_DATABASE.Designer.cs">
       <DependentUpon>201805311445032_BARBER_DATABASE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806140343260_BARBER_DATABASE-v1.cs" />
+    <Compile Include="Migrations\201806140343260_BARBER_DATABASE-v1.Designer.cs">
+      <DependentUpon>201806140343260_BARBER_DATABASE-v1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Utils\Criptografia.cs" />
     <Compile Include="Utils\Util.cs" />
@@ -279,6 +283,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201805311445032_BARBER_DATABASE.resx">
       <DependentUpon>201805311445032_BARBER_DATABASE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140343260_BARBER_DATABASE-v1.resx">
+      <DependentUpon>201806140343260_BARBER_DATABASE-v1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

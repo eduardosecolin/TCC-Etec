@@ -18,21 +18,31 @@ namespace BarberSystem.Dados {
      public decimal? vl_total { get; set; }
 
       public void entradaCaixa(decimal? valor){
-            if(this.vl_total == null){
-                this.vl_total = 0;
-                this.vl_total += valor;
-            }else{
-                this.vl_total += valor;
+            try {
+                if (this.vl_total == null) {
+                    this.vl_total = 0;
+                    this.vl_total += valor;
+                }
+                else {
+                    this.vl_total += valor;
+                }
+            }catch(Exception){
+                throw;
             }
       }
 
       public void saidaCaixa(decimal? valor){
-        if(this.vl_total == null){
-                this.vl_total = 0;
-                this.vl_total -= valor;
-        }else{
-                this.vl_total -= valor;
-        }
+            try {
+                if (this.vl_total == null) {
+                    this.vl_total = 0;
+                    this.vl_total -= valor;
+                }
+                else {
+                    this.vl_total -= valor;
+                }
+            }catch(Exception){
+                throw;
+            }
       }
 
     }

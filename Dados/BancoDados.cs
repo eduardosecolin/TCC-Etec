@@ -111,6 +111,10 @@ namespace BarberSystem.Dados {
                 .IsUnicode(false);
 
             modelBuilder.Entity<CLIENTES>()
+               .Property(e => e.status_cliente)
+               .IsUnicode(false);
+
+            modelBuilder.Entity<CLIENTES>()
                 .HasMany(e => e.AGENDA)
                 .WithOptional(e => e.CLIENTES)
                 .HasForeignKey(e => e.codcliente);

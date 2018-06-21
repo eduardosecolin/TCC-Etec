@@ -40,12 +40,16 @@ namespace BarberSystem.Janelas {
           }
         }
 
-        //Botao de voltar
-        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
-            var sql = from a in conexao.AGENDA 
-                      where a.data == DateTime.Today 
+        // mostrar agendamento no menu
+        private void mostrarAgendamentoMenu(){
+            var sql = from a in conexao.AGENDA
+                      where a.data == DateTime.Today
                       select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
             janela.dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+        }
+        //Botao de voltar
+        private void btnVoltar_Click(object sender, RoutedEventArgs e) {
+            mostrarAgendamentoMenu();
             this.Close();
         }
 
@@ -148,26 +152,33 @@ namespace BarberSystem.Janelas {
 
         // excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (resultado == MessageBoxResult.Yes) {
-                agendamento = conexao.AGENDA.Remove(agendamento);
-                limpaCampos();
-                agendamento.cliente = null;
-                agendamento.descricao = null;
-                agendamento.hora_inicio = null;
-                agendamento.hora_fim = null;
-                agendamento.data = null;
-                agendamento.nome_barbeiro = null;
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carrgearGrid();
-                limpaCampos();
-            }else{
-                limpaCampos();
-                return;
+            try {
+                MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultado == MessageBoxResult.Yes) {
+                    agendamento = conexao.AGENDA.Remove(agendamento);
+                    limpaCampos();
+                    agendamento.cliente = null;
+                    agendamento.descricao = null;
+                    agendamento.hora_inicio = null;
+                    agendamento.hora_fim = null;
+                    agendamento.data = null;
+                    agendamento.nome_barbeiro = null;
+                    conexao.SaveChanges();
+                    MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    carrgearGrid();
+                    limpaCampos();
+                }
+                else {
+                    limpaCampos();
+                    return;
+                }
+                btnGravar.IsEnabled = true;
+                cbCodCliente.IsEnabled = true;
+            }catch(Exception ex){
+                MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
             }
-            btnGravar.IsEnabled = true;
-            cbCodCliente.IsEnabled = true;
         }
 
         // exportar para o excel
@@ -309,6 +320,11 @@ namespace BarberSystem.Janelas {
                 txtCodBarbeiro.Clear();
                 cbBarbeiro.Focus();
             }
+        }
+
+        // tela fechando
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+            mostrarAgendamentoMenu();
         }
     }
 }

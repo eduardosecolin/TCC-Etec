@@ -33,9 +33,7 @@ namespace BarberSystem.Janelas {
         private void button_Click(object sender, RoutedEventArgs e) {
             try {
                 BancoDados bd = new BancoDados();
-               /* var sql = from u in bd.USUARIOS
-                          where u.nome_usuario == txtUsuario.Text && u.senha == txtSenha.Password.ToString()
-                          select u.codigo;*/
+          
                 if (txtUsuario.Text == "" || txtSenha.Password.ToString() == "") {
                     MessageBox.Show("Campo usuário ou senha vazio!");
                     txtUsuario.Focus();

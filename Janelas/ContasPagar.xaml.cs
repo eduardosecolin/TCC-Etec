@@ -161,25 +161,32 @@ namespace BarberSystem.Janelas {
 
         // botao excluir
         private void btnExcluir_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir",
-                                                         MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(resultado == MessageBoxResult.Yes){
-                cp = conexao.CONTAS_PAGAR.Remove(cp);
-                cp.descricao = null;
-                cp.data_pagto = null;
-                cp.data_vencto = null;
-                cp.vl_unitario = null;
-                cp.vl_total = null;
-                limpaCampos();
-                conexao.SaveChanges();
-                MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                carregaGrid();
-                limpaCampos();
-            }else{
-                limpaCampos();
-                return;
+            try {
+                MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir",
+                                                             MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultado == MessageBoxResult.Yes) {
+                    cp = conexao.CONTAS_PAGAR.Remove(cp);
+                    cp.descricao = null;
+                    cp.data_pagto = null;
+                    cp.data_vencto = null;
+                    cp.vl_unitario = null;
+                    cp.vl_total = null;
+                    limpaCampos();
+                    conexao.SaveChanges();
+                    MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    carregaGrid();
+                    limpaCampos();
+                }
+                else {
+                    limpaCampos();
+                    return;
+                }
+                btnGravar.IsEnabled = true;
+            }catch(Exception ex){
+                MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
             }
-            btnGravar.IsEnabled = true;
         }
 
         // botao calcular valor total
@@ -194,7 +201,14 @@ namespace BarberSystem.Janelas {
 
         // mostrar a calculadora do windows
         private void btnCalcWindows_Click(object sender, RoutedEventArgs e) {
-            System.Diagnostics.Process.Start("calc.exe");
+            try {
+                System.Diagnostics.Process.Start("calc.exe");
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Sistema não encontrou a calculadora!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+            }
         }
 
         // botao alterar

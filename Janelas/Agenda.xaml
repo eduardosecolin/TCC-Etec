@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="BarberSystem.Janelas.Agenda"
         mc:Ignorable="d"
-        Title="Agenda" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png" ResizeMode="NoResize">
+        Title="Agenda" Height="625" Width="1125" WindowStartupLocation="CenterScreen" Icon="/BarberSystem;component/imagens/icone.png" ResizeMode="NoResize" Closing="Window_Closing">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/JanelaAgenda/Agenda1.jpg"/>
 	</Window.Background>

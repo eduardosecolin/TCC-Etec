@@ -314,7 +314,14 @@ namespace BarberSystem.Janelas
 
         // abrir outlook
         private void btnOutlook_Click(object sender, RoutedEventArgs e) {
-            System.Diagnostics.Process.Start("outlook.exe");
+            try {
+                System.Diagnostics.Process.Start("outlook.exe");
+            }catch(Exception ex){
+                MessageBox.Show("Sistema não encontrou o outlook!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+                return;
+            }
         }
     }
 }

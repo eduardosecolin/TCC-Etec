@@ -66,3 +66,23 @@ Referência de objeto não definida para uma instância de um objeto.
 08/06/2018 11:03:36
 Referência de objeto não definida para uma instância de um objeto.
    em BarberSystem.Janelas.Caixa.btnEntrada_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Caixa.xaml.cs:linha 73
+14/06/2018 12:29:22
+An error occurred while updating the entries. See the inner exception for details.
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   em System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   em System.Data.Entity.DbContext.SaveChanges()
+   em BarberSystem.Janelas.Clientes.btnGravar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Clientes.xaml.cs:linha 88
+InnerException: An error occurred while updating the entries. See the inner exception for details.
+19/06/2018 07:34:45
+Referência de objeto não definida para uma instância de um objeto.
+   em BarberSystem.Janelas.Barbeiros.btnPesquisar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Barbeiros.xaml.cs:linha 138
+19/06/2018 08:07:30
+Referência de objeto não definida para uma instância de um objeto.
+   em BarberSystem.Janelas.Barbeiros.btnPesquisar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Barbeiros.xaml.cs:linha 136
+21/06/2018 06:10:02
+The object cannot be deleted because it was not found in the ObjectStateManager.
+   em System.Data.Entity.Core.Objects.ObjectContext.DeleteObject(Object entity, EntitySet expectedEntitySet)
+   em System.Data.Entity.Core.Objects.ObjectContext.DeleteObject(Object entity)
+   em System.Data.Entity.Internal.Linq.InternalSet`1.Remove(Object entity)
+   em System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   em BarberSystem.Janelas.Clientes.btnExcluir_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Clientes.xaml.cs:linha 128
