@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Excel = Microsoft.Office.Interop.Excel;
+using BarberSystem.Dados;
+using BarberSystem.Controle;
 
 namespace BarberSystem.Utils
 {
@@ -67,6 +69,20 @@ namespace BarberSystem.Utils
                     Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
                     myRange.Value2 = b.Text;
                 }
+            }
+        }
+
+        // redefinir valor da chave primaria auto incremento
+        public static void redefinirPK_AutoIncremento(string tabela, int? valor){
+            try {
+                BancoDados conexao = new BancoDados();
+                string sql = string.Format(@"DBCC CHECKIDENT ({0}, RESEED, {1})", tabela, valor);
+                conexao.Database.ExecuteSqlCommand(sql);
+            }
+            catch (Exception ex) {
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+                throw;
             }
         }
    }

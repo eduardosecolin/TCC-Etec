@@ -232,6 +232,8 @@ namespace BarberSystem.Janelas {
                     estoque.vl_total = null;
                     estoque.quantidade = null;
                     conexao.SaveChanges();
+                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    Util.redefinirPK_AutoIncremento("ESTOQUE", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();

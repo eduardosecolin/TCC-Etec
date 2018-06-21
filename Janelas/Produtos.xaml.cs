@@ -31,7 +31,7 @@ namespace BarberSystem.Janelas
             InitializeComponent();
             dgProdutos.RowBackground = null;
             carregaGrid();
-            carregaComboBoxFornecedor();
+            carregaComboFornecedor();
         }
 
         // metodo para limpar os campos
@@ -42,6 +42,7 @@ namespace BarberSystem.Janelas
             txtFornecedor.Clear();
             txtUnitario.Clear();
             cbCodFornecedor.Text = "";
+            txtCodigoFornecedor.Clear();
         }
 
         // metodo para carregar o dataGrid
@@ -126,6 +127,8 @@ namespace BarberSystem.Janelas
                     produto.codfornecedor = null;
                     produto.nome_fornecedor = null;
                     conexao.SaveChanges();
+                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    Util.redefinirPK_AutoIncremento("PRODUTO", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();
@@ -147,7 +150,7 @@ namespace BarberSystem.Janelas
             try {
                 produto.descricao = Util.VerificarCamposVazios(txtDescricao.Text);
                 produto.vl_unitario = double.Parse(txtUnitario.Text);
-                produto.codfornecedor = int.Parse(Util.VerificarCamposVazios(cbCodFornecedor.Text));
+                produto.codfornecedor = int.Parse(Util.VerificarCamposVazios(txtCodigoFornecedor.Text));
                 produto.nome_fornecedor = Util.VerificarCamposVazios(txtFornecedor.Text);
 
                 if (Util.vazio == true) {
@@ -193,7 +196,8 @@ namespace BarberSystem.Janelas
             FORNECEDORES fornecedor = new FORNECEDORES();
             try {
                 if (cbCodFornecedor.SelectedItem != null) {
-                    fornecedor = conexao.FORNECEDORES.Find(int.Parse(cbCodFornecedor.Text));
+                    int codigo = int.Parse(cbCodFornecedor.Text.Substring(0, 4).Trim());
+                    fornecedor = conexao.FORNECEDORES.Find(codigo);
                     txtFornecedor.Text = fornecedor.nome;
                 }
             }
@@ -212,5 +216,52 @@ namespace BarberSystem.Janelas
             Util.exportarExcel(dgProdutos);
         }
 
+        // carregar comboBox fornecedor
+        private void carregaComboFornecedor(){
+            var sql = from f in conexao.FORNECEDORES
+                      where f.codigo > 0
+                      select f.codigo + "    - " + f.nome;
+
+            cbCodFornecedor.ItemsSource = null;
+            cbCodFornecedor.ItemsSource = sql.ToList();
+        }
+
+        // quando campo codigo fornecedor ganha foco 
+        private void txtCodigoFornecedor_GotFocus(object sender, RoutedEventArgs e) {
+            try {
+             if(cbCodFornecedor.SelectedItem != null){
+                    int codigo = int.Parse(cbCodFornecedor.Text.Substring(0, 4).Trim());
+                    FORNECEDORES f = new FORNECEDORES();
+                    f = conexao.FORNECEDORES.Find(codigo);
+                    txtCodigoFornecedor.Text = f.codigo.ToString();
+             }
+            }
+            catch (Exception ex) {
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+            }
+        }
+
+        private void txtFornecedor_LostFocus(object sender, RoutedEventArgs e) {
+            try {
+                if (cbCodFornecedor.SelectedItem != null) {
+                    int codigo = int.Parse(cbCodFornecedor.Text.Substring(0, 4).Trim());
+                    FORNECEDORES f = new FORNECEDORES();
+                    f = conexao.FORNECEDORES.Find(codigo);
+                    string aux = f.nome;
+
+                    if (txtFornecedor.Text != aux) {
+                        txtFornecedor.Text = string.Empty;
+                        txtFornecedor.Focus();
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex) {
+                Log.logException(ex);
+                Log.logMessage(ex.Message);
+                return;
+            }
+        }
     }
 }

@@ -86,3 +86,15 @@ The object cannot be deleted because it was not found in the ObjectStateManager.
    em System.Data.Entity.Internal.Linq.InternalSet`1.Remove(Object entity)
    em System.Data.Entity.DbSet`1.Remove(TEntity entity)
    em BarberSystem.Janelas.Clientes.btnExcluir_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Clientes.xaml.cs:linha 128
+21/06/2018 06:18:12
+A cadeia de caracteres de entrada não estava em um formato correto.
+   em System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   em System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   em System.Int32.Parse(String s)
+   em BarberSystem.Janelas.Produtos.btnGravar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Produtos.xaml.cs:linha 150
+21/06/2018 07:02:30
+A cadeia de caracteres de entrada não estava em um formato correto.
+   em System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   em System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   em System.Int32.Parse(String s)
+   em BarberSystem.Janelas.Produtos.btnGravar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Produtos.xaml.cs:linha 150

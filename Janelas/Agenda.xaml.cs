@@ -164,6 +164,8 @@ namespace BarberSystem.Janelas {
                     agendamento.data = null;
                     agendamento.nome_barbeiro = null;
                     conexao.SaveChanges();
+                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    Util.redefinirPK_AutoIncremento("AGENDA", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carrgearGrid();
                     limpaCampos();
@@ -197,7 +199,7 @@ namespace BarberSystem.Janelas {
         public void carregaComboCodClient(){
             var sql = from a in conexao.CLIENTES
                       where a.codigo > 0
-                      select a.codigo + " - " + a.nome;
+                      select a.codigo + "    - " + a.nome;
             
             cbCodCliente.ItemsSource = null;
             cbCodCliente.ItemsSource = sql.ToList();
@@ -207,9 +209,9 @@ namespace BarberSystem.Janelas {
         private void txtCliente_GotFocus(object sender, RoutedEventArgs e) {
             try {
               if(cbCodCliente.SelectedItem != null){
-                    string codigo = cbCodCliente.Text.Substring(0, 1);
+                    int codigo = int.Parse(cbCodCliente.Text.Substring(0, 4).Trim());
                     CLIENTES cliente = new CLIENTES();
-                    cliente = conexao.CLIENTES.Find(int.Parse(codigo));
+                    cliente = conexao.CLIENTES.Find(codigo);
                     txtCliente.Text = cliente.nome;
 
               }
@@ -270,9 +272,9 @@ namespace BarberSystem.Janelas {
         private void txtCodCliente_GotFocus(object sender, RoutedEventArgs e) {
             try {
                 if (cbCodCliente.SelectedItem != null) {
-                    string codigo = cbCodCliente.Text.Substring(0, 1);
+                    int codigo = int.Parse(cbCodCliente.Text.Substring(0, 4).Trim());
                     CLIENTES cliente = new CLIENTES();
-                    cliente = conexao.CLIENTES.Find(int.Parse(codigo));
+                    cliente = conexao.CLIENTES.Find(codigo);
                     txtCodCliente.Text = cliente.codigo.ToString();
 
                 }
@@ -289,9 +291,9 @@ namespace BarberSystem.Janelas {
 
         private void txtCliente_LostFocus(object sender, RoutedEventArgs e) {
           if (cbCodCliente.SelectedItem != null) {
-                string codigo = cbCodCliente.Text.Substring(0, 1);
+                int codigo = int.Parse(cbCodCliente.Text.Substring(0, 4).Trim());
                 CLIENTES cliente = new CLIENTES();
-                cliente = conexao.CLIENTES.Find(int.Parse(codigo));
+                cliente = conexao.CLIENTES.Find(codigo);
                 string aux = cliente.nome;
          
             if(txtCliente.Text != aux){

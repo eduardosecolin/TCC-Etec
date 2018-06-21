@@ -13,3 +13,5 @@
 19/06/2018 07:34:46 Referência de objeto não definida para uma instância de um objeto.
 19/06/2018 08:07:30 Referência de objeto não definida para uma instância de um objeto.
 21/06/2018 06:10:02 The object cannot be deleted because it was not found in the ObjectStateManager.
+21/06/2018 06:18:12 A cadeia de caracteres de entrada não estava em um formato correto.
+21/06/2018 07:02:31 A cadeia de caracteres de entrada não estava em um formato correto.

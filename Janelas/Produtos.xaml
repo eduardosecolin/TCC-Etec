@@ -143,7 +143,7 @@
 		</Button>
 		<Label x:Name="label_Copy8" Content="Pesquisar produto pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="259,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="0"/>
-		<ComboBox x:Name="cbCodFornecedor" HorizontalAlignment="Left" Margin="474,131,0,0" VerticalAlignment="Top" Width="82" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="3">
+		<ComboBox x:Name="cbCodFornecedor" HorizontalAlignment="Left" Margin="429,131,0,0" VerticalAlignment="Top" Width="356" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="3">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
 					<GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -151,9 +151,11 @@
 				</LinearGradientBrush>
 			</ComboBox.Background>
 		</ComboBox>
-		<Label x:Name="label_Copy5" Content="Código Fornecedor:" HorizontalAlignment="Left" Margin="338,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy5" Content="Fornecedor:" HorizontalAlignment="Left" Margin="338,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<Label x:Name="label_Copy9" Content="Fornecedor:" HorizontalAlignment="Left" Margin="91,176,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtFornecedor" HorizontalAlignment="Left" Height="23" Margin="176,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" FontSize="14" FontWeight="SemiBold" TabIndex="4" IsReadOnly="True" GotFocus="txtFornecedor_GotFocus" MaxLength="50"/>
+		<TextBox x:Name="txtFornecedor" HorizontalAlignment="Left" Height="23" Margin="176,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" FontSize="14" FontWeight="SemiBold" TabIndex="4" IsReadOnly="True" GotFocus="txtFornecedor_GotFocus" MaxLength="50" LostFocus="txtFornecedor_LostFocus"/>
+		<Label x:Name="label_Copy1" Content="Código Fornecedor:" HorizontalAlignment="Left" Margin="614,175,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
+		<TextBox x:Name="txtCodigoFornecedor" HorizontalAlignment="Left" Height="23" Margin="751,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="5" IsReadOnly="True" GotFocus="txtCodigoFornecedor_GotFocus"/>
 
 	</Grid>
 </Window>

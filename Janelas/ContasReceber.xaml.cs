@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using BarberSystem.Dados;
 using System.Data.Entity.Migrations;
 using BarberSystem.Controle;
+using BarberSystem.Utils;
 
 
 namespace BarberSystem.Janelas {
@@ -161,6 +162,8 @@ namespace BarberSystem.Janelas {
                     cr.vl_unitario = null;
                     cr.vl_total = null;
                     conexao.SaveChanges();
+                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    Util.redefinirPK_AutoIncremento("CONTAS_RECEBER", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();
