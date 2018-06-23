@@ -90,7 +90,7 @@
 			</Button>
 		</ToolBar>
 		<Calendar x:Name="calendario" Style="{StaticResource TouchCalendarStyle}" HorizontalAlignment="Left" Margin="19,133,0,0" VerticalAlignment="Top" Height="279" Width="283" BorderBrush="{x:Null}" Foreground="#FFFB0202" Background="#FF191919" FontSize="16" FontWeight="SemiBold" TextOptions.TextFormattingMode="Display" Cursor="Arrow" SelectedDatesChanged="calendario_SelectedDatesChanged"/>
-		<StatusBar HorizontalAlignment="Left" Height="28" Margin="0,689,-8,0" VerticalAlignment="Top" Width="1366" Background="{x:Null}" BorderBrush="#FFFBF5F5">
+		<StatusBar HorizontalAlignment="Left" Height="28" Margin="0,679,-8,0" VerticalAlignment="Top" Width="1366" Background="{x:Null}" BorderBrush="#FFFBF5F5">
 			<Label x:Name="sbData" Content="Data:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="9" FontWeight="SemiBold" Foreground="#FFF9F9F9"/>
 			<Separator/>
 			<Label x:Name="sbUsuario" Content="Usuário:" FontSize="9" FontWeight="SemiBold" Foreground="#FFF9F9F9"/>

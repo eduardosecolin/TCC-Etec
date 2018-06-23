@@ -32,17 +32,19 @@ namespace BarberSystem.Janelas
             dgProdutos.RowBackground = null;
             carregaGrid();
             carregaComboFornecedor();
+            carregaPesquisa();
         }
 
         // metodo para limpar os campos
         public void limpaCampos(){
             txtCodigo.Clear();
-            txtPesquisar.Clear();
+            cbPesquisar.Text = string.Empty;
             txtDescricao.Clear();
             txtFornecedor.Clear();
             txtUnitario.Clear();
             cbCodFornecedor.Text = "";
             txtCodigoFornecedor.Clear();
+            btnGravar.IsEnabled = true;
         }
 
         // metodo para carregar o dataGrid
@@ -62,15 +64,21 @@ namespace BarberSystem.Janelas
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
             try {
                 if (txtCodigo.Text != "") {
-                    produto.descricao = txtDescricao.Text;
-                    produto.vl_unitario = double.Parse(txtUnitario.Text);
-                    produto.codfornecedor = int.Parse(cbCodFornecedor.Text);
-                    produto.nome_fornecedor = txtFornecedor.Text;
+                    produto.descricao = Util.VerificarCamposVazios(txtDescricao.Text);
+                    produto.vl_unitario = double.Parse(Util.VerificarCamposVazios(txtUnitario.Text));
+                    produto.codfornecedor = int.Parse(Util.VerificarCamposVazios(cbCodFornecedor.Text));
+                    produto.nome_fornecedor = Util.VerificarCamposVazios(txtFornecedor.Text);
+
+                    if (Util.vazio == true) {
+                        return;
+                    }
+
                     conexao.PRODUTOS.AddOrUpdate(produto);
                     conexao.SaveChanges();
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     carregaGrid();
+                    carregaPesquisa();
                 }
                 else {
                     MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -92,13 +100,15 @@ namespace BarberSystem.Janelas
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
             btnGravar.IsEnabled = false;
             try {
-                if (txtPesquisar.Text != "") {
-                    produto = conexao.PRODUTOS.Find(int.Parse(txtPesquisar.Text));
+                if (cbPesquisar.Text != null) {
+                    int codigo = int.Parse(cbPesquisar.Text.Substring(0, 4).Trim());
+                    produto = conexao.PRODUTOS.Find(codigo);
                     txtDescricao.Text = produto.descricao;
                     txtCodigo.Text = produto.codigo.ToString();
                     txtUnitario.Text = produto.vl_unitario.ToString();
                     txtFornecedor.Text = produto.nome_fornecedor;
                     cbCodFornecedor.Text = produto.codfornecedor.ToString();
+                    txtCodigoFornecedor.Text = produto.codfornecedor.ToString();
                 }
                 else {
                     MessageBox.Show("Produto não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -132,6 +142,7 @@ namespace BarberSystem.Janelas
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();
+                    carregaPesquisa();
                 }
                 else {
                     limpaCampos();
@@ -162,6 +173,7 @@ namespace BarberSystem.Janelas
 
                 txtCodigo.Text = produto.codigo.ToString();
                 carregaGrid();
+                carregaPesquisa();
 
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
@@ -181,14 +193,6 @@ namespace BarberSystem.Janelas
         // botao voltar
         private void btnVoltar_Click(object sender, RoutedEventArgs e) {
             this.Close();
-        }
-
-        // carregar combobox com codigos do fornecedor
-        public void carregaComboBoxFornecedor(){
-            List<FORNECEDORES> listaFornecedores = conexao.FORNECEDORES.ToList();
-            cbCodFornecedor.ItemsSource = null;
-            cbCodFornecedor.ItemsSource = listaFornecedores.OrderBy(user => user.codigo);
-            cbCodFornecedor.DisplayMemberPath = "codigo";
         }
        
         // metodo para preencher campo fornecedor automatico
@@ -226,22 +230,6 @@ namespace BarberSystem.Janelas
             cbCodFornecedor.ItemsSource = sql.ToList();
         }
 
-        // quando campo codigo fornecedor ganha foco 
-        private void txtCodigoFornecedor_GotFocus(object sender, RoutedEventArgs e) {
-            try {
-             if(cbCodFornecedor.SelectedItem != null){
-                    int codigo = int.Parse(cbCodFornecedor.Text.Substring(0, 4).Trim());
-                    FORNECEDORES f = new FORNECEDORES();
-                    f = conexao.FORNECEDORES.Find(codigo);
-                    txtCodigoFornecedor.Text = f.codigo.ToString();
-             }
-            }
-            catch (Exception ex) {
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
-            }
-        }
-
         private void txtFornecedor_LostFocus(object sender, RoutedEventArgs e) {
             try {
                 if (cbCodFornecedor.SelectedItem != null) {
@@ -262,6 +250,31 @@ namespace BarberSystem.Janelas
                 Log.logMessage(ex.Message);
                 return;
             }
+        }
+
+        private void cbCodFornecedor_DropDownClosed(object sender, EventArgs e) {
+            try {
+                int texto = cbCodFornecedor.Text.Length - 7;
+                string resultado = cbCodFornecedor.Text.Substring(cbCodFornecedor.Text.Length - texto);
+                int codigo = conexao.Database.SqlQuery<int>("select codigo from PRODUTOS where nome_fornecedor='" + resultado + "'").FirstOrDefault();
+                txtCodigoFornecedor.Text = codigo.ToString();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Código do barbeiro invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                cbCodFornecedor.Text = "";
+                txtCodigoFornecedor.Clear();
+                cbCodFornecedor.Focus();
+                Log.logMessage(ex.Message);
+            }
+        }
+
+        // carregar comboBox pesquisa
+        private void carregaPesquisa() {
+            var sql = from p in conexao.PRODUTOS
+                      where p.codigo > 0
+                      select p.codigo + "    - " + p.descricao;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
         }
     }
 }

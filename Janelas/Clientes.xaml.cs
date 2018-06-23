@@ -33,6 +33,7 @@ namespace BarberSystem.Janelas
             InitializeComponent();
             dgCliente.RowBackground = null;
             carregarGrid();
+            carregaCombopesquisa();
         }
 
         // carregar datagrid
@@ -54,9 +55,10 @@ namespace BarberSystem.Janelas
             MtxtCep.Clear();
             MtxtTelefone.Clear();
             MtxtCelular.Clear();
-            txtPesquisar.Clear();
+            cbPesquisar.Text = string.Empty;
             cbSexo.Text = "";
             cbStatus.Text = "";
+            btnGravar.IsEnabled = true;
         }
 
         // botao novo
@@ -89,6 +91,7 @@ namespace BarberSystem.Janelas
 
                 txtCodigo.Text = cliente.codigo.ToString();
                 carregarGrid();
+                carregaCombopesquisa();
 
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
@@ -143,6 +146,7 @@ namespace BarberSystem.Janelas
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregarGrid();
                     limpaCampos();
+                    carregaCombopesquisa();
                 }
                 else {
                     btnGravar.IsEnabled = true;
@@ -161,8 +165,9 @@ namespace BarberSystem.Janelas
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
             btnGravar.IsEnabled = false;
             try {
-              if(txtPesquisar.Text != ""){
-                    cliente = conexao.CLIENTES.Find(int.Parse(txtPesquisar.Text));
+              if(cbPesquisar.Text != null){
+                    int codigo = int.Parse(cbPesquisar.Text.Substring(0, 4).Trim());
+                    cliente = conexao.CLIENTES.Find(codigo);
                     txtCodigo.Text = cliente.codigo.ToString();
                     txtNome.Text = cliente.nome;
                     cbSexo.Text = cliente.sexo;
@@ -215,6 +220,7 @@ namespace BarberSystem.Janelas
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     carregarGrid();
+                    carregaCombopesquisa();
                 }
                 else {
                     MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -230,6 +236,15 @@ namespace BarberSystem.Janelas
                 return;
             }
             btnGravar.IsEnabled = true;
+        }
+
+        // carregar combo de pesquisa
+        private void carregaCombopesquisa() {
+            var sql = from c in conexao.CLIENTES
+                      where c.codigo > 0
+                      select c.codigo + "    - " + c.nome;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
         }
     }
 }

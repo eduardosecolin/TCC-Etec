@@ -171,7 +171,7 @@
 				<DataGridTextColumn Binding="{Binding Path=status_cliente}" ClipboardContentBinding="{x:Null}" Foreground="#FFFDF8F8" Header="Status"/>
 			</DataGrid.Columns>
 		</DataGrid>
-		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="340,50,0,0" VerticalAlignment="Top" Width="125" Height="23" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
+		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="380,50,0,0" VerticalAlignment="Top" Width="125" Height="22" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Click="btnPesquisar_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconPesquisar.png" Stretch="Uniform">
 					<ImageBrush.RelativeTransform>
@@ -185,8 +185,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<Label x:Name="label_Copy8" Content="Pesquisar cliente pelo código:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
-		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="261,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14" FontWeight="SemiBold" TabIndex="11"/>
+		<Label x:Name="label_Copy8" Content="Pesquisar cliente:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<Label x:Name="label_Copy1" Content="Cidade:" HorizontalAlignment="Left" Margin="383,178,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
 		<TextBox x:Name="txtCidade" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="14" FontWeight="SemiBold" TabIndex="6" MaxLength="30"/>
 		<Label x:Name="label_Copy4" Content="Cep:" HorizontalAlignment="Left" Margin="92,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
@@ -219,6 +218,14 @@
 			</ComboBox.Background>
 			<ComboBoxItem Content="Ativo"/>
 			<ComboBoxItem Content="Inativo"/>
+		</ComboBox>
+		<ComboBox x:Name="cbPesquisar" HorizontalAlignment="Left" Margin="185,50,0,0" VerticalAlignment="Top" Width="185" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8" Height="22">
+			<ComboBox.Background>
+				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+					<GradientStop Color="#FFF0F0F0" Offset="0"/>
+					<GradientStop Color="#FFFBFBFB" Offset="1"/>
+				</LinearGradientBrush>
+			</ComboBox.Background>
 		</ComboBox>
 	</Grid>
 </Window>

@@ -98,3 +98,34 @@ A cadeia de caracteres de entrada não estava em um formato correto.
    em System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
    em System.Int32.Parse(String s)
    em BarberSystem.Janelas.Produtos.btnGravar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Produtos.xaml.cs:linha 150
+21/06/2018 09:49:19
+The object cannot be deleted because it was not found in the ObjectStateManager.
+   em System.Data.Entity.Core.Objects.ObjectContext.DeleteObject(Object entity, EntitySet expectedEntitySet)
+   em System.Data.Entity.Core.Objects.ObjectContext.DeleteObject(Object entity)
+   em System.Data.Entity.Internal.Linq.InternalSet`1.Remove(Object entity)
+   em System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   em BarberSystem.Janelas.Barbeiros.btnExcluir_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Barbeiros.xaml.cs:linha 111
+21/06/2018 09:49:34
+Referência de objeto não definida para uma instância de um objeto.
+   em BarberSystem.Janelas.Barbeiros.btnPesquisar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Barbeiros.xaml.cs:linha 144
+21/06/2018 09:50:03
+Referência de objeto não definida para uma instância de um objeto.
+   em BarberSystem.Janelas.Barbeiros.btnPesquisar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Barbeiros.xaml.cs:linha 144
+21/06/2018 09:50:13
+Valor não pode ser nulo.
+Nome do parâmetro: entity
+   em System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   em System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   em BarberSystem.Janelas.Barbeiros.btnExcluir_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Barbeiros.xaml.cs:linha 111
+22/06/2018 10:25:46
+A cadeia de caracteres de entrada não estava em um formato correto.
+   em System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   em System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   em System.Int32.Parse(String s)
+   em BarberSystem.Janelas.Estoque.preencherCamposAuto() na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Estoque.xaml.cs:linha 71
+22/06/2018 10:30:04
+A cadeia de caracteres de entrada não estava em um formato correto.
+   em System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   em System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   em System.Int32.Parse(String s)
+   em BarberSystem.Janelas.Estoque.btnGravar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Estoque.xaml.cs:linha 97

@@ -29,6 +29,7 @@ namespace BarberSystem.Janelas {
             carrgearGrid();
             carregarComboBox();
             carregaComboCodClient();
+            carregaPesquisa();
         }
 
         // metodo para campos vazios
@@ -68,11 +69,12 @@ namespace BarberSystem.Janelas {
             MtxtHinicio.Clear();
             MtxtHfim.Clear();
             txtCodBarbeiro.Clear();
-            txtPesquisar.Clear();
+            cbPesquisar.Text = string.Empty;
             MtxtHinicio.Clear();
             dpData.Text = "";
             cbBarbeiro.Text = "";
             txtCodCliente.Clear();
+            btnGravar.IsEnabled = true;
         }
 
         //Botao limpar
@@ -101,6 +103,7 @@ namespace BarberSystem.Janelas {
 
                 txtCodigo.Text = agendamento.codigo.ToString();
                 carrgearGrid();
+                carregaPesquisa();
 
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
@@ -124,8 +127,9 @@ namespace BarberSystem.Janelas {
             btnGravar.IsEnabled = false;
             cbCodCliente.IsEnabled = false;
             try {
-                if (txtPesquisar.Text != "") {
-                    agendamento = conexao.AGENDA.Find(int.Parse(txtPesquisar.Text));
+                if (cbPesquisar.Text != null) {
+                    int codigo = int.Parse(cbPesquisar.Text.Substring(0, 4).Trim());
+                    agendamento = conexao.AGENDA.Find(codigo);
                     txtCodCliente.Text = agendamento.codcliente.ToString();
                     txtCodigo.Text = agendamento.codigo.ToString();
                     txtCliente.Text = agendamento.cliente;
@@ -169,6 +173,7 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carrgearGrid();
                     limpaCampos();
+                    carregaPesquisa();
                 }
                 else {
                     limpaCampos();
@@ -203,6 +208,15 @@ namespace BarberSystem.Janelas {
             
             cbCodCliente.ItemsSource = null;
             cbCodCliente.ItemsSource = sql.ToList();
+        }
+
+        // carregar comboBox pesquisa
+        private void carregaPesquisa(){
+         var sql = from a in conexao.AGENDA
+                   where a.codigo > 0 && a.data == DateTime.Today
+                   select a.codigo + "    - " + a.cliente;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
         }
 
         // mostrar cliente automatico
@@ -243,6 +257,7 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     carrgearGrid();
+                    carregaPesquisa();
                 }
                 else {
                     MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -267,6 +282,17 @@ namespace BarberSystem.Janelas {
                       select new {a.codigo, a.codcliente, a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.codbarbeiro, a.nome_barbeiro };
             dgAgendamento.ItemsSource = null;
             dgAgendamento.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
+
+            atualizaPesquisa();
+        }
+
+        // atualizar combo pesquisa
+        private void atualizaPesquisa(){
+            var sql = from a in conexao.AGENDA
+                      where a.data == dpCurrent.SelectedDate
+                      select a.codigo + "    - " + a.cliente;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
         }
 
         private void txtCodCliente_GotFocus(object sender, RoutedEventArgs e) {

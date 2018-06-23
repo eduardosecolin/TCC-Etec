@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using Excel = Microsoft.Office.Interop.Excel;
 using BarberSystem.Dados;
 using BarberSystem.Controle;
+using System.Data.Entity;
 
 namespace BarberSystem.Utils
 {

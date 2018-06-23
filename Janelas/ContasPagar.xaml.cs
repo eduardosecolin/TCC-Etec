@@ -31,17 +31,19 @@ namespace BarberSystem.Janelas {
             InitializeComponent();
             dgPagar.RowBackground = null;
             carregaGrid();
+            carregaPesquisa();
         }
 
         // limpar os campos(textBox)
         public void limpaCampos(){
             txtCodigo.Clear();
             txtDescricao.Clear();
-            txtPesquisar.Clear();
+            cbPesquisar.Text = string.Empty;
             txtUnitario.Clear();
             lblTotal.Content = "0";
             dpPagto.Text = "";
             dpVencto.Text = "";
+            btnGravar.IsEnabled = true;
         }
 
         //carregar o dataGrid
@@ -112,6 +114,7 @@ namespace BarberSystem.Janelas {
 
                 txtCodigo.Text = cp.codigo.ToString();
                 carregaGrid();
+                carregaPesquisa();
 
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
@@ -137,8 +140,9 @@ namespace BarberSystem.Janelas {
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
             btnGravar.IsEnabled = false;
             try {
-             if(txtPesquisar.Text != ""){
-                    cp = conexao.CONTAS_PAGAR.Find(int.Parse(txtPesquisar.Text));
+             if(cbPesquisar.Text != null){
+                    int codigo = int.Parse(cbPesquisar.Text.Substring(0, 4).Trim());
+                    cp = conexao.CONTAS_PAGAR.Find(codigo);
                     txtCodigo.Text = cp.codigo.ToString();
                     txtDescricao.Text = cp.descricao;
                     dpPagto.Text = cp.data_pagto.ToString();
@@ -179,6 +183,7 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();
+                    carregaPesquisa();
                 }
                 else {
                     limpaCampos();
@@ -233,6 +238,7 @@ namespace BarberSystem.Janelas {
                 MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
                 carregaGrid();
+                carregaPesquisa();
             }
             else {
                 MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -241,6 +247,27 @@ namespace BarberSystem.Janelas {
             }
             btnGravar.IsEnabled = true;
         }
-  
+
+        // carregar comboBox pesquisa
+        private void carregaPesquisa() {
+            DateTime mes = DateTime.Now;
+           var sql = from cp in conexao.CONTAS_PAGAR
+                     where cp.codigo > 0 && cp.data_vencto.Value.Month == mes.Month
+                     select cp.codigo + "    - " + cp.descricao;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
+        }
+
+        // pesquisar por data
+        private void dpCurrent_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
+            atualizaPesquisa();
+        }
+        private void atualizaPesquisa() {
+            var sql = from cp in conexao.CONTAS_PAGAR
+                      where cp.data_vencto.Value.Month == dpCurrent.SelectedDate.Value.Month
+                      select cp.codigo + "    - " + cp.descricao;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
+        }
     }
 }

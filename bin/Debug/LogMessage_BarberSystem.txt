@@ -15,3 +15,10 @@
 21/06/2018 06:10:02 The object cannot be deleted because it was not found in the ObjectStateManager.
 21/06/2018 06:18:12 A cadeia de caracteres de entrada não estava em um formato correto.
 21/06/2018 07:02:31 A cadeia de caracteres de entrada não estava em um formato correto.
+21/06/2018 09:49:19 The object cannot be deleted because it was not found in the ObjectStateManager.
+21/06/2018 09:49:34 Referência de objeto não definida para uma instância de um objeto.
+21/06/2018 09:50:03 Referência de objeto não definida para uma instância de um objeto.
+21/06/2018 09:50:13 Valor não pode ser nulo.
+Nome do parâmetro: entity
+22/06/2018 10:25:47 A cadeia de caracteres de entrada não estava em um formato correto.
+22/06/2018 10:30:04 A cadeia de caracteres de entrada não estava em um formato correto.

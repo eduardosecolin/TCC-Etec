@@ -31,6 +31,7 @@ namespace BarberSystem.Janelas {
             InitializeComponent();
             dgBarbeiro.RowBackground = null;
             carregaGrid();
+            carregaCombopesquisa();
         }
 
         public void limpaCampos(){
@@ -43,8 +44,9 @@ namespace BarberSystem.Janelas {
             MtxtCep.Clear();
             cbSexo.Text = "";
             MtxtCelular.Clear();
-            txtPesquisar.Clear();
+            cbPesquisar.Text = string.Empty;
             txtBairro.Clear();
+            btnGravar.IsEnabled = true;
         }
 
         // botao novo
@@ -82,7 +84,10 @@ namespace BarberSystem.Janelas {
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
                 carregaGrid();
-            }catch(Exception a){
+                carregaCombopesquisa();
+
+            }
+            catch(Exception a){
                 MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 Log.logException(a);
                 Log.logMessage(a.Message);
@@ -124,6 +129,7 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();
+                    carregaCombopesquisa();
                 }
                 else {
                     limpaCampos();
@@ -139,8 +145,9 @@ namespace BarberSystem.Janelas {
         // botao pesquisar
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
             try {
-                if (txtPesquisar.Text != "") {
-                    barbeiro = conexao.BARBEIROS.Find(int.Parse(txtPesquisar.Text));
+                if (cbPesquisar.Text != null) {
+                    int codigo = int.Parse(cbPesquisar.Text.Substring(0, 4).Trim());
+                    barbeiro = conexao.BARBEIROS.Find(codigo);
                     txtCodigo.Text = barbeiro.codigo.ToString();
                     txtNome.Text = barbeiro.nome;
                     txtEndereco.Text = barbeiro.endereco;
@@ -191,6 +198,7 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     carregaGrid();
+                    carregaCombopesquisa();
                 }
                 else {
                     MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -205,6 +213,15 @@ namespace BarberSystem.Janelas {
                 Log.logMessage(a.Message);
                 return;
             }
+        }
+
+        // carregar combo de pesquisa
+        private void carregaCombopesquisa(){
+            var sql = from b in conexao.BARBEIROS
+                      where b.codigo > 0 
+                      select b.codigo + "    - " + b.nome;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
         }
     }
 }

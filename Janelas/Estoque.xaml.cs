@@ -34,11 +34,12 @@ namespace BarberSystem.Janelas {
             dgEstoque.RowBackground = null;
             carregaGrid();
             carregaComboBox();
+            carregaPesquisa();
         }
 
         // limpar os campos
         private void limpaCampos(){
-            txtPesquisar.Clear();
+            cbPesquisar.Text = string.Empty;
             txtCodigo.Clear();
             cbCodProduto.Text = "";
             txtProduto.Clear();
@@ -47,6 +48,7 @@ namespace BarberSystem.Janelas {
             txtQuantidade.Clear();
             txtEntrada.Clear();
             txtSaida.Clear();
+            btnGravar.IsEnabled = true;
         }
 
         // carregar o dataGrid
@@ -58,18 +60,18 @@ namespace BarberSystem.Janelas {
 
         // carregar comboBox com o codigo do produto
         private void carregaComboBox(){
-            List<PRODUTOS> listaProduto = conexao.PRODUTOS.ToList();
+            var sql = from p in conexao.PRODUTOS where p.codigo > 0 select p.codigo + "    - " + p.descricao;
             cbCodProduto.ItemsSource = null;
-            cbCodProduto.ItemsSource = listaProduto.OrderBy(user => user.codigo);
-            cbCodProduto.DisplayMemberPath = "codigo";
+            cbCodProduto.ItemsSource = sql.ToList();
         }
 
         // preencher nome do produto automatico
-        private void txtProduto_GotFocus(object sender, RoutedEventArgs e) {
+        private void preencherCamposAuto() {
             try {
-                if (cbCodProduto.SelectedItem != null) {
+                if (cbCodProduto.Text != null) {
+                    int codigo = int.Parse(cbCodProduto.Text.Substring(0, 4).Trim());
                     PRODUTOS produto = new PRODUTOS();
-                    produto = conexao.PRODUTOS.Find(int.Parse(cbCodProduto.Text));
+                    produto = conexao.PRODUTOS.Find(codigo);
                     txtProduto.Text = produto.descricao;
                     txtUnitario.Text = produto.vl_unitario.ToString();
                 }
@@ -94,7 +96,7 @@ namespace BarberSystem.Janelas {
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
-                estoque.codproduto = int.Parse(cbCodProduto.Text);
+                estoque.codproduto = int.Parse(cbCodProduto.Text.Substring(0,4).Trim());
                 estoque.produto = Util.VerificarCamposVazios(txtProduto.Text);
                 estoque.vl_produto = double.Parse(txtUnitario.Text);
                 estoque.vl_total = double.Parse(txtTotal.Text);
@@ -109,6 +111,7 @@ namespace BarberSystem.Janelas {
 
                 txtCodigo.Text = estoque.codigo.ToString();
                 carregaGrid();
+                carregaPesquisa();
 
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
@@ -175,6 +178,7 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     carregaGrid();
+                    carregaPesquisa();
                 }
                 else {
                     MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -196,8 +200,9 @@ namespace BarberSystem.Janelas {
         private void btnPesquisar_Click(object sender, RoutedEventArgs e) {
             btnGravar.IsEnabled = false;
             try {
-                if (txtPesquisar.Text != "") {
-                    estoque = conexao.ESTOQUE.Find(int.Parse(txtPesquisar.Text));
+                if (cbPesquisar.Text != null) {
+                    int codigo = int.Parse(cbPesquisar.Text.Substring(0, 4).Trim());
+                    estoque = conexao.ESTOQUE.Find(codigo);
                     cbCodProduto.Text = estoque.codproduto.ToString();
                     txtProduto.Text = estoque.produto;
                     txtCodigo.Text = estoque.codigo.ToString();
@@ -237,6 +242,7 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();
+                    carregaPesquisa();
                 }
                 else {
                     limpaCampos();
@@ -263,6 +269,20 @@ namespace BarberSystem.Janelas {
         // botao excel
         private void btnExportar_Click(object sender, RoutedEventArgs e) {
             Util.exportarExcel(dgEstoque);
+        }
+
+        // mostrar informações do produto automatico ao fechar a comboBox
+        private void cbCodProduto_DropDownClosed(object sender, EventArgs e) {
+            preencherCamposAuto();
+        }
+
+        // carregar comboBox pesquisa
+        private void carregaPesquisa() {
+            var sql = from e in conexao.ESTOQUE
+                      where e.codigo > 0 
+                      select e.codigo + "    - " + e.produto;
+            cbPesquisar.ItemsSource = null;
+            cbPesquisar.ItemsSource = sql.ToList();
         }
     }
 }
