@@ -257,6 +257,7 @@ namespace BarberSystem.Janelas {
         // pesquisar por data
         private void dpCurrent_SelectedDateChanged_1(object sender, SelectionChangedEventArgs e) {
             atualizaPesquisa();
+            calcularPorData();
         }
         private void atualizaPesquisa() {
             var sql = from cr in conexao.CONTAS_RECEBER
@@ -264,6 +265,16 @@ namespace BarberSystem.Janelas {
                       select cr.codigo + "    - " + cr.descricao;
             cbPesquisar.ItemsSource = null;
             cbPesquisar.ItemsSource = sql.ToList();
+        }
+
+        // calcular valor total por data selecionada
+        private void calcularPorData() {
+            listaReceber = conexao.CONTAS_RECEBER.Where(x => x.data_vencto.Value.Month == dpCurrent.SelectedDate.Value.Month).ToList();
+            cr.vl_total = 0.0;
+            foreach (CONTAS_RECEBER item in listaReceber) {
+                cr.vl_total += item.vl_unitario;
+            }
+            lblTotal.Content = cr.vl_total.ToString();
         }
     }
 }

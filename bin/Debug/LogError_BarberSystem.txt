@@ -129,3 +129,13 @@ A cadeia de caracteres de entrada não estava em um formato correto.
    em System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
    em System.Int32.Parse(String s)
    em BarberSystem.Janelas.Estoque.btnGravar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Estoque.xaml.cs:linha 97
+23/06/2018 11:14:05
+Erro HRESULT E_FAIL foi retornado de uma chamada para o componente COM.
+   em MS.Win32.UnsafeNativeMethods.IWebBrowser2.GoForward()
+   em System.Windows.Controls.WebBrowser.GoForward()
+   em BarberSystem.Janelas.Navegador.btnFrente_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Navegador.xaml.cs:linha 41
+23/06/2018 11:14:10
+Erro HRESULT E_FAIL foi retornado de uma chamada para o componente COM.
+   em MS.Win32.UnsafeNativeMethods.IWebBrowser2.GoBack()
+   em System.Windows.Controls.WebBrowser.GoBack()
+   em BarberSystem.Janelas.Navegador.btnAtras_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Navegador.xaml.cs:linha 29

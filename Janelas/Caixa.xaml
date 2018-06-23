@@ -60,7 +60,7 @@
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/calculator_256.png" Stretch="Uniform"/>
 			</Button.Background>
 		</Button>
-		<Button x:Name="btnEntrada" Content="Entrada no Caixa" Style="{StaticResource MyButtonEntradaSaida}" HorizontalAlignment="Left" Margin="104,132,0,0" VerticalAlignment="Top" Width="194" Height="28" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnEntrada_Click">
+		<Button x:Name="btnEntrada" Content="Entrada no Caixa" Style="{StaticResource MyButtonEntrada}" HorizontalAlignment="Left" Margin="104,132,0,0" VerticalAlignment="Top" Width="194" Height="28" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnEntrada_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconEntrada2.png" Stretch="Uniform">
 					<ImageBrush.RelativeTransform>
@@ -75,7 +75,7 @@
 			</Button.Background>
 		</Button>
 		<TextBox x:Name="txtEntrada" HorizontalAlignment="Left" Height="24" Margin="315,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="14" FontWeight="SemiBold" TabIndex="6"/>
-		<Button x:Name="btnSaida" Content="Saída no Caixa" Style="{StaticResource MyButtonEntradaSaida}" HorizontalAlignment="Left" Margin="468,130,0,0" VerticalAlignment="Top" Width="194" Height="28" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnSaida_Click">
+		<Button x:Name="btnSaida" Content="Saída no Caixa" Style="{StaticResource MyButtonSaida}" HorizontalAlignment="Left" Margin="468,130,0,0" VerticalAlignment="Top" Width="194" Height="28" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Cursor="Hand" Padding="75,1,1,1" Click="btnSaida_Click">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconSaida.png" Stretch="Uniform">
 					<ImageBrush.RelativeTransform>

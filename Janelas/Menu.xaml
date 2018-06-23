@@ -15,18 +15,18 @@
 		<Menu x:Name="menu" Height="20" Width="1366" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="#FF191919" Foreground="#FFFBF9F9" BorderBrush="#FF191919">
 			<MenuItem Header="Arquivo" Foreground="#FFFBF7F7" Background="#FF191919" BorderBrush="#FF191919" UseLayoutRounding="False" BorderThickness="1">
 				<MenuItem Header="Agenda" Click="MenuItem_Click_1" Background="#FF191919" BorderBrush="#FF474747"/>
-				<MenuItem Header="Usuários" Click="MenuItem_Click_2" Background="#FF191919" BorderBrush="#FF474747"/>
+				<MenuItem x:Name="btnUsuariosMenu" Header="Usuários" Click="MenuItem_Click_2" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Clientes" Click="MenuItem_Click_3" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Fornecedores" Click="MenuItem_Click_7" Background="#FF191919" BorderBrush="#FF474747"/>
-				<MenuItem Header="Funcionários" Click="MenuItem_Click_8" Background="#FF191919" BorderBrush="#FF474747"/>
+				<MenuItem x:Name="btnFuncionariosMenu" Header="Funcionários" Click="MenuItem_Click_8" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Barbeiros" Click="MenuItem_Click_4" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Produtos" Background="#FF191919" BorderBrush="#FF474747" Click="MenuItem_Click_9"/>
 				<MenuItem Header="Estoque" Background="#FF191919" BorderBrush="#FF474747" Click="MenuItem_Click_10"/>
 			</MenuItem>
 			<MenuItem Header="Financeiro" Foreground="#FFFDF9F9">
-				<MenuItem Header="Contas a Pagar" Click="MenuItem_Click_5" Background="#FF191919" Foreground="#FFFDFBFB" BorderBrush="#FF474747"/>
-				<MenuItem Header="Contas a Receber" Click="MenuItem_Click_6" Background="#FF191919" Foreground="#FFFDF9F9" BorderBrush="#FF474747"/>
-				<MenuItem Header="Caixa" Background="#FF191919" Foreground="#FFFDF9F9" BorderBrush="#FF474747" Click="MenuItem_Click_12"/>
+				<MenuItem x:Name="btnPagarMenu" Header="Contas a Pagar" Click="MenuItem_Click_5" Background="#FF191919" Foreground="#FFFDFBFB" BorderBrush="#FF474747"/>
+				<MenuItem x:Name="btnReceberMenu" Header="Contas a Receber" Click="MenuItem_Click_6" Background="#FF191919" Foreground="#FFFDF9F9" BorderBrush="#FF474747"/>
+				<MenuItem x:Name="btnCaixaMenu" Header="Caixa" Background="#FF191919" Foreground="#FFFDF9F9" BorderBrush="#FF474747" Click="MenuItem_Click_12"/>
 			</MenuItem>
 			<MenuItem Header="Sobre" Click="MenuItem_Click_11"/>
 			<MenuItem Header="Sair" Click="MenuItem_Click"/>
@@ -68,7 +68,7 @@
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconReceber.png" Stretch="Uniform"/>
 				</Button.Background>
 			</Button>
-			<Button x:Name="btnCaixa" Content="Caixa" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="btnCaixa_Click" VerticalAlignment="Center">
+			<Button x:Name="btnCaixa" Content="Caixa" Style="{StaticResource MyButtonMenu}" Height="77" Margin="0,10,0,5" Width="120" Foreground="#FFFBF9F9" VerticalContentAlignment="Bottom" Cursor="Hand" Click="BtnCaixa_Click" VerticalAlignment="Center">
 				<Button.Background>
 					<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoes/iconCaixa.png" Stretch="Uniform"/>
 				</Button.Background>

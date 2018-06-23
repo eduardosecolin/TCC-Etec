@@ -29,7 +29,7 @@ namespace BarberSystem.Janelas {
                 Browser.GoBack();
             }
             catch (Exception a) {
-                MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Nenhuma pagina para voltar", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                 Log.logException(a);
                 Log.logMessage(a.Message);
             }
@@ -41,7 +41,7 @@ namespace BarberSystem.Janelas {
                 Browser.GoForward();
             }
             catch (Exception a) {
-                MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Nenhuma pagina para avançar", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                 Log.logException(a);
                 Log.logMessage(a.Message);
             }

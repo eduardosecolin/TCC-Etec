@@ -37,7 +37,7 @@
     <StartupObject>BarberSystem.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>iconeExeFinal.ico</ApplicationIcon>
+    <ApplicationIcon>iconeExeNew.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -291,6 +291,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="iconeExeNew.ico" />
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

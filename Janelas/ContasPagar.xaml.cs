@@ -91,11 +91,11 @@ namespace BarberSystem.Janelas {
 
         // calcular valor total e mostrar na Label
         public void calculaValorTotal(){
-            cp.vl_total = 0.0;
-            foreach (CONTAS_PAGAR item in listaPagar) {
-                cp.vl_total += item.vl_unitario;
-            }
-            lblTotal.Content = cp.vl_total.ToString();
+                cp.vl_total = 0.0;
+                foreach (CONTAS_PAGAR item in listaPagar) {
+                    cp.vl_total += item.vl_unitario;
+                }
+                lblTotal.Content = cp.vl_total.ToString();
         }
 
         // botao gravar
@@ -261,6 +261,7 @@ namespace BarberSystem.Janelas {
         // pesquisar por data
         private void dpCurrent_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
             atualizaPesquisa();
+            calcularPorData();
         }
         private void atualizaPesquisa() {
             var sql = from cp in conexao.CONTAS_PAGAR
@@ -268,6 +269,16 @@ namespace BarberSystem.Janelas {
                       select cp.codigo + "    - " + cp.descricao;
             cbPesquisar.ItemsSource = null;
             cbPesquisar.ItemsSource = sql.ToList();
+        }
+
+        // calcular valor total por data selecionada
+        private void calcularPorData(){
+            listaPagar = conexao.CONTAS_PAGAR.Where(x => x.data_vencto.Value.Month == dpCurrent.SelectedDate.Value.Month).ToList();
+            cp.vl_total = 0.0;
+            foreach (CONTAS_PAGAR item in listaPagar) {
+                cp.vl_total += item.vl_unitario;
+            }
+            lblTotal.Content = cp.vl_total.ToString();
         }
     }
 }

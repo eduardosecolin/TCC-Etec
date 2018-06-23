@@ -92,6 +92,19 @@ namespace BarberSystem.Janelas
             btnCaixa.IsEnabled = false;
             btnFuncionarios.IsEnabled = false;
             btnConfig.IsEnabled = false;
+
+            // botoes menuItem
+            btnPagarMenu.Opacity = .50;
+            btnReceberMenu.Opacity = .50;
+            btnCaixaMenu.Opacity = .50;
+            btnFuncionariosMenu.Opacity = .50;
+            btnUsuariosMenu.Opacity = .50;
+
+            btnPagarMenu.IsEnabled = false;
+            btnReceberMenu.IsEnabled = false;
+            btnCaixaMenu.IsEnabled = false;
+            btnFuncionariosMenu.IsEnabled = false;
+            btnUsuariosMenu.IsEnabled = false;
         }
 
         //Botao agenda
@@ -239,13 +252,13 @@ namespace BarberSystem.Janelas
         }
 
         // botao caixa
-        private void btnCaixa_Click(object sender, RoutedEventArgs e) {
+        private void BtnCaixa_Click(object sender, RoutedEventArgs e) {
             janelaCaixa = new Caixa();
             janelaCaixa.Show();
         }
         // botao caixa menuItem
         private void MenuItem_Click_12(object sender, RoutedEventArgs e) {
-            btnCaixa_Click(sender, e);
+            BtnCaixa_Click(sender, e);
         }
 
         // botao logout menuItem

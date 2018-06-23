@@ -70,7 +70,6 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Navegad
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\Janelas\Navegador.baml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\XamlAnimatedGif.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.Migrations.BARBER_DATABASE.resources
-C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csprojResolveAssemblyReference.cache
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\log4net.config
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\log4net.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\log4net.xml
