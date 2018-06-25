@@ -73,9 +73,7 @@ namespace BarberSystem.Janelas {
                   }*/
             }
             catch(Exception a){
-                MessageBox.Show(a.Message);
-                Log.logException(a);
-                Log.logMessage(a.Message);
+                MessageBox.Show("erro ao realizar Login!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

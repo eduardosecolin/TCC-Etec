@@ -28,10 +28,8 @@ namespace BarberSystem.Janelas {
             try {
                 Browser.GoBack();
             }
-            catch (Exception a) {
+            catch (Exception) {
                 MessageBox.Show("Nenhuma pagina para voltar", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                Log.logException(a);
-                Log.logMessage(a.Message);
             }
         }
 
@@ -40,10 +38,8 @@ namespace BarberSystem.Janelas {
             try {
                 Browser.GoForward();
             }
-            catch (Exception a) {
+            catch (Exception) {
                 MessageBox.Show("Nenhuma pagina para avançar", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                Log.logException(a);
-                Log.logMessage(a.Message);
             }
         }
 
@@ -63,9 +59,7 @@ namespace BarberSystem.Janelas {
                     Browser.Source = new Uri("http://" + txtSearch.Text);
                 }
             }catch(Exception a){
-                MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                Log.logException(a);
-                Log.logMessage(a.Message);
+                MessageBox.Show("Erro inesperado ou Endereço invalido" + "\n" + a.StackTrace, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -76,8 +70,6 @@ namespace BarberSystem.Janelas {
             }
             catch (Exception a) {
                 MessageBox.Show(a.Message, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                Log.logException(a);
-                Log.logMessage(a.Message);
             }
         }
     }

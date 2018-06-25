@@ -66,7 +66,7 @@ namespace BarberSystem.Janelas
                 if (txtCodigo.Text != "") {
                     produto.descricao = Util.VerificarCamposVazios(txtDescricao.Text);
                     produto.vl_unitario = double.Parse(Util.VerificarCamposVazios(txtUnitario.Text));
-                    produto.codfornecedor = int.Parse(Util.VerificarCamposVazios(cbCodFornecedor.Text));
+                    produto.codfornecedor = int.Parse(Util.VerificarCamposVazios(txtCodigoFornecedor.Text));
                     produto.nome_fornecedor = Util.VerificarCamposVazios(txtFornecedor.Text);
 
                     if (Util.vazio == true) {
@@ -89,9 +89,6 @@ namespace BarberSystem.Janelas
             catch (Exception a) {
                 MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
             }
             btnGravar.IsEnabled = true;
         }
@@ -107,7 +104,6 @@ namespace BarberSystem.Janelas
                     txtCodigo.Text = produto.codigo.ToString();
                     txtUnitario.Text = produto.vl_unitario.ToString();
                     txtFornecedor.Text = produto.nome_fornecedor;
-                    cbCodFornecedor.Text = produto.codfornecedor.ToString();
                     txtCodigoFornecedor.Text = produto.codfornecedor.ToString();
                 }
                 else {
@@ -119,9 +115,6 @@ namespace BarberSystem.Janelas
                 MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
                                  MessageBoxImage.Exclamation);
                 limpaCampos();
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
             }
         }
 
@@ -151,8 +144,6 @@ namespace BarberSystem.Janelas
                 btnGravar.IsEnabled = true;
             }catch(Exception ex){
                 MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
             }
         }
 
@@ -179,9 +170,6 @@ namespace BarberSystem.Janelas
                 limpaCampos();
             }catch(Exception a){
                 MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
             }
         }
 
@@ -210,8 +198,6 @@ namespace BarberSystem.Janelas
                 cbCodFornecedor.Text = "";
                 txtFornecedor.Clear();
                 cbCodFornecedor.Focus();
-                Log.logException(a);
-                Log.logMessage(a.Message);
             }
         }
 
@@ -246,8 +232,6 @@ namespace BarberSystem.Janelas
                 }
             }
             catch (Exception ex) {
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
                 return;
             }
         }
@@ -256,7 +240,7 @@ namespace BarberSystem.Janelas
             try {
                 int texto = cbCodFornecedor.Text.Length - 7;
                 string resultado = cbCodFornecedor.Text.Substring(cbCodFornecedor.Text.Length - texto);
-                int codigo = conexao.Database.SqlQuery<int>("select codigo from PRODUTOS where nome_fornecedor='" + resultado + "'").FirstOrDefault();
+                int codigo = conexao.Database.SqlQuery<int>("select codigo from FORNECEDORES where nome='" + resultado + "'").SingleOrDefault();
                 txtCodigoFornecedor.Text = codigo.ToString();
             }
             catch (Exception ex) {
@@ -264,7 +248,6 @@ namespace BarberSystem.Janelas
                 cbCodFornecedor.Text = "";
                 txtCodigoFornecedor.Clear();
                 cbCodFornecedor.Focus();
-                Log.logMessage(ex.Message);
             }
         }
 

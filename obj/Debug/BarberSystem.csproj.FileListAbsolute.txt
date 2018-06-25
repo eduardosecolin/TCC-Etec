@@ -75,3 +75,4 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\log4net.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Debug\log4net.xml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem_Content.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.Migrations.BARBER_DATABASEv1.resources
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Debug\BarberSystem.csprojResolveAssemblyReference.cache

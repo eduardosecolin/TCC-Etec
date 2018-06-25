@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:BarberSystem.Janelas"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="BarberSystem.Janelas.Menu"
         mc:Ignorable="d"
-        Title="Menu" Height="768" Width="1366" WindowState="Maximized" UseLayoutRounding="False" Loaded="Window_Loaded" Icon="/BarberSystem;component/imagens/icone.png">
+        Title="Menu" Height="740" Width="1366" UseLayoutRounding="False" Loaded="Window_Loaded" Icon="/BarberSystem;component/imagens/icone.png" WindowStartupLocation="CenterScreen">
 	<Window.Background>
 		<ImageBrush ImageSource="/BarberSystem;component/imagens/imgMenu.jpg"/>
 	</Window.Background>

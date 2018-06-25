@@ -73,9 +73,8 @@ namespace BarberSystem.Janelas
                 else {
                     esconderBotoes();
                 }
-            }catch(Exception a){
-                Log.logException(a);
-                Log.logMessage(a.Message);
+            }catch(Exception){
+                throw;
             }
         }
 
@@ -123,8 +122,7 @@ namespace BarberSystem.Janelas
                 dgAgenda.ItemsSource = null;
                 dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
             }catch(Exception a){
-                Log.logException(a);
-                Log.logMessage(a.Message);
+                MessageBox.Show("Erro ao carregar lista!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -209,8 +207,7 @@ namespace BarberSystem.Janelas
                 dgAgenda.ItemsSource = null;
                 dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
             }catch(Exception a){
-                Log.logException(a);
-                Log.logMessage(a.Message);
+                MessageBox.Show("Erro ao selecinonar data" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -271,9 +268,8 @@ namespace BarberSystem.Janelas
                 }
                 fecharJanelasAbertas();
                 this.Close();
-            }catch(Exception a){
-                Log.logException(a);
-                Log.logMessage(a.Message);
+            }catch(Exception){
+                throw;
             }
         }
 
@@ -329,11 +325,8 @@ namespace BarberSystem.Janelas
         private void btnOutlook_Click(object sender, RoutedEventArgs e) {
             try {
                 System.Diagnostics.Process.Start("outlook.exe");
-            }catch(Exception ex){
+            }catch(Exception){
                 MessageBox.Show("Sistema não encontrou o outlook!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
-                return;
             }
         }
     }

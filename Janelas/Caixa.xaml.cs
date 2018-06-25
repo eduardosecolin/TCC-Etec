@@ -51,10 +51,7 @@ namespace BarberSystem.Janelas
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
             }catch(Exception a){
-                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
+                MessageBox.Show("Erro ao gravar!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -76,9 +73,8 @@ namespace BarberSystem.Janelas
                 caixa.vl_total = decimal.Parse(lblTotal.Content.ToString());
                 txtEntrada.Clear();
                 mudaCorRetangulo();
-            }catch(Exception ex){
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
+            }catch(Exception){
+                throw;
             }
             
         }
@@ -101,9 +97,8 @@ namespace BarberSystem.Janelas
                 caixa.vl_total = decimal.Parse(lblTotal.Content.ToString());
                 txtSaida.Clear();
                 mudaCorRetangulo();
-            }catch(Exception ex){
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
+            }catch(Exception){
+                throw;
             }
         }
 
@@ -121,10 +116,8 @@ namespace BarberSystem.Janelas
         private void btnCalcWindows_Click(object sender, RoutedEventArgs e) {
             try {
                 System.Diagnostics.Process.Start("calc.exe");
-            }catch(Exception ex){
+            }catch(Exception){
                 MessageBox.Show("Sistema não encontrou a calculadora!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
             }
         }
 

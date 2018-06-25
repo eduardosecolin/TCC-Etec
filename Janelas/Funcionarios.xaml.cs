@@ -95,11 +95,8 @@ namespace BarberSystem.Janelas {
                 }
             }
             catch (Exception a) {
-                MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
             }
             btnGravar.IsEnabled = true;
         }
@@ -131,13 +128,10 @@ namespace BarberSystem.Janelas {
                 }
             }
             catch (Exception a) {
-                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
+                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
 
-                Log.logException(a);
-                Log.logMessage(a.Message);
                 limpaCampos();
-                return;
             }
         }
 
@@ -172,10 +166,8 @@ namespace BarberSystem.Janelas {
                     return;
                 }
                 btnGravar.IsEnabled = true;
-            }catch(Exception ex){
+            }catch(Exception){
                 MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
             }
         }
 
@@ -208,10 +200,7 @@ namespace BarberSystem.Janelas {
                 carregaGrid();
                 carregaPesquisa();
             }catch(Exception a){
-                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
+                MessageBox.Show("Erro ao gravar!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

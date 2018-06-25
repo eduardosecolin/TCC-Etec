@@ -80,9 +80,7 @@ namespace BarberSystem.Utils
                 string sql = string.Format(@"DBCC CHECKIDENT ({0}, RESEED, {1})", tabela, valor);
                 conexao.Database.ExecuteSqlCommand(sql);
             }
-            catch (Exception ex) {
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
+            catch (Exception) {
                 throw;
             }
         }

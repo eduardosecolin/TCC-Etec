@@ -24,3 +24,4 @@ Nome do parâmetro: entity
 22/06/2018 10:30:04 A cadeia de caracteres de entrada não estava em um formato correto.
 23/06/2018 11:14:05 Erro HRESULT E_FAIL foi retornado de uma chamada para o componente COM.
 23/06/2018 11:14:10 Erro HRESULT E_FAIL foi retornado de uma chamada para o componente COM.
+24/06/2018 03:32:00 An error occurred while updating the entries. See the inner exception for details.

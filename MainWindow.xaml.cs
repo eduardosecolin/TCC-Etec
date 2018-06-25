@@ -64,8 +64,6 @@ namespace BarberSystem {
             }
             catch (Exception a) {
                 MessageBox.Show(a.Message);
-                Log.logException(a);
-                Log.logMessage(a.Message);
             }
         }
 

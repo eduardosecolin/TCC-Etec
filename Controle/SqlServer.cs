@@ -70,9 +70,7 @@ namespace BarberSystem.Controle {
                 }
                 return result;
             }
-            catch (Exception e) {
-                Log.logException(e);
-                Log.logMessage(e.Message);
+            catch (Exception) {
                 return result;
             }
         }

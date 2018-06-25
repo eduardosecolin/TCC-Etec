@@ -139,3 +139,10 @@ Erro HRESULT E_FAIL foi retornado de uma chamada para o componente COM.
    em MS.Win32.UnsafeNativeMethods.IWebBrowser2.GoBack()
    em System.Windows.Controls.WebBrowser.GoBack()
    em BarberSystem.Janelas.Navegador.btnAtras_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Navegador.xaml.cs:linha 29
+24/06/2018 03:32:00
+An error occurred while updating the entries. See the inner exception for details.
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   em System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   em System.Data.Entity.DbContext.SaveChanges()
+   em BarberSystem.Janelas.Produtos.btnAlterar_Click(Object sender, RoutedEventArgs e) na C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\Janelas\Produtos.xaml.cs:linha 77
+InnerException: An error occurred while updating the entries. See the inner exception for details.

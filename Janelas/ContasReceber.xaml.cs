@@ -99,29 +99,33 @@ namespace BarberSystem.Janelas {
 
         // botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
-            if (txtCodigo.Text != "") {
-                verificaVazios();
-                if(txtDescricao.Text == ""){
+            try {
+                if (txtCodigo.Text != "") {
+                    verificaVazios();
+                    if (txtDescricao.Text == "") {
+                        return;
+                    }
+                    cr.vl_total = cr.vl_unitario;
+                    double? temp = 0.0;
+                    foreach (CONTAS_RECEBER item in listaReceber) {
+                        item.vl_total = temp;
+                        item.vl_total += item.vl_unitario;
+                        temp = item.vl_total;
+                    }
+                    MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
+                    carregaGrid();
+                    carregaPesquisa();
+                }
+                else {
+                    MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpaCampos();
                     return;
                 }
-                cr.vl_total = cr.vl_unitario;
-                double? temp = 0.0;
-                foreach (CONTAS_RECEBER item in listaReceber) {
-                    item.vl_total = temp;
-                    item.vl_total += item.vl_unitario;
-                    temp = item.vl_total;
-                }
-                MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                carregaGrid();
-                carregaPesquisa();
+                btnGravar.IsEnabled = true;
+            }catch(Exception){
+                MessageBox.Show("Erro ao tentar alterar!", "erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else {
-                MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
-                limpaCampos();
-                return;
-            }
-            btnGravar.IsEnabled = true;
         }
 
         // botao pesquisar
@@ -144,12 +148,9 @@ namespace BarberSystem.Janelas {
                 }
             }
             catch (Exception a) {
-                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
+                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
                 limpaCampos();
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
             }
         }
 
@@ -180,8 +181,6 @@ namespace BarberSystem.Janelas {
                 btnGravar.IsEnabled = true;
             }catch(Exception ex){
                 MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
             }
         }
 
@@ -205,10 +204,7 @@ namespace BarberSystem.Janelas {
                 limpaCampos();
                 carregaPesquisa();
             }catch(Exception a){
-                MessageBox.Show(a.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(a);
-                Log.logMessage(a.Message);
-                return;
+                MessageBox.Show("Erro ao gravar!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -232,10 +228,8 @@ namespace BarberSystem.Janelas {
             try {
                 System.Diagnostics.Process.Start("calc.exe");
             }
-            catch (Exception ex) {
+            catch (Exception) {
                 MessageBox.Show("Sistema não encontrou a calculadora!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                Log.logException(ex);
-                Log.logMessage(ex.Message);
             }
         }
 

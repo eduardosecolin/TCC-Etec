@@ -32,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BarberSystem.App</StartupObject>
@@ -124,7 +125,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controle\Log.cs" />
     <Compile Include="Controle\SqlServer.cs" />
     <Compile Include="Dados\AGENDA.cs" />
     <Compile Include="Dados\BancoDados.cs" />
