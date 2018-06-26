@@ -1,9 +1,0 @@
-﻿24/06/2018 03:07:10 The object cannot be deleted because it was not found in the ObjectStateManager.
-24/06/2018 03:11:15 Não é possível encontrar uma tabela ou objeto com o nome "PRODUTO". Verifique o catálogo do sistema.
-24/06/2018 03:11:26 Não é possível encontrar uma tabela ou objeto com o nome "PRODUTO". Verifique o catálogo do sistema.
-24/06/2018 03:11:36 Referência de objeto não definida para uma instância de um objeto.
-24/06/2018 03:19:28 startIndex não pode ser maior que o comprimento da cadeia de caracteres.
-Nome do parâmetro: startIndex
-24/06/2018 03:19:31 startIndex não pode ser maior que o comprimento da cadeia de caracteres.
-Nome do parâmetro: startIndex
-24/06/2018 03:20:16 An error occurred while updating the entries. See the inner exception for details.

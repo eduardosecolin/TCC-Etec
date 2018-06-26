@@ -130,8 +130,8 @@ namespace BarberSystem.Janelas
                     produto.codfornecedor = null;
                     produto.nome_fornecedor = null;
                     conexao.SaveChanges();
-                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
-                    Util.redefinirPK_AutoIncremento("PRODUTO", codigo);
+                    int? codigo = conexao.PRODUTOS.Max(a => (int?)a.codigo);
+                    Util.redefinirPK_AutoIncremento("PRODUTOS", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
                     limpaCampos();

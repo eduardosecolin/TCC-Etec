@@ -132,7 +132,7 @@ namespace BarberSystem.Janelas {
                 txtTotal.Text = estoque.calculaTotal().ToString();
                 txtEntrada.Clear();
             }catch(Exception){
-                MessageBox.Show("Erro imprevisto", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erro imprevisto ou campo vazio", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -150,7 +150,7 @@ namespace BarberSystem.Janelas {
                 txtTotal.Text = estoque.calculaTotal().ToString();
                 txtSaida.Clear();
             }catch(Exception){
-                MessageBox.Show("Erro imprevisto ", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erro imprevisto ou campo vazio", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -220,7 +220,7 @@ namespace BarberSystem.Janelas {
                     estoque.vl_total = null;
                     estoque.quantidade = null;
                     conexao.SaveChanges();
-                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    int? codigo = conexao.ESTOQUE.Max(a => (int?)a.codigo);
                     Util.redefinirPK_AutoIncremento("ESTOQUE", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
@@ -234,6 +234,7 @@ namespace BarberSystem.Janelas {
                 btnGravar.IsEnabled = true;
             }catch(Exception){
                 MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                carregaGrid();
             }
         }
 
@@ -254,6 +255,9 @@ namespace BarberSystem.Janelas {
 
         // mostrar informações do produto automatico ao fechar a comboBox
         private void cbCodProduto_DropDownClosed(object sender, EventArgs e) {
+            if (cbCodProduto.SelectedItem == null) {
+                return;
+            }
             preencherCamposAuto();
         }
 

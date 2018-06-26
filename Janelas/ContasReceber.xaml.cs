@@ -167,7 +167,7 @@ namespace BarberSystem.Janelas {
                     cr.vl_unitario = null;
                     cr.vl_total = null;
                     conexao.SaveChanges();
-                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    int? codigo = conexao.CONTAS_RECEBER.Max(a => (int?)a.codigo);
                     Util.redefinirPK_AutoIncremento("CONTAS_RECEBER", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();

@@ -234,7 +234,7 @@ namespace BarberSystem.Janelas {
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
             try {
                 if (txtCodigo.Text != "") {
-                    agendamento.codcliente = int.Parse(txtCodCliente.Text);
+                    verificaCampos();
                     agendamento.cliente = txtCliente.Text;
                     agendamento.descricao = txtDescricao.Text;
                     agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);

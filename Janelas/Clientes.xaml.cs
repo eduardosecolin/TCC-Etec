@@ -138,7 +138,7 @@ namespace BarberSystem.Janelas
                     cliente.celular = null;
                     cliente.status_cliente = null;
                     conexao.SaveChanges();
-                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    int? codigo = conexao.CLIENTES.Max(a => (int?)a.codigo);
                     Util.redefinirPK_AutoIncremento("CLIENTES", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregarGrid();

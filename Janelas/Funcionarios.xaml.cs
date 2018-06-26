@@ -154,7 +154,7 @@ namespace BarberSystem.Janelas {
                     funcionario.salario = null;
                     funcionario.cargo = null;
                     conexao.SaveChanges();
-                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    int? codigo = conexao.FUNCIONARIOS.Max(a => (int?)a.codigo);
                     Util.redefinirPK_AutoIncremento("FUNCIONARIOS", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();

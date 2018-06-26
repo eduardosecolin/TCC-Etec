@@ -172,7 +172,7 @@ namespace BarberSystem.Janelas {
                     cp.vl_total = null;
                     limpaCampos();
                     conexao.SaveChanges();
-                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    int? codigo = conexao.CONTAS_PAGAR.Max(a => (int?)a.codigo);
                     Util.redefinirPK_AutoIncremento("CONTAS_PAGAR", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();

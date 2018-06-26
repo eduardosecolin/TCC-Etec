@@ -140,7 +140,7 @@ namespace BarberSystem.Janelas {
                     fornecedores.tipo = null;
                     fornecedores.telefone = null;
                     conexao.SaveChanges();
-                    int? codigo = conexao.AGENDA.Max(a => (int?)a.codigo);
+                    int? codigo = conexao.FORNECEDORES.Max(a => (int?)a.codigo);
                     Util.redefinirPK_AutoIncremento("FORNECEDORES", codigo);
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carregaGrid();
