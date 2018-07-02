@@ -76,3 +76,9 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\log4net.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\log4net.xml
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem_Content.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\BarberSystem.Migrations.BARBER_DATABASEv1.resources
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\Microsoft.ReportViewer.Common.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\Microsoft.ReportViewer.WinForms.dll
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Relatorios\RelatorioAgendamento.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Relatorios\RelatorioAgendamento.baml
