@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using BarberSystem.Dados;
 using System.Diagnostics;
 using BarberSystem.Controle;
+using BarberSystem.Relatorios;
 
 namespace BarberSystem.Janelas
 {
@@ -37,6 +38,8 @@ namespace BarberSystem.Janelas
         Navegador janelaNavegador;
 
         Agenda janelaAgenda;
+
+        RelatorioAgendamento janelaRelatorioAgendamento;
         
         BancoDados conexao = new BancoDados();
         public Menu()
@@ -328,6 +331,12 @@ namespace BarberSystem.Janelas
             }catch(Exception){
                 MessageBox.Show("Sistema não encontrou o outlook!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        // relatorios menuItem
+        private void relatoriosMenuItem_Click(object sender, RoutedEventArgs e) {
+            janelaRelatorioAgendamento = new RelatorioAgendamento();
+            janelaRelatorioAgendamento.Show();
         }
     }
 }

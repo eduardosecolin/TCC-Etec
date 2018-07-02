@@ -22,6 +22,8 @@
 				<MenuItem Header="Barbeiros" Click="MenuItem_Click_4" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Produtos" Background="#FF191919" BorderBrush="#FF474747" Click="MenuItem_Click_9"/>
 				<MenuItem Header="Estoque" Background="#FF191919" BorderBrush="#FF474747" Click="MenuItem_Click_10"/>
+				<Separator/>
+				<MenuItem x:Name="relatoriosMenuItem" Header="Relatórios" Background="#FF191919" BorderBrush="#FF474747" Click="relatoriosMenuItem_Click"/>
 			</MenuItem>
 			<MenuItem Header="Financeiro" Foreground="#FFFDF9F9">
 				<MenuItem x:Name="btnPagarMenu" Header="Contas a Pagar" Click="MenuItem_Click_5" Background="#FF191919" Foreground="#FFFDFBFB" BorderBrush="#FF474747"/>
