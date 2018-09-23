@@ -178,7 +178,8 @@ namespace BarberSystem.Janelas {
             try {
                 MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Excluir", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (resultado == MessageBoxResult.Yes) {
-                    agendamento = conexao.AGENDA.Remove(agendamento);
+                    conexao.AGENDA.Attach(agendamento);
+                    conexao.AGENDA.Remove(agendamento);
                     limpaCampos();
                     agendamento.cliente = null;
                     agendamento.descricao = null;
@@ -199,8 +200,9 @@ namespace BarberSystem.Janelas {
                 }
                 btnGravar.IsEnabled = true;
             }
-            catch (Exception) {
-                MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            catch (Exception ex) {
+                MessageBox.Show("Erro imprevisto ou campos vazios" + "\n" + ex.Message, "Erro",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -295,19 +297,19 @@ namespace BarberSystem.Janelas {
         private void dgAgendamento_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             try {
                 if (dgAgendamento.SelectedItems.Count > 0) {
-                    var a = dgAgendamento.SelectedItem as AGENDA;
-                    if (a != null) {
+                    agendamento = dgAgendamento.SelectedItem as AGENDA;
+                    if (agendamento != null) {
                         cbClientes.ItemsSource = null;
-                        txtCodCliente.Text = a.codcliente.ToString();
-                        txtCodigo.Text = a.codigo.ToString();
-                        cbClientes.Items.Add(a.cliente);
-                        cbClientes.Text = a.cliente;
-                        txtDescricao.Text = a.descricao;
-                        MtxtHinicio.Text = DateTime.Parse(a.hora_inicio.ToString()).ToShortTimeString();
-                        MtxtHfim.Text = DateTime.Parse(a.hora_fim.ToString()).ToShortTimeString();
-                        dpData.Text = a.data.ToString();
-                        txtCodBarbeiro.Text = a.codbarbeiro.ToString();
-                        cbBarbeiro.Text = a.nome_barbeiro;
+                        txtCodCliente.Text = agendamento.codcliente.ToString();
+                        txtCodigo.Text = agendamento.codigo.ToString();
+                        cbClientes.Items.Add(agendamento.cliente);
+                        cbClientes.Text = agendamento.cliente;
+                        txtDescricao.Text = agendamento.descricao;
+                        MtxtHinicio.Text = DateTime.Parse(agendamento.hora_inicio.ToString()).ToShortTimeString();
+                        MtxtHfim.Text = DateTime.Parse(agendamento.hora_fim.ToString()).ToShortTimeString();
+                        dpData.Text = agendamento.data.ToString();
+                        txtCodBarbeiro.Text = agendamento.codbarbeiro.ToString();
+                        cbBarbeiro.Text = agendamento.nome_barbeiro;
                     }
                 }
 

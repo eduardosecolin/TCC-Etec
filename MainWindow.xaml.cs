@@ -7,6 +7,7 @@ using BarberSystem.Controle;
 using BarberSystem.Dados;
 using System.Data.Entity;
 using log4net;
+using System.Diagnostics;
 
 namespace BarberSystem {
     /// <summary>
@@ -14,12 +15,19 @@ namespace BarberSystem {
     /// </summary>
     public partial class MainWindow : Window {
 
+        #region Atributos
+
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
         public BancoDados conexao = new BancoDados();
 
         private const int TEMP = 700;
+
+        #endregion
+
+        #region Construtor
+
         public MainWindow() {
             InitializeComponent();
             //createDataBase();
@@ -30,6 +38,10 @@ namespace BarberSystem {
             carregarprogressBar();
             log4net.Config.XmlConfigurator.Configure();
         }
+
+        #endregion
+
+        #region Metodos
 
         private delegate void ProgressBarDelegate();
 
@@ -80,5 +92,24 @@ namespace BarberSystem {
                 conexao.Database.CreateIfNotExists();
             }
         }
+
+        // pegar versao do app
+        private string getVersionApp() {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fvi.FileVersion;
+            return version;
+        }
+
+        #endregion
+
+        #region Eventos
+
+        // evento de carregar o form
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            labelVersao.Content += getVersionApp();
+        }
+
+        #endregion
     }
 }
