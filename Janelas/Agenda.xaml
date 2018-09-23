@@ -17,18 +17,17 @@
 
 		<Label x:Name="label" Content="Código:" HorizontalAlignment="Left" Margin="88,95,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="148,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="0" IsReadOnly="True"/>
-		<Label x:Name="label_Copy" Content="Cliente:" HorizontalAlignment="Left" Margin="86,132,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCliente" HorizontalAlignment="Left" Height="23" Margin="143,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" FontSize="14" FontWeight="SemiBold" TabIndex="3" MaxLength="50" GotFocus="txtCliente_GotFocus" LostFocus="txtCliente_LostFocus"/>
-		<Label x:Name="label_Copy1" Content="Código do cliente:" HorizontalAlignment="Left" Margin="193,95,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<Label x:Name="label_Copy2" Content="Descrição:" HorizontalAlignment="Left" Margin="86,174,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="159,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" FontWeight="SemiBold" TabIndex="4" MaxLength="50"/>
-		<Label x:Name="label_Copy3" Content="Horário de Inicio:" HorizontalAlignment="Left" Margin="431,172,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<wpfTool:MaskedTextBox x:Name="MtxtHinicio" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="549,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
-		<wpfTool:MaskedTextBox  x:Name="MtxtHfim" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="695,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="14" FontWeight="SemiBold" TabIndex="6"/>
-		<Label x:Name="label_Copy4" Content="Horário Final:" HorizontalAlignment="Left" Margin="602,172,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<Label x:Name="label_Copy5" Content="Data:" HorizontalAlignment="Left" Margin="87,213,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="127,214,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="7" Width="163" CalendarStyle="{DynamicResource DateTimeCalendar}" Background="#FF191919"/>
-		<ComboBox x:Name="cbBarbeiro" HorizontalAlignment="Left" Margin="360,213,0,0" VerticalAlignment="Top" Width="185" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8" DropDownClosed="cbBarbeiro_DropDownClosed">
+		<Label x:Name="label_Copy" Content="Cliente:" HorizontalAlignment="Left" Margin="184,95,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy1" Content="Código do cliente:" HorizontalAlignment="Left" Margin="625,95,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy2" Content="Descrição:" HorizontalAlignment="Left" Margin="86,140,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtDescricao" HorizontalAlignment="Left" Height="23" Margin="159,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" FontWeight="SemiBold" TabIndex="3" MaxLength="50"/>
+		<Label x:Name="label_Copy3" Content="Horário de Inicio:" HorizontalAlignment="Left" Margin="431,138,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<wpfTool:MaskedTextBox x:Name="MtxtHinicio" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="549,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="14" FontWeight="SemiBold" TabIndex="4"/>
+		<wpfTool:MaskedTextBox  x:Name="MtxtHfim" Mask="00:00" HorizontalAlignment="Left" Height="23" Margin="695,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="14" FontWeight="SemiBold" TabIndex="5"/>
+		<Label x:Name="label_Copy4" Content="Horário Final:" HorizontalAlignment="Left" Margin="602,138,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Label x:Name="label_Copy5" Content="Data:" HorizontalAlignment="Left" Margin="87,189,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="127,190,0,0" VerticalAlignment="Top" BorderBrush="#FF3A3939" FontSize="14" FontWeight="SemiBold" TabIndex="6" Width="163" CalendarStyle="{DynamicResource DateTimeCalendar}" Background="#FF191919"/>
+		<ComboBox x:Name="cbBarbeiro" HorizontalAlignment="Left" Margin="360,189,0,0" VerticalAlignment="Top" Width="185" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="7" DropDownClosed="cbBarbeiro_DropDownClosed">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
 					<GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -36,8 +35,8 @@
 				</LinearGradientBrush>
 			</ComboBox.Background>
 		</ComboBox>
-		<Label x:Name="label_Copy6" Content="Barbeiro:" HorizontalAlignment="Left" Margin="295,212,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<Button x:Name="btnNovo" Content="Novo" Margin="842,96,0,0" Style="{StaticResource MyButton}" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnCadastrar_Click" Cursor="Hand" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" Padding="75,1,1,1">
+		<Label x:Name="label_Copy6" Content="Barbeiro:" HorizontalAlignment="Left" Margin="295,188,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<Button x:Name="btnNovo" Content="Novo" Margin="842,96,0,0" Style="{StaticResource MyButton}" VerticalAlignment="Top" Width="228" Height="60" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="btnCadastrar_Click" Cursor="Hand" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" Padding="75,1,1,1" TabIndex="1">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconNovo.png" Stretch="None">
 					<ImageBrush.RelativeTransform>
@@ -135,7 +134,7 @@
 				</ImageBrush>
 			</Button.Background>
 		</Button>
-		<DataGrid x:Name="dgAgendamento" HorizontalAlignment="Left" Height="257" Margin="91,251,0,0" VerticalAlignment="Top" Width="694" Background="{x:Null}" BorderBrush="#FF0E0D0D" IsReadOnly="True" FontWeight="SemiBold" Foreground="#FF080808" AutoGenerateColumns="False">
+		<DataGrid KeyboardNavigation.TabNavigation="Once" x:Name="dgAgendamento" HorizontalAlignment="Left" Height="257" Margin="91,251,0,0" VerticalAlignment="Top" Width="694" Background="{x:Null}" BorderBrush="#FF0E0D0D" IsReadOnly="True" FontWeight="SemiBold" Foreground="#FF080808" AutoGenerateColumns="False" SelectionChanged="dgAgendamento_SelectionChanged">
 			<DataGrid.Columns>
 				<DataGridTextColumn  Header="Código" Binding="{Binding codigo}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
 				<DataGridTextColumn  Header="Código Cliente" Binding="{Binding codcliente}" IsReadOnly="True" Foreground="#FFFDFDFD"/>
@@ -148,8 +147,8 @@
 				<DataGridTextColumn  Header="Barbeiro" Binding="{Binding nome_barbeiro}" Foreground="#FFF9F9F9"/>
 			</DataGrid.Columns>
 		</DataGrid>
-		<Label x:Name="label_Copy7" Content="Código do Barbeiro:" HorizontalAlignment="Left" Margin="559,211,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
-		<TextBox x:Name="txtCodBarbeiro" HorizontalAlignment="Left" Height="23" Margin="695,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="9" IsReadOnly="True"/>
+		<Label x:Name="label_Copy7" Content="Código do Barbeiro:" HorizontalAlignment="Left" Margin="559,187,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold" Foreground="#FFFDFBFB"/>
+		<TextBox x:Name="txtCodBarbeiro" HorizontalAlignment="Left" Height="23" Margin="695,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="8" IsReadOnly="True"/>
 		<Button x:Name="btnPesquisar" Content="Pesquisar" Style="{StaticResource MyButtonPesquisar}" HorizontalAlignment="Left" Margin="420,50,0,0" VerticalAlignment="Top" Width="125" Height="22" FontWeight="SemiBold" Foreground="#FFFDFDFD" AutomationProperties.IsRowHeader="True" BorderBrush="#FF0E0D0D" Click="BtnPesquisar_Click" Cursor="Hand">
 			<Button.Background>
 				<ImageBrush ImageSource="/BarberSystem;component/imagens/imgBotoesJanelas/iconPesquisar.png" Stretch="Uniform">
@@ -166,9 +165,9 @@
 		</Button>
 		<Label x:Name="label_Copy8" Content="Pesquisar agendamento:" HorizontalAlignment="Left" Margin="91,48,0,0" VerticalAlignment="Top" FontSize="11" FontWeight="SemiBold" Foreground="#FFFDFBFB" RenderTransformOrigin="0.424,-1.052"/>
 		<DatePicker x:Name="dpCurrent" HorizontalAlignment="Left" CalendarStyle="{DynamicResource DateTimeCalendar}" Margin="751,222,0,0" VerticalAlignment="Top" Width="32" SelectedDateChanged="dpCurrent_SelectedDateChanged"/>
-		<ComboBox x:Name="cbCodCliente" HorizontalAlignment="Left" Margin="324,94,0,0" VerticalAlignment="Top" Width="273" Height="25" FontWeight="SemiBold" TabIndex="1" IsReadOnly="True"/>
-		<TextBox x:Name="txtCodCliente" HorizontalAlignment="Left" Height="23" Margin="607,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="2" IsReadOnly="True" GotFocus="txtCodCliente_GotFocus"/>
-		<ComboBox x:Name="cbPesquisar" HorizontalAlignment="Left" Margin="228,50,0,0" VerticalAlignment="Top" Width="185" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8" Height="22">
+		<TextBox x:Name="txtCodCliente" HorizontalAlignment="Left" Height="23" Margin="751,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" FontSize="14" FontWeight="SemiBold" TabIndex="2" IsReadOnly="True" GotFocus="txtCodCliente_GotFocus"/>
+		<TextBox x:Name="txtPesquisar" HorizontalAlignment="Left" Height="23" Margin="223,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" FontSize="14" FontWeight="SemiBold" TabIndex="9" MaxLength="50"/>
+		<ComboBox x:Name="cbClientes" HorizontalAlignment="Left" Margin="241,96,0,0" VerticalAlignment="Top" Width="379" FontSize="14" FontWeight="SemiBold" BorderBrush="#FF0E0D0D" TabIndex="8" DropDownClosed="cbBarbeiro_DropDownClosed">
 			<ComboBox.Background>
 				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
 					<GradientStop Color="#FFF0F0F0" Offset="0"/>

@@ -82,3 +82,5 @@ C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\Microsoft.Rep
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\bin\Release\Microsoft.ReportViewer.WinForms.dll
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Relatorios\RelatorioAgendamento.g.cs
 C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Relatorios\RelatorioAgendamento.baml
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Utils\Update.g.cs
+C:\Users\carlos\Source\Repos\BarberSystem\BarberSystem\obj\Release\Utils\Update.baml

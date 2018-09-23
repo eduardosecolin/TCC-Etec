@@ -338,6 +338,8 @@ namespace BarberSystem.Janelas
             janelaRelatorioAgendamento = new RelatorioAgendamento();
             janelaRelatorioAgendamento.Show();
         }
+
+ 
     }
 }
 

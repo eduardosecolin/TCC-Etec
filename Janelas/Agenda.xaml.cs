@@ -9,6 +9,7 @@ using BarberSystem.Controle;
 using BarberSystem.Utils;
 using BarberSystem.Dados;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Core.EntityClient;
 
 namespace BarberSystem.Janelas {
     /// <summary>
@@ -16,10 +17,16 @@ namespace BarberSystem.Janelas {
     /// </summary>
     public partial class Agenda {
 
+        #region Atributos
+
         AGENDA agendamento = new AGENDA();
         BancoDados conexao = new BancoDados();
         public List<AGENDA> listaAgenda = new List<AGENDA>();
         private Menu janela;
+
+        #endregion
+
+        #region Construtor
 
         //Construtor
         public Agenda(Menu window) {
@@ -28,26 +35,72 @@ namespace BarberSystem.Janelas {
             dgAgendamento.RowBackground = null;
             carrgearGrid();
             carregarComboBox();
-            carregaComboCodClient();
-            carregaPesquisa();
         }
 
+        #endregion
+
+        #region Metodos
+
         // metodo para campos vazios
-        public void verificaCampos(){
-          if(txtCodCliente.Text.Equals(string.Empty)){
+        public void verificaCampos() {
+            if (txtCodCliente.Text.Equals(string.Empty)) {
                 agendamento.codcliente = null;
-          }else{
+            }
+            else {
                 agendamento.codcliente = int.Parse(txtCodCliente.Text);
-          }
+            }
         }
 
         // mostrar agendamento no menu
-        private void mostrarAgendamentoMenu(){
+        private void mostrarAgendamentoMenu() {
             var sql = from a in conexao.AGENDA
                       where a.data == DateTime.Today
                       select new { a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.nome_barbeiro };
             janela.dgAgenda.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
         }
+
+        //Metodo para limpar os campos(textBox)
+        public void limpaCampos() {
+            txtCodigo.Clear();
+            cbClientes.Text = string.Empty;
+            txtDescricao.Clear();
+            MtxtHinicio.Clear();
+            MtxtHfim.Clear();
+            txtCodBarbeiro.Clear();
+            txtPesquisar.Text = string.Empty;
+            MtxtHinicio.Clear();
+            dpData.Text = "";
+            cbBarbeiro.Text = "";
+            txtCodCliente.Clear();
+            btnGravar.IsEnabled = true;
+        }
+
+        // carregar a grid
+        public void carrgearGrid() {
+            listaAgenda = conexao.AGENDA.ToList();
+            dgAgendamento.ItemsSource = null;
+            dgAgendamento.ItemsSource = listaAgenda.OrderBy(user => user.hora_inicio);
+        }
+
+        // carregar combo box clientes
+        private void CarregaCBClientes() {
+            List<string> nomes = conexao.CLIENTES.Select(x => x.nome).ToList();
+            nomes = nomes.OrderBy(x => x).ToList();
+            cbClientes.ItemsSource = null;
+            cbClientes.ItemsSource = nomes;
+        }
+
+        public void carregarComboBox() {
+            List<BARBEIROS> listaBarbeiros = conexao.BARBEIROS.ToList();
+            cbBarbeiro.ItemsSource = null;
+            cbBarbeiro.ItemsSource = listaBarbeiros.OrderBy(user => user.nome);
+            cbBarbeiro.DisplayMemberPath = "nome";
+        }
+
+        #endregion
+
+        #region Eventos
+
         //Botao de voltar
         private void btnVoltar_Click(object sender, RoutedEventArgs e) {
             mostrarAgendamentoMenu();
@@ -56,37 +109,22 @@ namespace BarberSystem.Janelas {
 
         //Botao de Novo
         private void btnCadastrar_Click(object sender, RoutedEventArgs e) {
-            cbCodCliente.Focus();
+            cbClientes.Focus();
             limpaCampos();
-        }
-
-        //Metodo para limpar os campos(textBox)
-        public void limpaCampos(){
-            txtCodigo.Clear();
-            cbCodCliente.Text = string.Empty;
-            txtCliente.Clear();
-            txtDescricao.Clear();
-            MtxtHinicio.Clear();
-            MtxtHfim.Clear();
-            txtCodBarbeiro.Clear();
-            cbPesquisar.Text = string.Empty;
-            MtxtHinicio.Clear();
-            dpData.Text = "";
-            cbBarbeiro.Text = "";
-            txtCodCliente.Clear();
-            btnGravar.IsEnabled = true;
+            CarregaCBClientes();
         }
 
         //Botao limpar
         private void btnLimpar_Click(object sender, RoutedEventArgs e) {
             limpaCampos();
+            carrgearGrid();
         }
 
         // botao gravar
         private void btnGravar_Click(object sender, RoutedEventArgs e) {
             try {
                 verificaCampos();
-                agendamento.cliente = Util.VerificarCamposVazios(txtCliente.Text);
+                agendamento.cliente = Util.VerificarCamposVazios(cbClientes.Text);
                 agendamento.descricao = Util.VerificarCamposVazios(txtDescricao.Text);
                 agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);
                 agendamento.hora_fim = DateTime.Parse(MtxtHfim.Text);
@@ -97,52 +135,39 @@ namespace BarberSystem.Janelas {
                 if (Util.vazio == true) {
                     return;
                 }
-            
+
                 conexao.AGENDA.Add(agendamento);
                 conexao.SaveChanges();
 
                 txtCodigo.Text = agendamento.codigo.ToString();
                 carrgearGrid();
-                carregaPesquisa();
 
                 MessageBox.Show("Dados salvo com sucesso!!!", "Salvando...", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpaCampos();
-            }catch(Exception a){
-                MessageBox.Show("Erro ao gravar!" +"\n" + a.StackTrace , "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        // carregar a grid
-        public void carrgearGrid(){
-                listaAgenda = conexao.AGENDA.ToList();
-                dgAgendamento.ItemsSource = null;
-                dgAgendamento.ItemsSource = listaAgenda.OrderBy(user => user.hora_inicio);
+            catch (Exception a) {
+                MessageBox.Show("Erro ao gravar!" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // pesquisar
         private void BtnPesquisar_Click(object sender, RoutedEventArgs e) {
             btnGravar.IsEnabled = false;
-            cbCodCliente.IsEnabled = false;
             try {
-                if (cbPesquisar.Text != null) {
-                    int codigo = int.Parse(cbPesquisar.Text.Substring(0, 4).Trim());
-                    agendamento = conexao.AGENDA.Find(codigo);
-                    txtCodCliente.Text = agendamento.codcliente.ToString();
-                    txtCodigo.Text = agendamento.codigo.ToString();
-                    txtCliente.Text = agendamento.cliente;
-                    txtDescricao.Text = agendamento.descricao;
-                    MtxtHinicio.Text = DateTime.Parse(agendamento.hora_inicio.ToString()).ToShortTimeString();
-                    MtxtHfim.Text = DateTime.Parse(agendamento.hora_fim.ToString()).ToShortTimeString();
-                    dpData.Text = agendamento.data.ToString();
-                    txtCodBarbeiro.Text = agendamento.codbarbeiro.ToString();
-                    cbBarbeiro.Text = agendamento.nome_barbeiro;
+                if (txtPesquisar.Text != string.Empty) {
+                    var sql = conexao.AGENDA.Where(x => x.cliente.Contains(txtPesquisar.Text));
+
+                    dgAgendamento.ItemsSource = null;
+                    dgAgendamento.ItemsSource = sql.ToList();
+
                 }
                 else {
                     MessageBox.Show("Agendamento não encontrado!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                 }
-            }catch(Exception a){
-                MessageBox.Show("Campo vazio ou código invalido!" + "\n" + a.Message, "Erro", MessageBoxButton.OK, 
+            }
+            catch (Exception a) {
+                MessageBox.Show("Campo vazio!" + "\n" + a.Message, "Erro", MessageBoxButton.OK,
                                  MessageBoxImage.Exclamation);
                 limpaCampos();
             }
@@ -167,15 +192,14 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Registro excluido com sucesso!", "Excluir", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     carrgearGrid();
                     limpaCampos();
-                    carregaPesquisa();
                 }
                 else {
                     limpaCampos();
                     return;
                 }
                 btnGravar.IsEnabled = true;
-                cbCodCliente.IsEnabled = true;
-            }catch(Exception){
+            }
+            catch (Exception) {
                 MessageBox.Show("Erro imprevisto ou campos vazios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -185,57 +209,13 @@ namespace BarberSystem.Janelas {
             Util.exportarExcel(dgAgendamento);
         }
 
-        public void carregarComboBox(){
-           List<BARBEIROS> listaBarbeiros = conexao.BARBEIROS.ToList();
-            cbBarbeiro.ItemsSource = null;
-            cbBarbeiro.ItemsSource = listaBarbeiros.OrderBy(user => user.nome);
-            cbBarbeiro.DisplayMemberPath = "nome";
-        }
-
-        // carregar comboBox com o codigo do cliente
-        public void carregaComboCodClient(){
-            var sql = from a in conexao.CLIENTES
-                      where a.codigo > 0
-                      select a.codigo + "    - " + a.nome;
-            
-            cbCodCliente.ItemsSource = null;
-            cbCodCliente.ItemsSource = sql.ToList();
-        }
-
-        // carregar comboBox pesquisa
-        private void carregaPesquisa(){
-         var sql = from a in conexao.AGENDA
-                   where a.codigo > 0 && a.data == DateTime.Today
-                   select a.codigo + "    - " + a.cliente;
-            cbPesquisar.ItemsSource = null;
-            cbPesquisar.ItemsSource = sql.ToList();
-        }
-
-        // mostrar cliente automatico
-        private void txtCliente_GotFocus(object sender, RoutedEventArgs e) {
-            try {
-              if(cbCodCliente.SelectedItem != null){
-                    int codigo = int.Parse(cbCodCliente.Text.Substring(0, 4).Trim());
-                    CLIENTES cliente = new CLIENTES();
-                    cliente = conexao.CLIENTES.Find(codigo);
-                    txtCliente.Text = cliente.nome;
-
-              }
-            }
-            catch (Exception) {
-                MessageBox.Show("Código do cliente invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                cbCodCliente.Text = "";
-                txtCliente.Clear();
-                cbCodCliente.Focus();
-            }
-        }
-
         //botao alterar
         private void btnAlterar_Click(object sender, RoutedEventArgs e) {
             try {
                 if (txtCodigo.Text != "") {
                     verificaCampos();
-                    agendamento.cliente = txtCliente.Text;
+                    agendamento.codigo = int.Parse(txtCodigo.Text);
+                    agendamento.cliente = cbClientes.Text;
                     agendamento.descricao = txtDescricao.Text;
                     agendamento.hora_inicio = DateTime.Parse(MtxtHinicio.Text);
                     agendamento.hora_fim = DateTime.Parse(MtxtHfim.Text);
@@ -247,74 +227,46 @@ namespace BarberSystem.Janelas {
                     MessageBox.Show("Dados alterados com sucesso!", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     carrgearGrid();
-                    carregaPesquisa();
                 }
                 else {
-                    MessageBox.Show("Insira um código ou pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Pesquise para alterar", "Alterar", MessageBoxButton.OK, MessageBoxImage.Information);
                     limpaCampos();
                     return;
                 }
-            }catch(Exception a){
+            }
+            catch (Exception a) {
                 MessageBox.Show("Alguns campos não podem ficar vazios" + "\n" + a.StackTrace, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
                 limpaCampos();
             }
             btnGravar.IsEnabled = true;
-            cbCodCliente.IsEnabled = true;
         }
 
         // mostrar registros da grid pela data selecionada
         private void dpCurrent_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
             var sql = from a in conexao.AGENDA
                       where a.data == dpCurrent.SelectedDate
-                      select new {a.codigo, a.codcliente, a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.codbarbeiro, a.nome_barbeiro };
+                      select new { a.codigo, a.codcliente, a.cliente, a.descricao, a.hora_inicio, a.hora_fim, a.data, a.codbarbeiro, a.nome_barbeiro };
             dgAgendamento.ItemsSource = null;
             dgAgendamento.ItemsSource = sql.ToList().OrderBy(user => user.hora_inicio);
-
-            atualizaPesquisa();
         }
 
-        // atualizar combo pesquisa
-        private void atualizaPesquisa(){
-            var sql = from a in conexao.AGENDA
-                      where a.data == dpCurrent.SelectedDate
-                      select a.codigo + "    - " + a.cliente;
-            cbPesquisar.ItemsSource = null;
-            cbPesquisar.ItemsSource = sql.ToList();
-        }
-
+        // campo codigo cliente receber valor ao ganhar foco
         private void txtCodCliente_GotFocus(object sender, RoutedEventArgs e) {
             try {
-                if (cbCodCliente.SelectedItem != null) {
-                    int codigo = int.Parse(cbCodCliente.Text.Substring(0, 4).Trim());
+                if (cbClientes.SelectedItem != null) {
+                    var sql = conexao.CLIENTES.Where(x => x.nome == cbClientes.Text);
                     CLIENTES cliente = new CLIENTES();
-                    cliente = conexao.CLIENTES.Find(codigo);
+                    cliente = sql.FirstOrDefault();
                     txtCodCliente.Text = cliente.codigo.ToString();
-
                 }
             }
             catch (Exception) {
-                MessageBox.Show("Código do cliente invalido!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-                cbCodCliente.Text = "";
-                txtCliente.Clear();
-                cbCodCliente.Focus();
+                MessageBox.Show("Código do cliente invalido!", "Informação",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                cbClientes.Text = string.Empty;
+                cbClientes.Focus();
             }
         }
-
-        private void txtCliente_LostFocus(object sender, RoutedEventArgs e) {
-          if (cbCodCliente.SelectedItem != null) {
-                int codigo = int.Parse(cbCodCliente.Text.Substring(0, 4).Trim());
-                CLIENTES cliente = new CLIENTES();
-                cliente = conexao.CLIENTES.Find(codigo);
-                string aux = cliente.nome;
-         
-            if(txtCliente.Text != aux){
-                    txtCliente.Text = string.Empty;
-                    txtCliente.Focus();
-                    return;
-            }
-          }
-        }
-
 
         // mostrar codigo barbeiro automatico
         private void cbBarbeiro_DropDownClosed(object sender, EventArgs e) {
@@ -339,5 +291,35 @@ namespace BarberSystem.Janelas {
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
             mostrarAgendamentoMenu();
         }
+
+        private void dgAgendamento_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            try {
+                if (dgAgendamento.SelectedItems.Count > 0) {
+                    var a = dgAgendamento.SelectedItem as AGENDA;
+                    if (a != null) {
+                        cbClientes.ItemsSource = null;
+                        txtCodCliente.Text = a.codcliente.ToString();
+                        txtCodigo.Text = a.codigo.ToString();
+                        cbClientes.Items.Add(a.cliente);
+                        cbClientes.Text = a.cliente;
+                        txtDescricao.Text = a.descricao;
+                        MtxtHinicio.Text = DateTime.Parse(a.hora_inicio.ToString()).ToShortTimeString();
+                        MtxtHfim.Text = DateTime.Parse(a.hora_fim.ToString()).ToShortTimeString();
+                        dpData.Text = a.data.ToString();
+                        txtCodBarbeiro.Text = a.codbarbeiro.ToString();
+                        cbBarbeiro.Text = a.nome_barbeiro;
+                    }
+                }
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show("Selecione um registro!" + "\n" + ex.Message, "Aviso",
+                                MessageBoxButton.OK, MessageBoxImage.Hand);
+            }
+        }
+
+        #endregion
     }
 }
+

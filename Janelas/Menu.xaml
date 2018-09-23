@@ -13,7 +13,7 @@
 	</Window.Background>
 	<Grid>
 		<Menu x:Name="menu" Height="20" Width="1366" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="#FF191919" Foreground="#FFFBF9F9" BorderBrush="#FF191919">
-			<MenuItem Header="Arquivo" Foreground="#FFFBF7F7" Background="#FF191919" BorderBrush="#FF191919" UseLayoutRounding="False" BorderThickness="1">
+			<MenuItem x:Name="btnAutoUpdate" Header="Arquivo" Foreground="#FFFBF7F7" Background="#FF191919" BorderBrush="#FF191919" UseLayoutRounding="False" BorderThickness="1">
 				<MenuItem Header="Agenda" Click="MenuItem_Click_1" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem x:Name="btnUsuariosMenu" Header="Usuários" Click="MenuItem_Click_2" Background="#FF191919" BorderBrush="#FF474747"/>
 				<MenuItem Header="Clientes" Click="MenuItem_Click_3" Background="#FF191919" BorderBrush="#FF474747"/>
